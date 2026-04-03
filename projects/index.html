@@ -267,46 +267,21 @@
         </div>
 
         <!-- Whole Body Control & Bipedal Walking — Consolidated Featured Project -->
-        <div class="fade-in lg:col-span-3 rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border); overflow: hidden;">
-          <div class="project-gallery p-4 pb-0">
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">End-to-end humanoid locomotion system combining Whole Body Control, DCM-based trajectory planning, and multi-directional gait generation. WBC is formulated as a QP minimizing joint accelerations and reaction forces subject to full-body dynamics constraints, providing real-time torque commands for balancing. The DCM planner decomposes CoM dynamics into stable/unstable components for footstep trajectory generation with ZMP constraints. Together they enable forward, backward, and lateral walking with Lyapunov-guaranteed stability.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM Planner</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">QP Optimization</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Lyapunov Stability</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Multi-Directional Gait</span>
+          </div>
+          <div class="project-gallery">
             <img src="../assets/images/projects/so-arm-rl.gif" alt="Humanoid stand and balance — WBC controller" loading="lazy" />
             <img src="../assets/images/projects/wbc-balance.jpg" alt="Humanoid walking in Bullet Physics sim" loading="lazy" />
             <img src="../assets/images/projects/loco-manipulation.png" alt="DCM planner — footstep trajectories and CoM tracking" loading="lazy" />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">Full Pipeline</span>
-              <span class="text-xs font-medium" style="color: var(--muted-fg);">Humanoid Robotics</span>
-            </div>
-            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">End-to-end humanoid locomotion system combining Whole Body Control, DCM-based trajectory planning, and multi-directional gait generation. WBC is formulated as a QP minimizing joint accelerations and reaction forces subject to full-body dynamics constraints, providing real-time torque commands for balancing. The Divergent Component of Motion (DCM) planner decomposes CoM dynamics into stable/unstable components for footstep trajectory generation with ZMP constraints. Together they enable forward, backward, and lateral walking with Lyapunov-guaranteed stability.</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM Planner</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">QP Optimization</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Lyapunov Stability</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Multi-Directional Gait</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Robotic Arm Project — Featured -->
-        <div class="fade-in featured-card lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="featured-img" loading="lazy" />
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-medium" style="color: var(--accent);">MAE &middot; Robotics</span>
-              <img src="../assets/images/projects/MAE.png" alt="MAE" class="h-4 md:h-5 object-contain flex-shrink-0" />
-            </div>
-            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation.</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Forward/Inverse Kinematics</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gravity Compensation</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
-            </div>
           </div>
         </div>
 
@@ -352,6 +327,25 @@
 
       <!-- Featured Projects -->
       <div class="space-y-6 mb-10">
+
+        <!-- Robotic Arm Project -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-medium" style="color: var(--accent);">MAE &middot; Robotics</span>
+              <img src="../assets/images/projects/MAE.png" alt="MAE" class="h-4 md:h-5 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Forward/Inverse Kinematics</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gravity Compensation</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Pentair Senior Design — 1st Place -->
         <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
