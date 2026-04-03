@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jatin Sikka</title>
-  <meta name="description" content="Jatin Sikka — AI & Robotics Researcher. Founder. Building ventures out of India." />
+  <meta name="description" content="Jatin Sikka — AI & Robotics Researcher. Founder. Engineer." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/custom.css" />
@@ -73,15 +73,33 @@
 
   <!-- ============ HERO ============ -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Dot grid background -->
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 24px 24px; opacity: 0.04; color: var(--text);"></div>
+    <!-- Animated gradient mesh background -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);"></div>
+
+    <!-- Noise texture overlay -->
+    <div class="absolute inset-0 pointer-events-none" style="opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
 
     <!-- Accent gradient line -->
     <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--accent), var(--cta), transparent);"></div>
 
+    <!-- Floating geometric accent -->
+    <div class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%); animation: float 8s ease-in-out infinite;"></div>
+    <div class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="background: radial-gradient(circle, rgba(249,115,22,0.05), transparent 70%); animation: float 6s ease-in-out infinite reverse;"></div>
+
+    <style>
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+      @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      .hero-reveal { animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+      .hero-reveal-1 { animation-delay: 0.1s; }
+      .hero-reveal-2 { animation-delay: 0.3s; }
+      .hero-reveal-3 { animation-delay: 0.5s; }
+      .hero-reveal-4 { animation-delay: 0.7s; }
+      .hero-reveal-5 { animation-delay: 0.9s; }
+    </style>
+
     <div class="relative z-10 text-center px-6 py-20">
-      <!-- Photo / fallback -->
-      <div class="mx-auto mb-8 w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden flex items-center justify-center fade-in" style="background-color: var(--card-bg); border: 3px solid var(--accent); box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);">
+      <!-- Photo -->
+      <div class="mx-auto mb-8 w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden flex items-center justify-center hero-reveal hero-reveal-1" style="background-color: var(--card-bg); border: 3px solid var(--accent); box-shadow: 0 0 60px rgba(59, 130, 246, 0.2), 0 0 120px rgba(59, 130, 246, 0.05);">
         <img
           src="assets/images/headshot.jpg"
           alt="Jatin Sikka"
@@ -92,34 +110,54 @@
       </div>
 
       <!-- Name -->
-      <h1 class="fade-in text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+      <h1 class="hero-reveal hero-reveal-2 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
         Jatin Sikka
       </h1>
 
-      <!-- One-liner -->
-      <p class="fade-in text-lg md:text-xl max-w-2xl mx-auto mb-3" style="color: var(--muted-fg);">
-        AI &amp; Robotics Researcher. Founder. Building ventures out of India.
+      <!-- One-liner with accent highlight -->
+      <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-3" style="color: var(--muted-fg);">
+        <span style="color: var(--accent); font-weight: 600;">AI &amp; Robotics</span> Researcher.
+        Founder. Engineer.
       </p>
 
       <!-- Location -->
-      <p class="fade-in text-sm" style="color: var(--muted-fg); opacity: 0.7;">
+      <p class="hero-reveal hero-reveal-4 text-sm" style="color: var(--muted-fg); opacity: 0.7;">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         India &amp; Austin, TX
       </p>
 
+      <!-- Quick credential badges -->
+      <div class="hero-reveal hero-reveal-5 flex flex-wrap items-center justify-center gap-3 mt-6">
+        <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.2);">
+          Ex-Tesla
+        </span>
+        <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: rgba(99,102,241,0.1); color: #818CF8; border: 1px solid rgba(99,102,241,0.2);">
+          Ex-Fortive
+        </span>
+        <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: rgba(249,115,22,0.1); color: var(--cta); border: 1px solid rgba(249,115,22,0.2);">
+          UT Austin
+        </span>
+      </div>
+
       <!-- Scroll hint -->
-      <div class="mt-16 fade-in">
+      <div class="mt-16 hero-reveal hero-reveal-5">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg); opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="py-24 px-6">
+  <section class="relative py-24 px-6 overflow-hidden">
+    <!-- Subtle side accent -->
+    <div class="absolute top-0 left-0 w-px h-full hidden lg:block" style="background: linear-gradient(to bottom, transparent, var(--accent), transparent); opacity: 0.15;"></div>
+
     <div class="max-w-3xl mx-auto">
-      <h2 class="fade-in text-3xl md:text-4xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        About
-      </h2>
+      <div class="flex items-center gap-3 mb-8 fade-in">
+        <div class="w-8 h-0.5 rounded-full" style="background-color: var(--accent);"></div>
+        <h2 class="text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+          About
+        </h2>
+      </div>
 
       <div class="space-y-5 text-base md:text-lg leading-relaxed" style="color: var(--muted-fg);">
         <p class="fade-in">
@@ -129,53 +167,94 @@
           I've worked on manufacturing automation at <span style="color: var(--text); font-weight: 500;">Tesla</span> and precision encoder systems at <span style="color: var(--text); font-weight: 500;">Hengstler Dynapar (Fortive)</span>, gaining hands-on engineering experience at production scale. My research work spans robotic manipulation, adaptive control, and sim-to-real transfer.
         </p>
         <p class="fade-in">
-          Now I'm building AI-powered ventures spanning productivity tools, legal tech, and health &mdash; shipping fast from India with a global lens. I'm targeting <span style="color: var(--accent); font-weight: 500;">YC Startup School</span> in July 2026 with a portfolio of working products that solve real problems.
+          Now I'm building AI-powered ventures spanning productivity tools, legal tech, and health &mdash; shipping fast with a global lens. A portfolio of working products that solve real problems.
         </p>
+      </div>
+
+      <!-- Highlight stats strip -->
+      <div class="grid grid-cols-3 gap-4 mt-10 fade-in">
+        <div class="text-center p-4 rounded-lg" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--accent);">6+</div>
+          <div class="text-xs mt-1" style="color: var(--muted-fg);">Ventures</div>
+        </div>
+        <div class="text-center p-4 rounded-lg" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--cta);">20+</div>
+          <div class="text-xs mt-1" style="color: var(--muted-fg);">Projects</div>
+        </div>
+        <div class="text-center p-4 rounded-lg" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: #818CF8;">5+</div>
+          <div class="text-xs mt-1" style="color: var(--muted-fg);">Publications</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ QUICK LINKS ============ -->
-  <section class="py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="fade-in text-3xl md:text-4xl font-bold mb-12 text-center" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        Explore
-      </h2>
+  <!-- ============ EXPLORE ============ -->
+  <section class="relative py-24 px-6">
+    <!-- Background accent -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(59,130,246,0.04), transparent);"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-4 fade-in">
+          <div class="w-8 h-0.5 rounded-full" style="background-color: var(--accent);"></div>
+          <h2 class="text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+            Explore
+          </h2>
+          <div class="w-8 h-0.5 rounded-full" style="background-color: var(--accent);"></div>
+        </div>
+        <p class="fade-in text-sm" style="color: var(--muted-fg);">Where the work lives.</p>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Ventures -->
-        <a href="/ventures" class="card-hover fade-in block rounded-xl p-6 md:p-8 no-underline" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="mb-4 w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: rgba(59,130,246,0.12);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        <a href="/ventures" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(249,115,22,0.08), transparent 70%);"></div>
+          <div class="relative z-10">
+            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.2);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--cta);"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ventures</h3>
+            <p class="text-sm mb-4" style="color: var(--muted-fg);">Live products and startups I'm building &mdash; from productivity tools to legal tech.</p>
+            <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--cta);">View all &rarr;</span>
           </div>
-          <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ventures</h3>
-          <p class="text-sm" style="color: var(--muted-fg);">Live products and startups I'm building &mdash; from productivity tools to legal tech.</p>
         </a>
 
         <!-- Projects -->
-        <a href="/projects" class="card-hover fade-in block rounded-xl p-6 md:p-8 no-underline" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="mb-4 w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: rgba(59,130,246,0.12);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        <a href="/projects" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(59,130,246,0.08), transparent 70%);"></div>
+          <div class="relative z-10">
+            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.2);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Projects</h3>
+            <p class="text-sm mb-4" style="color: var(--muted-fg);">Robotics, CAD, mechatronics &mdash; from simulation to hardware on the bench.</p>
+            <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--accent);">View all &rarr;</span>
           </div>
-          <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Projects</h3>
-          <p class="text-sm" style="color: var(--muted-fg);">Engineering and research projects, from robotics to open-source tools.</p>
         </a>
 
         <!-- Research -->
-        <a href="/research" class="card-hover fade-in block rounded-xl p-6 md:p-8 no-underline" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="mb-4 w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: rgba(59,130,246,0.12);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+        <a href="/research" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(99,102,241,0.08), transparent 70%);"></div>
+          <div class="relative z-10">
+            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(99,102,241,0.05)); border: 1px solid rgba(99,102,241,0.2);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: #818CF8;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Research</h3>
+            <p class="text-sm mb-4" style="color: var(--muted-fg);">RL, control systems, and robotics &mdash; papers, presentations, and reports.</p>
+            <span class="text-xs font-semibold uppercase tracking-wider" style="color: #818CF8;">View all &rarr;</span>
           </div>
-          <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Research</h3>
-          <p class="text-sm" style="color: var(--muted-fg);">Robotics, reinforcement learning, and control systems research.</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============ CTA ============ -->
-  <section class="py-24 px-6">
-    <div class="max-w-3xl mx-auto text-center">
+  <section class="relative py-24 px-6 overflow-hidden">
+    <!-- Gradient background -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(59,130,246,0.06), transparent);"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
       <h2 class="fade-in text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
         Let's connect
       </h2>
@@ -183,13 +262,17 @@
         Always open to conversations about AI, robotics, startups, or interesting problems worth solving.
       </p>
       <div class="fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 cursor-pointer px-5 py-2.5 rounded-lg text-sm font-semibold transition-all hover:opacity-90" style="font-family: 'Space Grotesk', sans-serif; background-color: #0A66C2; color: #fff;">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; background-color: #0A66C2; color: #fff; box-shadow: 0 4px 20px rgba(10,102,194,0.3);">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a href="mailto:jsikka@utexas.edu" class="inline-flex items-center gap-2 cursor-pointer px-5 py-2.5 rounded-lg text-sm font-semibold transition-all hover:opacity-80" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
+        <a href="mailto:jsikka@utexas.edu" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           Email
+        </a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
         </a>
       </div>
     </div>
