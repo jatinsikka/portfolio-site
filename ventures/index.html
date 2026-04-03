@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventures — Jatin Sikka</title>
+  <meta name="description" content="Live products and startups Jatin Sikka is building — from productivity tools to legal tech." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+    <style>
+      html.light nav.sticky { background-color: rgba(248,250,252,0.85) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="text-lg font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">
+        JS<span style="color: var(--accent);">.</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/ventures" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Ventures</a>
+        <a href="/projects" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
+        <a href="/research" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="/ventures" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="/projects" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="/research" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="pt-24 pb-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+        Ventures
+      </h1>
+      <p class="fade-in text-lg md:text-xl max-w-3xl" style="color: var(--muted-fg);">
+        Live products and startups I'm building &mdash; from productivity tools to legal tech.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTIVITY ECOSYSTEM ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="fade-in rounded-2xl p-6 md:p-10" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
+        <!-- Ecosystem header -->
+        <div class="mb-8">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(59,130,246,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+              Productivity Ecosystem
+            </h2>
+          </div>
+          <p class="text-sm md:text-base" style="color: var(--muted-fg);">
+            Three tools designed to work together &mdash; capture, focus, accountability.
+          </p>
+        </div>
+
+        <!-- Ecosystem connector -->
+        <div class="hidden md:flex items-center justify-center gap-2 mb-6">
+          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.20);">Capture</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.20);">Focus</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.20);">Accountability</span>
+        </div>
+
+        <!-- Ecosystem cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- SikVault -->
+          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">SikVault</h3>
+              <span class="badge-active">Active</span>
+            </div>
+            <p class="text-sm font-medium mb-2" style="color: var(--text);">Capture everything. Forget nothing.</p>
+            <p class="text-sm mb-4" style="color: var(--muted-fg);">
+              Save content from across the web and let AI summarize, tag, and surface insights. SikVault ensures nothing valuable you consume gets lost.
+            </p>
+            <a href="https://sikvault.ai" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
+              sikvault.ai &rarr;
+            </a>
+          </div>
+
+          <!-- FocusOS -->
+          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">FocusOS</h3>
+              <span class="badge-active">Active</span>
+            </div>
+            <p class="text-sm font-medium mb-2" style="color: var(--text);">Deep work, distraction-free.</p>
+            <p class="text-sm mb-4" style="color: var(--muted-fg);">
+              A minimal web app that blocks noise and keeps you locked into what matters. Built for people who need to get real work done.
+            </p>
+            <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
+              GitHub &rarr;
+            </a>
+          </div>
+
+          <!-- FocusPact -->
+          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">FocusPact</h3>
+              <span class="badge-active">Active</span>
+            </div>
+            <p class="text-sm font-medium mb-2" style="color: var(--text);">Accountability that works.</p>
+            <p class="text-sm" style="color: var(--muted-fg);">
+              An iOS app that pairs you with focus partners and uses screen-time controls to keep commitments real. No cheating, no excuses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STANDALONE VENTURES ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        Standalone Ventures
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- SubletSync -->
+        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">SubletSync</h3>
+            <span class="badge-active">Active</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--text);">Safe, simple subletting.</p>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">
+            A platform that makes housing handoffs trustworthy. SubletSync handles lease verification, payment escrow, and tenant matching so both sides of a sublet can trust the process.
+          </p>
+          <a href="https://subletsync.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
+            subletsync.com &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPLORING ============ -->
+  <section class="py-12 pb-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        Exploring
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- LawAI -->
+        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">LawAI</h3>
+            <span class="badge-exploring">Exploring</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--text);">Harvey AI for India.</p>
+          <p class="text-sm" style="color: var(--muted-fg);">
+            Making legal research and document drafting accessible to Indian lawyers and firms through AI. Early-stage exploration.
+          </p>
+        </div>
+
+        <!-- NeuraSutical -->
+        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">NeuraSutical</h3>
+            <span class="badge-exploring">Exploring</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--text);">AI-powered diagnostics.</p>
+          <p class="text-sm" style="color: var(--muted-fg);">
+            Exploring how AI can assist with preliminary medical assessments and health insights. Early research phase.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="text-sm" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka0@gmail.com" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
