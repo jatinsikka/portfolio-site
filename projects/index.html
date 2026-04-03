@@ -11,10 +11,11 @@
   <style>
     .project-card-img {
       aspect-ratio: 4/3;
-      object-fit: cover;
+      object-fit: contain;
       width: 100%;
       border-radius: 0.75rem 0.75rem 0 0;
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background-color: var(--muted-bg);
     }
     .project-card:hover .project-card-img {
       transform: scale(1.04);
@@ -124,29 +125,15 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- So-Arm RL -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="So-Arm Training using RL (PPO) in Isaac Lab"
-             data-project-desc="Trained a So-Arm robotic manipulator using Proximal Policy Optimization (PPO) in NVIDIA Isaac Lab. The agent learns to reach and grasp target objects through trial-and-error in simulation, progressing from random initial movements to precise, coordinated manipulation."
-             data-project-img="../assets/images/projects/so-arm-rl.gif">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/so-arm-rl.gif" alt="So-Arm RL training in Isaac Lab" class="project-card-img" loading="lazy" />
+        <!-- So-Arm RL Training (video-only) -->
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Training using RL (PPO) in Isaac Lab</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">Trained a So-Arm robotic manipulator using Proximal Policy Optimization (PPO) in NVIDIA Isaac Lab. The agent progresses from random movements to precise, coordinated grasping.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Isaac Lab</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PPO</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
           </div>
-          <div class="p-5">
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm RL Training (PPO)</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Reinforcement learning for robotic arm manipulation in NVIDIA Isaac Lab.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Isaac Lab</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PPO</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- So-Arm Training Videos -->
-        <div class="fade-in rounded-xl p-5 md:col-span-2 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <h3 class="text-base font-semibold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Training Progression</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
@@ -169,29 +156,15 @@
           </div>
         </div>
 
-        <!-- Loco-manipulation -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Loco-manipulation using RL & AMO Controller in MuJoCo"
-             data-project-desc="Combined locomotion and manipulation on a quadruped robot using reinforcement learning with a pretrained Adaptive Model-based Optimization (AMO) controller in MuJoCo. The robot learns to walk to objects and manipulate them — demonstrated with a screwdriver pick-and-place task. The AMO controller provides stable base locomotion while RL handles the manipulation policy on top."
-             data-project-img="../assets/images/projects/loco-manipulation.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/loco-manipulation.png" alt="Loco-manipulation in MuJoCo" class="project-card-img" loading="lazy" />
+        <!-- Loco-manipulation (video-only) -->
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation using RL &amp; AMO Controller in MuJoCo</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">Combined locomotion and manipulation on a quadruped robot using RL with a pretrained AMO controller. The robot walks to objects and manipulates them &mdash; demonstrated with a screwdriver pick-and-place task.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">MuJoCo</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">RL</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Locomotion</span>
           </div>
-          <div class="p-5">
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation (RL + AMO)</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Quadruped locomotion with manipulation using RL and pretrained AMO controller.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">MuJoCo</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">RL</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Locomotion</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Loco-manipulation Videos -->
-        <div class="fade-in rounded-xl p-5 md:col-span-2 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <h3 class="text-base font-semibold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation Demos</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
             <div>
               <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
@@ -208,14 +181,14 @@
           </div>
         </div>
 
-        <!-- Whole Body Control -->
+        <!-- Whole Body Control (now with correct images: so-arm-rl.gif + loco-manipulation.png) -->
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project
              data-project-title="Whole Body Control: Stand and Balance"
              data-project-desc="Implemented Whole Body Control (WBC) for humanoid balancing, formulated as a quadratic optimization problem minimizing joint accelerations and reaction forces subject to dynamics constraints. The controller computes full-body joint torques in real-time to maintain balance under perturbations, with stability guarantees from the optimization structure."
-             data-project-img="../assets/images/projects/wbc-balance.jpg">
+             data-project-img="../assets/images/projects/so-arm-rl.gif">
           <div class="img-wrap">
-            <img src="../assets/images/projects/wbc-balance.jpg" alt="Humanoid balancing with WBC" class="project-card-img" loading="lazy" />
+            <img src="../assets/images/projects/so-arm-rl.gif" alt="Whole Body Control simulation" class="project-card-img" loading="lazy" />
           </div>
           <div class="p-5">
             <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control</h3>
@@ -228,18 +201,49 @@
           </div>
         </div>
 
-        <!-- DCM Planner -->
+        <!-- WBC additional visualization -->
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project
-             data-project-title="DCM Planner: Trajectory Generation"
-             data-project-desc="Implemented a Divergent Component of Motion (DCM) planner for bipedal walking trajectory generation. The DCM framework decomposes center-of-mass dynamics into stable and unstable components, enabling real-time footstep planning and smooth trajectory generation for humanoid walking. The planner generates feasible CoM and ZMP trajectories for forward, backward, and lateral walking gaits."
-             data-project-img="../assets/images/projects/dcm-planner.png">
+             data-project-title="Whole Body Control: Stand and Balance"
+             data-project-desc="Implemented Whole Body Control (WBC) for humanoid balancing, formulated as a quadratic optimization problem minimizing joint accelerations and reaction forces subject to dynamics constraints. The controller computes full-body joint torques in real-time to maintain balance under perturbations, with stability guarantees from the optimization structure."
+             data-project-img="../assets/images/projects/loco-manipulation.png">
           <div class="img-wrap">
-            <img src="../assets/images/projects/dcm-planner.png" alt="DCM trajectory planner visualization" class="project-card-img" loading="lazy" />
+            <img src="../assets/images/projects/loco-manipulation.png" alt="Whole Body Control visualization" class="project-card-img" loading="lazy" />
           </div>
           <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">WBC Visualization</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Additional WBC simulation visualization and dynamics analysis.</p>
+          </div>
+        </div>
+
+        <!-- Robotic Arm Project (was incorrectly labeled as DCM Planner) -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Robotic Arm Manipulation"
+             data-project-desc="Robotic arm manipulation project involving trajectory planning and control for pick-and-place operations. Implemented kinematics, dynamics, and control algorithms for precise end-effector positioning."
+             data-project-img="../assets/images/projects/dcm-planner.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Project" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Trajectory planning and control for robotic arm pick-and-place.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Kinematics</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Control</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DCM Planner (text-only, no image) -->
+        <div class="card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="p-5">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style="background-color: rgba(59,130,246,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
             <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">DCM Planner</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Divergent Component of Motion planner for bipedal walking trajectory generation.</p>
+            <p class="text-sm" style="color: var(--muted-fg);">Divergent Component of Motion planner for bipedal walking trajectory generation. Decomposes CoM dynamics into stable/unstable components for real-time footstep planning.</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Bipedal</span>
@@ -248,18 +252,14 @@
           </div>
         </div>
 
-        <!-- Walking Controller -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Forward, Backward, and Sideway Walking"
-             data-project-desc="Implemented multi-directional walking controllers for a humanoid robot, combining DCM-based trajectory planning with whole body control. The system generates stable walking gaits in all directions — forward, backward, and lateral — with smooth transitions between gaits. Real-time footstep planning adapts the walking pattern based on commanded velocity."
-             data-project-img="../assets/images/projects/walking-controller.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/walking-controller.png" alt="Humanoid multi-directional walking" class="project-card-img" loading="lazy" />
-          </div>
+        <!-- Multi-Directional Walking (text-only, no image) -->
+        <div class="card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border);">
           <div class="p-5">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style="background-color: rgba(59,130,246,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+            </div>
             <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Multi-Directional Walking</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Forward, backward, and lateral walking controllers for humanoid locomotion.</p>
+            <p class="text-sm" style="color: var(--muted-fg);">Forward, backward, and lateral walking controllers for humanoid locomotion. Combines DCM-based trajectory planning with whole body control for stable multi-directional gaits.</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoid</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM + WBC</span>
@@ -279,8 +279,33 @@
         <span class="category-line" style="background-color: var(--cta);"></span>Mechatronics &amp; Mechanical Design
       </h2>
       <p class="fade-in nda-notice text-sm mb-8" style="color: var(--muted-fg);">
-        Projects in collaboration with Tesla are not displayed due to a binding Non-Disclosure Agreement.
+        Some projects completed at Tesla cannot be shown due to a binding Non-Disclosure Agreement. Listed below without visuals.
       </p>
+
+      <!-- Tesla NDA Projects -->
+      <div class="fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
+          <div class="flex items-center gap-2 mb-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Manufacturing Automation</h3>
+          </div>
+          <p class="text-xs" style="color: var(--muted-fg);">Automated production line tooling and process optimization at Tesla Gigafactory.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
+          <div class="flex items-center gap-2 mb-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture &amp; Tooling Design</h3>
+          </div>
+          <p class="text-xs" style="color: var(--muted-fg);">Custom jigs, fixtures, and assembly tools designed for production-scale operations.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
+          <div class="flex items-center gap-2 mb-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Quality &amp; Process Engineering</h3>
+          </div>
+          <p class="text-xs" style="color: var(--muted-fg);">Production quality systems and process improvement initiatives.</p>
+        </div>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
