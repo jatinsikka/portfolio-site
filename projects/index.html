@@ -49,6 +49,44 @@
       border-left: 3px solid var(--muted-fg);
       padding-left: 1rem;
     }
+    .nda-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03));
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .nda-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: #e74c3c;
+      border-radius: 4px 0 0 4px;
+    }
+    html.light .nda-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+    }
+    .tesla-card {
+      background: linear-gradient(135deg, rgba(239,68,68,0.05), transparent);
+      border: 1px solid rgba(239,68,68,0.15);
+      position: relative;
+    }
+    .tesla-card::after {
+      content: 'NDA';
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      background: rgba(239,68,68,0.15);
+      color: #e74c3c;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -216,21 +254,21 @@
           </div>
         </div>
 
-        <!-- Robotic Arm Project (was incorrectly labeled as DCM Planner) -->
+        <!-- Robotic Arm Project -->
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project
              data-project-title="Robotic Arm Manipulation"
-             data-project-desc="Robotic arm manipulation project involving trajectory planning and control for pick-and-place operations. Implemented kinematics, dynamics, and control algorithms for precise end-effector positioning."
+             data-project-desc="Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation."
              data-project-img="../assets/images/projects/dcm-planner.png">
           <div class="img-wrap">
-            <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Project" class="project-card-img" loading="lazy" />
+            <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="project-card-img" loading="lazy" />
           </div>
           <div class="p-5">
             <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Trajectory planning and control for robotic arm pick-and-place.</p>
+            <p class="text-sm" style="color: var(--muted-fg);">FK/IK, trajectory generation, and PD control for precise pick-and-place tasks.</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Kinematics</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Control</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
             </div>
           </div>
@@ -278,32 +316,46 @@
       <h2 class="fade-in text-2xl md:text-3xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
         <span class="category-line" style="background-color: var(--cta);"></span>Mechatronics &amp; Mechanical Design
       </h2>
-      <p class="fade-in nda-notice text-sm mb-8" style="color: var(--muted-fg);">
-        Some projects completed at Tesla cannot be shown due to a binding Non-Disclosure Agreement. Listed below without visuals.
-      </p>
+      <!-- NDA Banner -->
+      <div class="fade-in nda-banner mb-8">
+        <div class="flex items-center gap-3 mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#e74c3c" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          <p class="text-sm font-semibold" style="color: #e74c3c;">Non-Disclosure Agreement</p>
+        </div>
+        <p class="text-sm" style="color: var(--muted-fg); padding-left: 2rem;">
+          Several projects completed during my time at <strong style="color: var(--text);">Tesla</strong> are protected under NDA. They are listed below with descriptions but without visuals or proprietary details.
+        </p>
+      </div>
 
       <!-- Tesla NDA Projects -->
       <div class="fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
-          <div class="flex items-center gap-2 mb-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <div class="tesla-card rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <!-- Tesla T logo -->
+            <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 278 300" fill="currentColor" style="color: #e74c3c;">
+              <path d="M139 0C97.7 0 58.3 7.3 33.4 18.8c-5.5 2.5-12.5 6.3-17.1 9.3L139 300 261.7 28.1c-4.6-3-11.6-6.8-17.1-9.3C219.7 7.3 180.3 0 139 0zm0 28.8c32.4 0 62.2 4.2 82.5 11.2L139 244.7 56.5 40c20.3-7 50.1-11.2 82.5-11.2z"/>
+            </svg>
             <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Manufacturing Automation</h3>
           </div>
-          <p class="text-xs" style="color: var(--muted-fg);">Automated production line tooling and process optimization at Tesla Gigafactory.</p>
+          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Designed and implemented automated production line tooling and process optimization systems at Tesla Gigafactory. Focused on reducing cycle times and improving throughput for high-volume manufacturing.</p>
         </div>
-        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
-          <div class="flex items-center gap-2 mb-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <div class="tesla-card rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 278 300" fill="currentColor" style="color: #e74c3c;">
+              <path d="M139 0C97.7 0 58.3 7.3 33.4 18.8c-5.5 2.5-12.5 6.3-17.1 9.3L139 300 261.7 28.1c-4.6-3-11.6-6.8-17.1-9.3C219.7 7.3 180.3 0 139 0zm0 28.8c32.4 0 62.2 4.2 82.5 11.2L139 244.7 56.5 40c20.3-7 50.1-11.2 82.5-11.2z"/>
+            </svg>
             <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture &amp; Tooling Design</h3>
           </div>
-          <p class="text-xs" style="color: var(--muted-fg);">Custom jigs, fixtures, and assembly tools designed for production-scale operations.</p>
+          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Designed custom jigs, fixtures, and assembly tools for production-scale operations. Engineered for repeatability, operator ergonomics, and integration with existing production lines.</p>
         </div>
-        <div class="rounded-xl p-4" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
-          <div class="flex items-center gap-2 mb-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--muted-fg);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <div class="tesla-card rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 278 300" fill="currentColor" style="color: #e74c3c;">
+              <path d="M139 0C97.7 0 58.3 7.3 33.4 18.8c-5.5 2.5-12.5 6.3-17.1 9.3L139 300 261.7 28.1c-4.6-3-11.6-6.8-17.1-9.3C219.7 7.3 180.3 0 139 0zm0 28.8c32.4 0 62.2 4.2 82.5 11.2L139 244.7 56.5 40c20.3-7 50.1-11.2 82.5-11.2z"/>
+            </svg>
             <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Quality &amp; Process Engineering</h3>
           </div>
-          <p class="text-xs" style="color: var(--muted-fg);">Production quality systems and process improvement initiatives.</p>
+          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Developed and deployed production quality systems, inspection workflows, and process improvement initiatives to meet Tesla&rsquo;s manufacturing standards at scale.</p>
         </div>
       </div>
 
