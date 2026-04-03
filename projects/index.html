@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Jatin Sikka</title>
+  <meta name="description" content="Engineering and research projects by Jatin Sikka — robotics, reinforcement learning, humanoid control, and mechanical design." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <style>
+    .project-card-img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 0.75rem 0.75rem 0 0;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .project-card:hover .project-card-img {
+      transform: scale(1.04);
+    }
+    .project-card .img-wrap {
+      overflow: hidden;
+      border-radius: 0.75rem 0.75rem 0 0;
+      position: relative;
+    }
+    .project-card .img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.45));
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover .img-wrap::after {
+      opacity: 1;
+    }
+    .category-line {
+      width: 2rem;
+      height: 2px;
+      display: inline-block;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      border-radius: 1px;
+    }
+    .nda-notice {
+      border-left: 3px solid var(--muted-fg);
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+    <style>
+      html.light nav.sticky { background-color: rgba(248,250,252,0.85) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="/" class="text-lg font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">
+        JS<span style="color: var(--accent);">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/ventures" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
+        <a href="/projects" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Projects</a>
+        <a href="/research" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="/ventures" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="/projects" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="/research" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="pt-24 pb-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+        Projects
+      </h1>
+      <p class="fade-in text-lg md:text-xl max-w-3xl" style="color: var(--muted-fg);">
+        Robotics, reinforcement learning, humanoid control, and hands-on mechanical design &mdash; from simulation to hardware.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ROBOTICS & RL ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--accent);"></span>Robotics &amp; Reinforcement Learning
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- So-Arm RL -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="So-Arm Training using RL (PPO) in Isaac Lab"
+             data-project-desc="Trained a So-Arm robotic manipulator using Proximal Policy Optimization (PPO) in NVIDIA Isaac Lab. The agent learns to reach and grasp target objects through trial-and-error in simulation, progressing from random initial movements to precise, coordinated manipulation. Three training stages demonstrate the policy evolving from exploration to a fully trained grasping policy."
+             data-project-img="../assets/images/projects/so-arm-rl.gif">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/so-arm-rl.gif" alt="So-Arm RL training in Isaac Lab" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm RL Training (PPO)</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Reinforcement learning for robotic arm manipulation in NVIDIA Isaac Lab.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Isaac Lab</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PPO</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loco-manipulation -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Loco-manipulation using RL & AMO Controller in MuJoCo"
+             data-project-desc="Combined locomotion and manipulation on a quadruped robot using reinforcement learning with a pretrained Adaptive Model-based Optimization (AMO) controller in MuJoCo. The robot learns to walk to objects and manipulate them — demonstrated with a screwdriver pick-and-place task. The AMO controller provides stable base locomotion while RL handles the manipulation policy on top."
+             data-project-img="../assets/images/projects/loco-manipulation.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/loco-manipulation.png" alt="Loco-manipulation in MuJoCo" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation (RL + AMO)</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Quadruped locomotion with manipulation using RL and pretrained AMO controller.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">MuJoCo</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">RL</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Locomotion</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Whole Body Control -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Whole Body Control: Stand and Balance"
+             data-project-desc="Implemented Whole Body Control (WBC) for humanoid balancing, formulated as a quadratic optimization problem minimizing joint accelerations and reaction forces subject to dynamics constraints. The controller computes full-body joint torques in real-time to maintain balance under perturbations, with stability guarantees from the optimization structure."
+             data-project-img="../assets/images/projects/wbc-balance.jpg">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/wbc-balance.jpg" alt="Humanoid balancing with WBC" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Humanoid stand-and-balance via QP optimization of joint accelerations and reaction forces.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Optimization</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoid</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DCM Planner -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="DCM Planner: Trajectory Generation"
+             data-project-desc="Implemented a Divergent Component of Motion (DCM) planner for bipedal walking trajectory generation. The DCM framework decomposes center-of-mass dynamics into stable and unstable components, enabling real-time footstep planning and smooth trajectory generation for humanoid walking. The planner generates feasible CoM and ZMP trajectories for forward, backward, and lateral walking gaits."
+             data-project-img="../assets/images/projects/dcm-planner.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/dcm-planner.png" alt="DCM trajectory planner visualization" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">DCM Planner</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Divergent Component of Motion planner for bipedal walking trajectory generation.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Bipedal</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Walking Controller -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Forward, Backward, and Sideway Walking"
+             data-project-desc="Implemented multi-directional walking controllers for a humanoid robot, combining DCM-based trajectory planning with whole body control. The system generates stable walking gaits in all directions — forward, backward, and lateral — with smooth transitions between gaits. Real-time footstep planning adapts the walking pattern based on commanded velocity."
+             data-project-img="../assets/images/projects/walking-controller.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/walking-controller.png" alt="Humanoid multi-directional walking" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Multi-Directional Walking</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Forward, backward, and lateral walking controllers for humanoid locomotion.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoid</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM + WBC</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gait Control</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MECHATRONICS & MECHANICAL DESIGN ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--cta);"></span>Mechatronics &amp; Mechanical Design
+      </h2>
+      <p class="fade-in nda-notice text-sm mb-8" style="color: var(--muted-fg);">
+        Projects in collaboration with Tesla are not displayed due to a binding Non-Disclosure Agreement.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Connector Soldering Station -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Connector Soldering Station"
+             data-project-desc="Designed and built a custom connector soldering station for precision electronics assembly. The fixture holds connectors securely during soldering, improving consistency and reducing defects in production."
+             data-project-img="../assets/images/projects/connector-soldering.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/connector-soldering.png" alt="Connector Soldering Station" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Connector Soldering Station</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Custom fixture for precision electronics assembly.</p>
+          </div>
+        </div>
+
+        <!-- Bearing Holder -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Bearing Holder"
+             data-project-desc="Designed a precision bearing holder for mechanical assemblies. CAD-modeled and manufactured to tight tolerances for reliable rotational support in production equipment."
+             data-project-img="../assets/images/projects/bearing-holder.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/bearing-holder.png" alt="Bearing Holder CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Bearing Holder</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Precision-toleranced bearing mount for production equipment.</p>
+          </div>
+        </div>
+
+        <!-- Mold Curing Station -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Mold Curing Station"
+             data-project-desc="Designed a mold curing station for composite and polymer part production. Temperature-controlled environment ensures consistent curing conditions for repeatable part quality."
+             data-project-img="../assets/images/projects/mold-curing.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/mold-curing.png" alt="Mold Curing Station" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Mold Curing Station</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Temperature-controlled curing environment for composite parts.</p>
+          </div>
+        </div>
+
+        <!-- Bracket -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Bracket"
+             data-project-desc="Custom-designed structural bracket for mounting and support applications. Optimized for load distribution and manufacturability."
+             data-project-img="../assets/images/projects/bracket.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/bracket.png" alt="Bracket CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Bracket</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Structural mount optimized for load distribution.</p>
+          </div>
+        </div>
+
+        <!-- Safety Enclosure -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Safety Enclosure"
+             data-project-desc="Designed a safety enclosure for industrial equipment, providing operator protection while maintaining accessibility for maintenance. Meets safety standards for production environments."
+             data-project-img="../assets/images/projects/safety-enclosure.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/safety-enclosure.png" alt="Safety Enclosure CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Safety Enclosure</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Industrial equipment enclosure meeting production safety standards.</p>
+          </div>
+        </div>
+
+        <!-- Specialized Wrench -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Specialized Wrench"
+             data-project-desc="Custom-designed wrench for specialized fastener applications where standard tools cannot reach or apply correct torque. Purpose-built for specific assembly operations."
+             data-project-img="../assets/images/projects/specialized-wrench.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/specialized-wrench.png" alt="Specialized Wrench" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Specialized Wrench</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Custom tool for hard-to-reach fastener applications.</p>
+          </div>
+        </div>
+
+        <!-- Magnetic Latch -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Magnetic Latch"
+             data-project-desc="Designed a magnetic latching mechanism for quick-release applications. Uses permanent magnets for tool-less engagement and disengagement while maintaining secure hold during operation."
+             data-project-img="../assets/images/projects/magnetic-latch.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/magnetic-latch.png" alt="Magnetic Latch" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Magnetic Latch</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Quick-release magnetic mechanism for tool-less operation.</p>
+          </div>
+        </div>
+
+        <!-- PCB Soldering Fixture -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="PCB Soldering Fixture"
+             data-project-desc="Designed a PCB soldering fixture that secures circuit boards during hand-soldering and rework operations. Adjustable clamps accommodate different board sizes while providing stable, repeatable positioning."
+             data-project-img="../assets/images/projects/pcb-fixture.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/pcb-fixture.png" alt="PCB Soldering Fixture" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">PCB Soldering Fixture</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Adjustable fixture for PCB soldering and rework.</p>
+          </div>
+        </div>
+
+        <!-- Beater Assembly Stand -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Beater Assembly — Stand Fixture"
+             data-project-desc="Designed a stand fixture for beater assembly operations. The fixture positions the assembly at ergonomic working height and secures it during the build process for consistent, efficient production."
+             data-project-img="../assets/images/projects/beater-assembly.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/beater-assembly.png" alt="Beater Assembly Stand Fixture" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Beater Assembly Stand</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Ergonomic fixture for assembly-line production.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISCELLANEOUS ============ -->
+  <section class="py-12 pb-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--status-active);"></span>Miscellaneous
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Line Following Bot -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Line Following Bot"
+             data-project-desc="Built an autonomous line-following robot using IR sensors and a microcontroller. The bot tracks a black line on a white surface, adjusting motor speeds in real-time based on sensor feedback for smooth path following."
+             data-project-img="../assets/images/projects/line-following-bot.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/line-following-bot.png" alt="Line Following Bot" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Line Following Bot</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Autonomous IR-sensor robot with real-time path tracking.</p>
+          </div>
+        </div>
+
+        <!-- 3D Prints -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="3D Models: Cybertruck, Robot, Iron Man"
+             data-project-desc="CAD-modeled and 3D-printed scale replicas including a Tesla Cybertruck, a humanoid robot figure, and an Iron Man helmet/bust. Projects exploring CAD design, slicing parameters, and print optimization for detailed models."
+             data-project-img="../assets/images/projects/3d-models.jpg">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/3d-models.jpg" alt="3D printed models" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">3D Models &amp; Prints</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Cybertruck, Robot, Iron Man — CAD to 3D print.</p>
+          </div>
+        </div>
+
+        <!-- Hardware Repair -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Hardware Repair Projects"
+             data-project-desc="Hands-on repair projects including an iPhone screen replacement (full display assembly swap) and a water-damaged laptop restoration attempt (disassembly, cleaning, component-level diagnosis). Getting deep into consumer electronics internals."
+             data-project-img="../assets/images/projects/iphone-repair.jpg">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/iphone-repair.jpg" alt="iPhone screen repair" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Hardware Repair</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">iPhone screen replacement &amp; water-damaged laptop restore.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="text-sm" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka0@gmail.com" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
