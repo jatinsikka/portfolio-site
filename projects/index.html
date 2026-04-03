@@ -112,6 +112,28 @@
       padding: 0.25rem 0.5rem;
       border-radius: 0.375rem;
     }
+    /* Consolidated project gallery */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .project-gallery { grid-template-columns: repeat(3, 1fr); }
+    }
+    .project-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: var(--muted-bg);
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .project-gallery img:hover {
+      transform: scale(1.03);
+    }
   </style>
 </head>
 <body>
@@ -244,38 +266,28 @@
           </div>
         </div>
 
-        <!-- Whole Body Control (now with correct images: so-arm-rl.gif + loco-manipulation.png) -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Whole Body Control: Stand and Balance"
-             data-project-desc="Implemented Whole Body Control (WBC) for humanoid balancing, formulated as a quadratic optimization problem minimizing joint accelerations and reaction forces subject to dynamics constraints. The controller computes full-body joint torques in real-time to maintain balance under perturbations, with stability guarantees from the optimization structure."
-             data-project-img="../assets/images/projects/so-arm-rl.gif">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/so-arm-rl.gif" alt="Whole Body Control simulation" class="project-card-img" loading="lazy" />
+        <!-- Whole Body Control & Bipedal Walking — Consolidated Featured Project -->
+        <div class="fade-in lg:col-span-3 rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border); overflow: hidden;">
+          <div class="project-gallery p-4 pb-0">
+            <img src="../assets/images/projects/so-arm-rl.gif" alt="Humanoid stand and balance — WBC controller" loading="lazy" />
+            <img src="../assets/images/projects/wbc-balance.jpg" alt="Humanoid walking in Bullet Physics sim" loading="lazy" />
+            <img src="../assets/images/projects/loco-manipulation.png" alt="DCM planner — footstep trajectories and CoM tracking" loading="lazy" />
           </div>
-          <div class="p-5">
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Humanoid stand-and-balance via QP optimization of joint accelerations and reaction forces.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Optimization</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoid</span>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">Full Pipeline</span>
+              <span class="text-xs font-medium" style="color: var(--muted-fg);">Humanoid Robotics</span>
             </div>
-          </div>
-        </div>
-
-        <!-- WBC additional visualization -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Whole Body Control: Stand and Balance"
-             data-project-desc="Implemented Whole Body Control (WBC) for humanoid balancing, formulated as a quadratic optimization problem minimizing joint accelerations and reaction forces subject to dynamics constraints. The controller computes full-body joint torques in real-time to maintain balance under perturbations, with stability guarantees from the optimization structure."
-             data-project-img="../assets/images/projects/loco-manipulation.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/loco-manipulation.png" alt="Whole Body Control visualization" class="project-card-img" loading="lazy" />
-          </div>
-          <div class="p-5">
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">WBC Visualization</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Additional WBC simulation visualization and dynamics analysis.</p>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">End-to-end humanoid locomotion system combining Whole Body Control, DCM-based trajectory planning, and multi-directional gait generation. WBC is formulated as a QP minimizing joint accelerations and reaction forces subject to full-body dynamics constraints, providing real-time torque commands for balancing. The Divergent Component of Motion (DCM) planner decomposes CoM dynamics into stable/unstable components for footstep trajectory generation with ZMP constraints. Together they enable forward, backward, and lateral walking with Lyapunov-guaranteed stability.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM Planner</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">QP Optimization</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Lyapunov Stability</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Multi-Directional Gait</span>
+            </div>
           </div>
         </div>
 
@@ -290,38 +302,6 @@
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gravity Compensation</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DCM Planner (text-only, no image) -->
-        <div class="card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="p-5">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style="background-color: rgba(59,130,246,0.12);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-            </div>
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">DCM Planner</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Divergent Component of Motion planner for bipedal walking trajectory generation. Decomposes CoM dynamics into stable/unstable components for real-time footstep planning.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Bipedal</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Multi-Directional Walking (text-only, no image) -->
-        <div class="card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="p-5">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style="background-color: rgba(59,130,246,0.12);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
-            </div>
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Multi-Directional Walking</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Forward, backward, and lateral walking controllers for humanoid locomotion. Combines DCM-based trajectory planning with whole body control for stable multi-directional gaits.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoid</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM + WBC</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gait Control</span>
             </div>
           </div>
         </div>
