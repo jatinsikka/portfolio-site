@@ -68,24 +68,49 @@
     html.light .nda-banner {
       background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
     }
-    .tesla-card {
-      background: linear-gradient(135deg, rgba(239,68,68,0.05), transparent);
-      border: 1px solid rgba(239,68,68,0.15);
+    .tesla-group {
+      background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 0.75rem;
+      overflow: hidden;
       position: relative;
     }
-    .tesla-card::after {
-      content: 'NDA';
+    .tesla-group::before {
+      content: '';
       position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
-      background: rgba(239,68,68,0.15);
-      color: #e74c3c;
-      text-transform: uppercase;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #e74c3c, transparent);
+    }
+    html.light .tesla-group {
+      background: linear-gradient(135deg, rgba(239,68,68,0.04), rgba(239,68,68,0.01));
+    }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .featured-card { grid-template-columns: 1fr 1fr; }
+    }
+    .featured-card .featured-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: var(--muted-bg);
+    }
+    @media (min-width: 768px) {
+      .featured-card .featured-img { min-height: 280px; max-height: 360px; }
+    }
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
     }
   </style>
 </head>
@@ -254,22 +279,17 @@
           </div>
         </div>
 
-        <!-- Robotic Arm Project -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Robotic Arm Manipulation"
-             data-project-desc="Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation."
-             data-project-img="../assets/images/projects/dcm-planner.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="project-card-img" loading="lazy" />
-          </div>
-          <div class="p-5">
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">FK/IK, trajectory generation, and PD control for precise pick-and-place tasks.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Kinematics</span>
+        <!-- Robotic Arm Project — Featured -->
+        <div class="fade-in featured-card lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="featured-img" loading="lazy" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Forward/Inverse Kinematics</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gravity Compensation</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
             </div>
           </div>
         </div>
@@ -316,83 +336,74 @@
       <h2 class="fade-in text-2xl md:text-3xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
         <span class="category-line" style="background-color: var(--cta);"></span>Mechatronics &amp; Mechanical Design
       </h2>
-      <!-- NDA Banner -->
-      <div class="fade-in nda-banner mb-8">
-        <div class="flex items-center gap-3 mb-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#e74c3c" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-          <p class="text-sm font-semibold" style="color: #e74c3c;">Non-Disclosure Agreement</p>
-        </div>
-        <p class="text-sm" style="color: var(--muted-fg); padding-left: 2rem;">
-          Several projects completed during my time at <strong style="color: var(--text);">Tesla</strong> are protected under NDA. They are listed below with descriptions but without visuals or proprietary details.
-        </p>
-      </div>
-
-      <!-- Tesla NDA Projects -->
-      <div class="fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="tesla-card rounded-xl p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <!-- Tesla T logo -->
-            <img src="../assets/images/tesla-logo.png" alt="Tesla" class="w-7 h-7 flex-shrink-0 object-contain" />
-            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Manufacturing Automation</h3>
+      <!-- Tesla NDA Group -->
+      <div class="fade-in tesla-group mb-10">
+        <div class="p-6 md:p-8">
+          <div class="flex items-center gap-4 mb-5">
+            <img src="../assets/images/tesla-logo.png" alt="Tesla" class="h-12 object-contain" />
+            <div>
+              <h3 class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Tesla &mdash; Gigafactory</h3>
+              <div class="flex items-center gap-2 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="#e74c3c" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                <span class="text-xs font-semibold uppercase tracking-wider" style="color: #e74c3c;">Under NDA &mdash; No visuals or proprietary details</span>
+              </div>
+            </div>
           </div>
-          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Designed and implemented automated production line tooling and process optimization systems at Tesla Gigafactory. Focused on reducing cycle times and improving throughput for high-volume manufacturing.</p>
-        </div>
-        <div class="tesla-card rounded-xl p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="../assets/images/tesla-logo.png" alt="Tesla" class="w-7 h-7 flex-shrink-0 object-contain" />
-            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture &amp; Tooling Design</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Manufacturing Automation</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Designed and implemented automated production line tooling and process optimization at the Gigafactory. Reduced cycle times and improved throughput for high-volume manufacturing.</p>
+            </div>
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture &amp; Tooling Design</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Custom jigs, fixtures, and assembly tools engineered for production-scale repeatability, operator ergonomics, and integration with existing lines.</p>
+            </div>
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Quality &amp; Process Engineering</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Developed production quality systems, inspection workflows, and process improvement initiatives to meet Tesla&rsquo;s manufacturing standards at scale.</p>
+            </div>
           </div>
-          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Designed custom jigs, fixtures, and assembly tools for production-scale operations. Engineered for repeatability, operator ergonomics, and integration with existing production lines.</p>
-        </div>
-        <div class="tesla-card rounded-xl p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="../assets/images/tesla-logo.png" alt="Tesla" class="w-7 h-7 flex-shrink-0 object-contain" />
-            <h3 class="text-sm font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Quality &amp; Process Engineering</h3>
-          </div>
-          <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Developed and deployed production quality systems, inspection workflows, and process improvement initiatives to meet Tesla&rsquo;s manufacturing standards at scale.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Featured Projects -->
+      <div class="space-y-6 mb-10">
 
         <!-- Pentair Senior Design — 1st Place -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Water Level Sensing System — 1st Place, Senior Design (Pentair)"
-             data-project-desc="Designed an automated water management system for swimming pools in collaboration with Pentair. Built with a Raspberry Pi, ultrasonic sensors, and solenoid valves inside a 3D-printed casing mounted on the skimmer lid. Achieved ±2 cm accuracy in water level control, reducing water wastage. Won 1st Place in Senior Design for innovative and scalable design."
-             data-project-img="../assets/images/projects/pentair-senior-design.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/pentair-senior-design.png" alt="Pentair Water Level Sensing System" class="project-card-img" loading="lazy" />
-          </div>
-          <div class="p-5">
-            <div class="flex items-center justify-between mb-1.5">
-              <h3 class="text-base font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Water Level Sensing System</h3>
-              <span class="text-xs px-2 py-0.5 rounded-md font-semibold" style="background-color: rgba(245,158,11,0.15); color: #f59e0b;">1st Place</span>
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/pentair-senior-design.png" alt="Pentair Water Level Sensing System" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="stat-pill" style="background-color: rgba(245,158,11,0.15); color: #f59e0b;">1st Place</span>
+              <span class="text-xs font-medium" style="color: var(--accent);">Pentair &middot; Senior Design</span>
             </div>
-            <p class="text-xs font-medium mb-1" style="color: var(--accent);">Pentair &middot; Senior Design</p>
-            <p class="text-sm" style="color: var(--muted-fg);">Automated pool water management — Raspberry Pi, ultrasonic sensors, ±2 cm accuracy.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Water Level Sensing System</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Automated water management system for swimming pools. Designed in SolidWorks with a 3D-printed casing mounted on the skimmer lid. Raspberry Pi with ultrasonic sensors and solenoid valves monitors and controls water levels in real-time.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">&plusmn;2 cm accuracy</span>
+              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">Reduced wastage</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Raspberry Pi</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">3D Printing</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Ultrasonic Sensors</span>
             </div>
           </div>
         </div>
 
         <!-- Fortive Rotary Encoder Fixture -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="Fixture for Rotary Encoder (Fortive / Hengstler Dynapar)"
-             data-project-desc="Designed a versatile fixture to securely hold rotary encoder modules at precise angles for cover assembly. Designed in SolidWorks and manufactured using a resin 3D printer. Reduced human operator error by 61%, decreased assembly time by 42% on average, and increased safety as operators no longer need to hold the module during screwing."
-             data-project-img="../assets/images/projects/fortive-encoder-fixture.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/fortive-encoder-fixture.png" alt="Fortive Rotary Encoder Fixture" class="project-card-img" loading="lazy" />
-          </div>
-          <div class="p-5">
-            <p class="text-xs font-medium mb-1" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Rotary Encoder Fixture</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">Precision fixture for encoder assembly — 61% error reduction, 42% faster.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/fortive-encoder-fixture.png" alt="Fortive Rotary Encoder Fixture" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <p class="text-xs font-medium mb-2" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture for Rotary Encoder</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Versatile fixture to securely hold rotary encoder modules at precise angles for cover assembly. Designed in SolidWorks and manufactured using a resin 3D printer. Minimized operator error and increased safety &mdash; operators no longer need to hold the module during screwing.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">61% less errors</span>
+              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">42% faster</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Resin 3D Print</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Fixture Design</span>
@@ -400,26 +411,48 @@
           </div>
         </div>
 
-        <!-- FSAE Aerodynamics -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="FSAE Sidepod & Sidewing Aerodynamics (Wolfpack Motorsports)"
-             data-project-desc="Developed a concept for sidepods and side wings for the FSAE EV car with Wolfpack Motorsports. Focused on reducing drag and increasing downforce through CFD-optimized geometry. Achieved a 6% reduction in drag and 11% reduction in weight compared to the previous design."
-             data-project-img="../assets/images/projects/fsae-aerodynamics.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/fsae-aerodynamics.png" alt="FSAE Sidepod and Sidewing" class="project-card-img" loading="lazy" />
+        <!-- Fortive PCB Soldering Fixture -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/fortive-pcb-fixture.png" alt="PCB Soldering Fixture — Fortive" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <p class="text-xs font-medium mb-2" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">PCB Soldering Fixture</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Designed a fixture to firmly secure PCBs while soldering wire connectors. Designed in SolidWorks, prototyped via 3D printing, and final version manufactured using CNC machining. Improved safety as operators no longer need to hold the board during soldering.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">31% less errors</span>
+              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">28% faster</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">CNC</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">3D Printing</span>
+            </div>
           </div>
-          <div class="p-5">
-            <p class="text-xs font-medium mb-1" style="color: var(--accent);">Wolfpack Motorsports &middot; FSAE</p>
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sidepod &amp; Sidewing Aero</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">CFD-optimized sidepods — 6% drag reduction, 11% weight reduction.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
+        </div>
+
+        <!-- FSAE Aerodynamics -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/fsae-aerodynamics.png" alt="FSAE Sidepod and Sidewing" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <p class="text-xs font-medium mb-2" style="color: var(--accent);">Wolfpack Motorsports &middot; FSAE</p>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sidepod &amp; Sidewing Aerodynamics</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Developed a concept for sidepods and side wings for the FSAE EV car. Focused on reducing drag and increasing downforce through CFD-optimized geometry, validated with extensive simulation runs.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">6% less drag</span>
+              <span class="stat-pill" style="background-color: rgba(59,130,246,0.12); color: var(--accent);">11% lighter</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">CFD</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
               <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Aerodynamics</span>
             </div>
           </div>
         </div>
+
+      </div>
+
+      <!-- Other CAD Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Connector Soldering Station -->
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
@@ -523,27 +556,6 @@
           <div class="p-5">
             <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Magnetic Latch</h3>
             <p class="text-sm" style="color: var(--muted-fg);">Quick-release magnetic mechanism for tool-less operation.</p>
-          </div>
-        </div>
-
-        <!-- PCB Soldering Fixture (Fortive) -->
-        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
-             data-project
-             data-project-title="PCB Soldering Fixture (Fortive / Hengstler Dynapar)"
-             data-project-desc="Designed a fixture to firmly secure the PCB while soldering wire connectors. Designed in SolidWorks, prototyped via 3D printing, and final version manufactured using CNC. Reduced human operator error by 31%, decreased time taken by 28% on average, and increased safety as operators no longer need to hold the PCB while soldering."
-             data-project-img="../assets/images/projects/fortive-pcb-fixture.png">
-          <div class="img-wrap">
-            <img src="../assets/images/projects/fortive-pcb-fixture.png" alt="PCB Soldering Fixture — Fortive" class="project-card-img" loading="lazy" />
-          </div>
-          <div class="p-5">
-            <p class="text-xs font-medium mb-1" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
-            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">PCB Soldering Fixture</h3>
-            <p class="text-sm" style="color: var(--muted-fg);">CNC-manufactured fixture — 31% error reduction, 28% faster assembly.</p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">CNC</span>
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">3D Printing</span>
-            </div>
           </div>
         </div>
 
