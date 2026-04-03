@@ -1,0 +1,338 @@
+/* =========================================================
+   custom.css — Portfolio site custom styles
+   Jatin Sikka | jatinsikka.me
+   Dark mode default, light mode toggle
+   ========================================================= */
+
+/* ----- Google Fonts ----- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ----- Design Tokens ----- */
+:root {
+  /* Dark mode (default) */
+  --bg:            #0B0B10;
+  --card-bg:       #1E1E23;
+  --card-fg:       #F8FAFC;
+  --muted-bg:      #232328;
+  --muted-fg:      #94A3B8;
+  --border:        #1E293B;
+  --text:          #F8FAFC;
+
+  /* Accent */
+  --accent:        #3B82F6;
+  --cta:           #F97316;
+
+  /* Status */
+  --status-active:    #22C55E;
+  --status-exploring: #F59E0B;
+  --status-shipped:   #6366F1;
+
+  /* Transition speed */
+  --transition: 0.3s ease;
+}
+
+html.light {
+  --bg:       #F8FAFC;
+  --card-bg:  #FFFFFF;
+  --card-fg:  #1E293B;
+  --muted-bg: #F1F5F9;
+  --muted-fg: #64748B;
+  --border:   #E2E8F0;
+  --text:     #1E293B;
+}
+
+/* ----- Theme Transitions ----- */
+*,
+*::before,
+*::after {
+  transition:
+    background-color var(--transition),
+    color           var(--transition),
+    border-color    var(--transition);
+}
+
+/* Don't animate transforms/opacity via theme transition — those have their own rules */
+* {
+  box-sizing: border-box;
+}
+
+/* ----- Base ----- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* ----- Custom Scrollbar (dark mode) ----- */
+html:not(.light) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-fg) var(--muted-bg);
+}
+
+html:not(.light)::-webkit-scrollbar {
+  width: 6px;
+}
+
+html:not(.light)::-webkit-scrollbar-track {
+  background: var(--muted-bg);
+}
+
+html:not(.light)::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+html:not(.light)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-fg);
+}
+
+/* ----- Scroll Fade-In Animation ----- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity  0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grouped children */
+.fade-in:nth-child(1) { transition-delay: 0s;    }
+.fade-in:nth-child(2) { transition-delay: 0.08s; }
+.fade-in:nth-child(3) { transition-delay: 0.16s; }
+.fade-in:nth-child(4) { transition-delay: 0.24s; }
+.fade-in:nth-child(5) { transition-delay: 0.32s; }
+.fade-in:nth-child(6) { transition-delay: 0.40s; }
+
+/* ----- Card Hover Lift ----- */
+.card-hover {
+  transition:
+    transform  0.25s ease,
+    box-shadow 0.25s ease,
+    background-color var(--transition),
+    border-color     var(--transition);
+  will-change: transform;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 2px  8px  rgba(0, 0, 0, 0.20);
+}
+
+html.light .card-hover:hover {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.10),
+    0 2px  8px  rgba(0, 0, 0, 0.06);
+}
+
+/* ----- Status Badges ----- */
+.badge-active,
+.badge-exploring,
+.badge-shipped {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* dot indicator */
+.badge-active::before,
+.badge-exploring::before,
+.badge-shipped::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge-active {
+  color:            var(--status-active);
+  background-color: rgba(34, 197, 94, 0.12);
+  border-color:     rgba(34, 197, 94, 0.30);
+}
+.badge-active::before {
+  background-color: var(--status-active);
+  box-shadow: 0 0 6px var(--status-active);
+}
+
+.badge-exploring {
+  color:            var(--status-exploring);
+  background-color: rgba(245, 158, 11, 0.12);
+  border-color:     rgba(245, 158, 11, 0.30);
+}
+.badge-exploring::before {
+  background-color: var(--status-exploring);
+}
+
+.badge-shipped {
+  color:            var(--status-shipped);
+  background-color: rgba(99, 102, 241, 0.12);
+  border-color:     rgba(99, 102, 241, 0.30);
+}
+.badge-shipped::before {
+  background-color: var(--status-shipped);
+}
+
+/* ----- Mobile Menu Overlay ----- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(80vw, 320px);
+  background-color: var(--card-bg);
+  border-left: 1px solid var(--border);
+  z-index: 50;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Scrim behind mobile menu */
+.mobile-menu-scrim {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 49;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-scrim.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ----- Project Modal Overlay ----- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-panel {
+  background-color: var(--card-bg);
+  color: var(--card-fg);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.95) translateY(8px);
+  transition:
+    transform 0.25s ease,
+    opacity   0.25s ease;
+  opacity: 0;
+}
+
+.modal-overlay.open .modal-panel {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* ----- Accent & CTA helpers ----- */
+.text-accent { color: var(--accent); }
+.text-cta    { color: var(--cta);    }
+.bg-accent   { background-color: var(--accent); }
+.bg-cta      { background-color: var(--cta);    }
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cta);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform        0.2s ease,
+    box-shadow       0.2s ease;
+}
+
+.btn-cta:hover {
+  background-color: #ea6c10;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+}
+
+/* ----- Reduced Motion ----- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .mobile-menu {
+    transition: none;
+  }
+
+  .modal-overlay,
+  .modal-panel {
+    transition: none;
+  }
+}
