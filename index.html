@@ -72,19 +72,27 @@
   </div>
 
   <!-- ============ HERO ============ -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section id="hero-section" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Neural network canvas -->
+    <canvas id="neural-canvas" class="absolute inset-0 pointer-events-none" style="z-index: 1;"></canvas>
+
+    <!-- Blueprint grid overlay -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 2; opacity: 0.04; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Smaller sub-grid -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 2; opacity: 0.015; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 15px 15px;"></div>
+
     <!-- Animated gradient mesh background -->
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 3; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);"></div>
 
     <!-- Noise texture overlay -->
-    <div class="absolute inset-0 pointer-events-none" style="opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 4; opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
 
     <!-- Accent gradient line -->
-    <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--accent), var(--cta), transparent);"></div>
+    <div class="absolute top-0 left-0 right-0 h-px" style="z-index: 5; background: linear-gradient(90deg, transparent, var(--accent), var(--cta), transparent);"></div>
 
     <!-- Floating geometric accent -->
-    <div class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%); animation: float 8s ease-in-out infinite;"></div>
-    <div class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="background: radial-gradient(circle, rgba(249,115,22,0.05), transparent 70%); animation: float 6s ease-in-out infinite reverse;"></div>
+    <div class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%); animation: float 8s ease-in-out infinite;"></div>
+    <div class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(249,115,22,0.05), transparent 70%); animation: float 6s ease-in-out infinite reverse;"></div>
 
     <style>
       @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
@@ -95,9 +103,49 @@
       .hero-reveal-3 { animation-delay: 0.5s; }
       .hero-reveal-4 { animation-delay: 0.7s; }
       .hero-reveal-5 { animation-delay: 0.9s; }
+
+      /* Circuit board trace pattern for section backgrounds */
+      .circuit-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10 h30 v40 h20 v-20 h40 M140 10 v30 h-20 v40 h30 M10 120 h50 v30 h30 v-20 h40 M160 100 v50 h-40 v20 M40 180 h60 v-30 h40' stroke='%233B82F6' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='10' r='3' fill='%233B82F6'/%3E%3Ccircle cx='70' cy='50' r='2' fill='%233B82F6'/%3E%3Ccircle cx='110' cy='30' r='3' fill='%233B82F6'/%3E%3Ccircle cx='140' cy='10' r='2' fill='%233B82F6'/%3E%3Ccircle cx='150' cy='70' r='3' fill='%233B82F6'/%3E%3Ccircle cx='60' cy='120' r='3' fill='%233B82F6'/%3E%3Ccircle cx='120' cy='150' r='2' fill='%233B82F6'/%3E%3Ccircle cx='160' cy='100' r='2' fill='%233B82F6'/%3E%3Ccircle cx='100' cy='180' r='3' fill='%233B82F6'/%3E%3Ccircle cx='40' cy='180' r='2' fill='%233B82F6'/%3E%3C/svg%3E");
+      }
+      html.light .circuit-bg { opacity: 0.05; }
+
+      /* Robotic arm path trace animation */
+      @keyframes traceDraw {
+        from { stroke-dashoffset: 800; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes traceGlow {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.4; }
+      }
+      .arm-trace { stroke-dasharray: 800; stroke-dashoffset: 800; }
+      .arm-trace.visible { animation: traceDraw 3s ease-out forwards; }
+      .arm-joint { opacity: 0; transition: opacity 0.5s ease; }
+      .arm-joint.visible { opacity: 1; }
+
+      /* Signal pulse on wires */
+      @keyframes signalPulse {
+        0% { offset-distance: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { offset-distance: 100%; opacity: 0; }
+      }
+
+      /* Coordinate axis labels */
+      .coord-label {
+        font-family: 'Space Grotesk', monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
     </style>
 
-    <div class="relative z-10 text-center px-6 py-20">
+    <div class="relative text-center px-6 py-20" style="z-index: 10;">
       <!-- Photo -->
       <div class="mx-auto mb-8 w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full overflow-hidden flex items-center justify-center hero-reveal hero-reveal-1" style="background-color: var(--card-bg); border: 3px solid var(--accent); box-shadow: 0 0 60px rgba(59, 130, 246, 0.2), 0 0 120px rgba(59, 130, 246, 0.05);">
         <img
@@ -146,8 +194,33 @@
     </div>
   </section>
 
+  <!-- ============ SECTION DIVIDER: Robotic Arm Path Trace ============ -->
+  <div class="relative w-full overflow-hidden" style="height: 120px;">
+    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Arm path trace -->
+      <path class="arm-trace fade-in" d="M0 100 Q150 100 200 60 Q250 20 350 30 Q450 40 500 70 Q550 100 650 80 Q750 60 850 40 Q950 20 1050 50 Q1100 65 1200 60" stroke="var(--accent)" fill="none" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+      <!-- Secondary trace (workspace boundary) -->
+      <path class="arm-trace fade-in" d="M0 80 Q200 30 400 50 Q600 70 800 20 Q1000 -10 1200 40" stroke="var(--cta)" fill="none" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4 8" opacity="0.15" style="animation-delay: 0.5s;"/>
+      <!-- Joint nodes -->
+      <circle class="arm-joint fade-in" cx="200" cy="60" r="4" fill="var(--accent)" opacity="0.4"/>
+      <circle class="arm-joint fade-in" cx="350" cy="30" r="3" fill="var(--accent)" opacity="0.3"/>
+      <circle class="arm-joint fade-in" cx="500" cy="70" r="4" fill="var(--accent)" opacity="0.4"/>
+      <circle class="arm-joint fade-in" cx="650" cy="80" r="3" fill="var(--cta)" opacity="0.3"/>
+      <circle class="arm-joint fade-in" cx="850" cy="40" r="4" fill="var(--accent)" opacity="0.4"/>
+      <circle class="arm-joint fade-in" cx="1050" cy="50" r="3" fill="var(--cta)" opacity="0.3"/>
+      <!-- End effector -->
+      <circle cx="200" cy="60" r="8" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.2">
+        <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
   <!-- ============ ABOUT ============ -->
   <section class="relative py-24 px-6 overflow-hidden">
+    <!-- Circuit board trace pattern -->
+    <div class="circuit-bg"></div>
+
     <!-- Subtle side accent -->
     <div class="absolute top-0 left-0 w-px h-full hidden lg:block" style="background: linear-gradient(to bottom, transparent, var(--accent), transparent); opacity: 0.15;"></div>
 
@@ -171,21 +244,7 @@
         </p>
       </div>
 
-      <!-- Research Interests -->
-      <div class="mt-10 fade-in">
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: var(--accent);">Research Interests</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Reinforcement Learning</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Optimal Control</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Humanoid Locomotion</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Sim-to-Real Transfer</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Application-Based Robotics</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Whole-Body Control</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Motion Planning</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Computer Vision for Manufacturing</span>
-          <span class="text-sm font-medium px-3 py-1.5 rounded-lg" style="background-color: var(--card-bg); color: var(--text); border: 1px solid var(--border);">Robot Learning</span>
-        </div>
-      </div>
+
 
     </div>
   </section>
@@ -194,6 +253,39 @@
   <section class="relative py-24 px-6">
     <!-- Background accent -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(59,130,246,0.04), transparent);"></div>
+
+    <!-- Coordinate system overlay (bottom-left corner) -->
+    <svg class="absolute bottom-8 left-8 pointer-events-none hidden lg:block" width="120" height="120" viewBox="0 0 120 120" style="opacity: 0.12;">
+      <!-- Axes -->
+      <line x1="10" y1="110" x2="110" y2="110" stroke="var(--accent)" stroke-width="1"/>
+      <line x1="10" y1="110" x2="10" y2="10" stroke="var(--accent)" stroke-width="1"/>
+      <!-- Arrowheads -->
+      <polygon points="110,106 110,114 118,110" fill="var(--accent)"/>
+      <polygon points="6,10 14,10 10,2" fill="var(--accent)"/>
+      <!-- Tick marks -->
+      <line x1="35" y1="108" x2="35" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
+      <line x1="60" y1="108" x2="60" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
+      <line x1="85" y1="108" x2="85" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
+      <line x1="8" y1="85" x2="12" y2="85" stroke="var(--accent)" stroke-width="0.8"/>
+      <line x1="8" y1="60" x2="12" y2="60" stroke="var(--accent)" stroke-width="0.8"/>
+      <line x1="8" y1="35" x2="12" y2="35" stroke="var(--accent)" stroke-width="0.8"/>
+      <!-- Labels -->
+      <text x="115" y="108" fill="var(--accent)" class="coord-label" font-size="8">x</text>
+      <text x="14" y="14" fill="var(--accent)" class="coord-label" font-size="8">y</text>
+    </svg>
+
+    <!-- Subtle state-space trajectory (top-right) -->
+    <svg class="absolute top-12 right-12 pointer-events-none hidden lg:block" width="160" height="160" viewBox="0 0 160 160" style="opacity: 0.08;">
+      <!-- Phase portrait spiral -->
+      <path d="M80 80 Q90 60 100 70 Q110 80 100 95 Q90 110 75 100 Q60 90 70 75 Q80 60 95 65 Q110 70 105 90 Q100 110 80 105 Q60 100 65 80" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+      <!-- Equilibrium point -->
+      <circle cx="80" cy="80" r="2" fill="var(--accent)"/>
+      <!-- Vector field arrows -->
+      <line x1="40" y1="40" x2="50" y2="50" stroke="var(--muted-fg)" stroke-width="0.5" marker-end="url(#arrowSmall)"/>
+      <line x1="120" y1="40" x2="110" y2="50" stroke="var(--muted-fg)" stroke-width="0.5"/>
+      <line x1="40" y1="120" x2="50" y2="110" stroke="var(--muted-fg)" stroke-width="0.5"/>
+      <line x1="120" y1="120" x2="110" y2="110" stroke="var(--muted-fg)" stroke-width="0.5"/>
+    </svg>
 
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-14">
@@ -250,10 +342,56 @@
     </div>
   </section>
 
+  <!-- ============ SECTION DIVIDER: Control System Block Diagram ============ -->
+  <div class="relative w-full overflow-hidden hidden md:block" style="height: 80px;">
+    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 80" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.12;">
+      <!-- Feedback control loop -->
+      <!-- Summing junction -->
+      <circle cx="200" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+      <line x1="194" y1="40" x2="206" y2="40" stroke="var(--accent)" stroke-width="1"/>
+      <line x1="200" y1="34" x2="200" y2="46" stroke="var(--accent)" stroke-width="1"/>
+      <!-- Controller block -->
+      <rect x="260" y="25" width="80" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+      <text x="300" y="44" fill="var(--accent)" text-anchor="middle" font-size="9" font-family="Space Grotesk, monospace">K(s)</text>
+      <!-- Plant block -->
+      <rect x="420" y="25" width="80" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+      <text x="460" y="44" fill="var(--accent)" text-anchor="middle" font-size="9" font-family="Space Grotesk, monospace">G(s)</text>
+      <!-- Connections -->
+      <line x1="100" y1="40" x2="188" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
+      <line x1="212" y1="40" x2="260" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
+      <line x1="340" y1="40" x2="420" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
+      <line x1="500" y1="40" x2="600" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
+      <!-- Feedback path -->
+      <line x1="560" y1="40" x2="560" y2="70" stroke="var(--accent)" stroke-width="1"/>
+      <line x1="560" y1="70" x2="200" y2="70" stroke="var(--accent)" stroke-width="1"/>
+      <line x1="200" y1="70" x2="200" y2="52" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
+      <!-- Sensor block on feedback -->
+      <rect x="350" y="60" width="60" height="20" rx="3" fill="none" stroke="var(--cta)" stroke-width="0.8"/>
+      <text x="380" y="73" fill="var(--cta)" text-anchor="middle" font-size="7" font-family="Space Grotesk, monospace">H(s)</text>
+      <!-- Labels -->
+      <text x="120" y="35" fill="var(--muted-fg)" font-size="7" font-family="Space Grotesk, monospace">ref</text>
+      <text x="570" y="35" fill="var(--muted-fg)" font-size="7" font-family="Space Grotesk, monospace">output</text>
+      <!-- Arrow marker -->
+      <defs>
+        <marker id="ctrlArrow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+          <polygon points="0 0, 6 2, 0 4" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <!-- Signal pulse traveling along the path -->
+      <circle r="3" fill="var(--accent)" opacity="0.6">
+        <animateMotion dur="4s" repeatCount="indefinite" path="M100 40 L188 40 L260 40 L340 40 L420 40 L500 40 L560 40 L560 70 L200 70 L200 52"/>
+      </circle>
+    </svg>
+  </div>
+
   <!-- ============ CTA ============ -->
   <section class="relative py-24 px-6 overflow-hidden">
     <!-- Gradient background -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(59,130,246,0.06), transparent);"></div>
+
+    <!-- Blueprint grid (subtle) -->
+    <div class="absolute inset-0 pointer-events-none" style="opacity: 0.02; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <div class="max-w-3xl mx-auto text-center relative z-10">
       <h2 class="fade-in text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
@@ -294,5 +432,186 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- ============ NEURAL NETWORK CANVAS ============ -->
+  <script>
+  (function NeuralNetworkViz() {
+    var canvas = document.getElementById('neural-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    var mouse = { x: -1000, y: -1000 };
+    var raf;
+    var NODE_COUNT = 35;
+    var CONNECTION_DIST = 180;
+    var MOUSE_RADIUS = 200;
+    var isLight = false;
+
+    function resize() {
+      var section = document.getElementById('hero-section');
+      if (!section) return;
+      canvas.width = section.offsetWidth;
+      canvas.height = section.offsetHeight;
+    }
+
+    function createNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 2 + 1.5,
+          layer: Math.floor(Math.random() * 4)
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      isLight = document.documentElement.classList.contains('light');
+
+      var accentR = 59, accentG = 130, accentB = 246;
+      var ctaR = 249, ctaG = 115, ctaB = 22;
+
+      // Update positions
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+
+        // Bounce off edges
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+        // Mouse repulsion (subtle)
+        var dx = n.x - mouse.x;
+        var dy = n.y - mouse.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.015;
+          n.vx += (dx / dist) * force;
+          n.vy += (dy / dist) * force;
+        }
+
+        // Damping
+        n.vx *= 0.999;
+        n.vy *= 0.999;
+      }
+
+      // Draw connections
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) {
+            var alpha = (1 - dist / CONNECTION_DIST) * (isLight ? 0.08 : 0.12);
+            // Color based on layer relationship
+            if (Math.abs(nodes[i].layer - nodes[j].layer) === 1) {
+              ctx.strokeStyle = 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + alpha + ')';
+            } else {
+              ctx.strokeStyle = 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + (alpha * 0.5) + ')';
+            }
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var nodeAlpha = isLight ? 0.15 : 0.25;
+
+        // Mouse proximity glow
+        var dx = n.x - mouse.x;
+        var dy = n.y - mouse.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS) {
+          var glowAlpha = (1 - dist / MOUSE_RADIUS) * (isLight ? 0.2 : 0.35);
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
+          ctx.fillStyle = n.layer % 2 === 0
+            ? 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + glowAlpha * 0.3 + ')'
+            : 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + glowAlpha * 0.2 + ')';
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = n.layer % 2 === 0
+          ? 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + nodeAlpha + ')'
+          : 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + nodeAlpha * 0.7 + ')';
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    function handleMouse(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    }
+
+    function init() {
+      // Respect reduced motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        canvas.style.display = 'none';
+        return;
+      }
+      resize();
+      createNodes();
+      draw();
+      window.addEventListener('resize', function() {
+        resize();
+        createNodes();
+      });
+      document.addEventListener('mousemove', handleMouse);
+
+      // Pause when not visible
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          if (!raf) draw();
+        } else {
+          if (raf) { cancelAnimationFrame(raf); raf = null; }
+        }
+      }, { threshold: 0 });
+      observer.observe(canvas);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+  <!-- ============ ARM TRACE ANIMATION TRIGGER ============ -->
+  <script>
+  (function ArmTraceModule() {
+    function init() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var traces = document.querySelectorAll('.arm-trace');
+      if (!traces.length || !('IntersectionObserver' in window)) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      traces.forEach(function(el) { observer.observe(el); });
+    }
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
 </body>
 </html>
