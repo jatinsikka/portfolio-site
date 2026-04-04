@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawAI — Jatin Sikka</title>
+  <meta name="description" content="LawAI — Harvey AI for India. Early-stage exploration by Jatin Sikka." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    .pdf-page-container {
+      position: relative;
+      margin: 0 auto 2rem;
+      max-width: 100%;
+    }
+    .pdf-page-container canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+    }
+    .pdf-page-container.blurred canvas {
+      filter: blur(12px);
+      user-select: none;
+      pointer-events: none;
+    }
+    .blur-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      background: rgba(11, 11, 16, 0.4);
+      backdrop-filter: blur(2px);
+    }
+    html.light .blur-overlay {
+      background: rgba(248, 250, 252, 0.4);
+    }
+    .blur-overlay p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+    <style>
+      html.light nav.sticky { background-color: rgba(248,250,252,0.85) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="/" class="text-lg font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">
+        JS
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/ventures" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
+        <a href="/projects" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
+        <a href="/research" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="/ventures" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="/projects" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="/research" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="pt-24 pb-8 px-6">
+    <div class="max-w-4xl mx-auto">
+      <a href="/ventures" class="fade-in text-sm font-medium hover:opacity-80 transition-opacity mb-4 inline-block" style="color: var(--accent);">
+        &larr; Back to Ventures
+      </a>
+      <h1 class="fade-in text-3xl md:text-4xl font-bold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+        LawAI
+      </h1>
+      <p class="fade-in text-base md:text-lg" style="color: var(--muted-fg);">
+        Harvey AI for India &mdash; making legal research and document drafting accessible through AI.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PDF VIEWER ============ -->
+  <section class="py-8 pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div id="pdf-container"></div>
+      <p class="fade-in text-center text-sm mt-4" style="color: var(--muted-fg);">
+        Showing preview &mdash; full report available upon request.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="text-sm" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const VISIBLE_PAGES = 3; // pages 1-3 (title, contents, contents cont.)
+    const pdfUrl = '/assets/LawAI-portfolio.pdf';
+    const container = document.getElementById('pdf-container');
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+      for (let i = 1; i <= pdf.numPages; i++) {
+        renderPage(pdf, i);
+      }
+    });
+
+    function renderPage(pdf, pageNum) {
+      pdf.getPage(pageNum).then(function(page) {
+        var scale = 2;
+        var viewport = page.getViewport({ scale: scale });
+
+        var wrapper = document.createElement('div');
+        wrapper.className = 'pdf-page-container fade-in' + (pageNum > VISIBLE_PAGES ? ' blurred' : '');
+
+        var canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        wrapper.appendChild(canvas);
+
+        if (pageNum > VISIBLE_PAGES) {
+          var overlay = document.createElement('div');
+          overlay.className = 'blur-overlay';
+          var overlayText = document.createElement('p');
+          overlayText.textContent = 'Content hidden \u2014 available upon request';
+          overlay.appendChild(overlayText);
+          wrapper.appendChild(overlay);
+        }
+
+        container.appendChild(wrapper);
+
+        var ctx = canvas.getContext('2d');
+        page.render({ canvasContext: ctx, viewport: viewport });
+      });
+    }
+  </script>
+</body>
+</html>
