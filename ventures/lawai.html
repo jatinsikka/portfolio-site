@@ -147,20 +147,35 @@
 
   <script src="../js/main.js"></script>
   <script>
-    const VISIBLE_PAGES = 3; // pages 1-3 (title, contents, contents cont.)
-    const pdfUrl = '/assets/LawAI-portfolio.pdf';
-    const container = document.getElementById('pdf-container');
+    var VISIBLE_PAGES = 3; // pages 1-3 (title, contents, contents cont.)
+    var pdfUrl = '../assets/LawAI-portfolio.pdf';
+    var container = document.getElementById('pdf-container');
 
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+    var loadingMsg = document.createElement('p');
+    loadingMsg.textContent = 'Loading report\u2026';
+    loadingMsg.className = 'text-center text-sm';
+    loadingMsg.style.color = 'var(--muted-fg)';
+    container.appendChild(loadingMsg);
+
     pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-      for (let i = 1; i <= pdf.numPages; i++) {
-        renderPage(pdf, i);
+      container.removeChild(loadingMsg);
+      var renderSequence = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function(pageNum) {
+          renderSequence = renderSequence.then(function() {
+            return renderPage(pdf, pageNum);
+          });
+        })(i);
       }
+    }).catch(function(err) {
+      loadingMsg.textContent = 'Unable to load report. Please try refreshing the page.';
+      console.error('PDF load error:', err);
     });
 
     function renderPage(pdf, pageNum) {
-      pdf.getPage(pageNum).then(function(page) {
+      return pdf.getPage(pageNum).then(function(page) {
         var scale = 2;
         var viewport = page.getViewport({ scale: scale });
 
@@ -184,7 +199,7 @@
         container.appendChild(wrapper);
 
         var ctx = canvas.getContext('2d');
-        page.render({ canvasContext: ctx, viewport: viewport });
+        return page.render({ canvasContext: ctx, viewport: viewport }).promise;
       });
     }
   </script>
