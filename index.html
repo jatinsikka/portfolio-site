@@ -90,9 +90,10 @@
     <!-- Accent gradient line -->
     <div class="absolute top-0 left-0 right-0 h-px" style="z-index: 5; background: linear-gradient(90deg, transparent, var(--accent), var(--cta), transparent);"></div>
 
-    <!-- Floating geometric accent -->
-    <div class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%); animation: float 8s ease-in-out infinite;"></div>
-    <div class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(249,115,22,0.05), transparent 70%); animation: float 6s ease-in-out infinite reverse;"></div>
+    <!-- Floating geometric accent (parallax-enabled) -->
+    <div id="orb-1" class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%); animation: float 8s ease-in-out infinite; transition: transform 0.3s ease-out;"></div>
+    <div id="orb-2" class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(249,115,22,0.07), transparent 70%); animation: float 6s ease-in-out infinite reverse; transition: transform 0.3s ease-out;"></div>
+    <div id="orb-3" class="absolute top-[60%] right-[30%] w-36 h-36 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(99,102,241,0.05), transparent 70%); animation: float 10s ease-in-out infinite; transition: transform 0.3s ease-out;"></div>
 
     <style>
       @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
@@ -442,9 +443,9 @@
     var nodes = [];
     var mouse = { x: -1000, y: -1000 };
     var raf;
-    var NODE_COUNT = 35;
-    var CONNECTION_DIST = 180;
-    var MOUSE_RADIUS = 200;
+    var NODE_COUNT = 45;
+    var CONNECTION_DIST = 200;
+    var MOUSE_RADIUS = 250;
     var isLight = false;
 
     function resize() {
@@ -485,19 +486,41 @@
         if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-        // Mouse repulsion (subtle)
+        // Mouse interaction — attract nearby, repel very close
         var dx = n.x - mouse.x;
         var dy = n.y - mouse.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < MOUSE_RADIUS && dist > 0) {
-          var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.015;
-          n.vx += (dx / dist) * force;
-          n.vy += (dy / dist) * force;
+          if (dist < 60) {
+            // Repel when too close
+            var force = (60 - dist) / 60 * 0.08;
+            n.vx += (dx / dist) * force;
+            n.vy += (dy / dist) * force;
+          } else {
+            // Gently attract into orbit
+            var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.02;
+            n.vx -= (dx / dist) * force;
+            n.vy -= (dy / dist) * force;
+          }
         }
 
         // Damping
-        n.vx *= 0.999;
-        n.vy *= 0.999;
+        n.vx *= 0.995;
+        n.vy *= 0.995;
+        // Speed limit
+        var speed = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+        if (speed > 1.5) { n.vx *= 1.5 / speed; n.vy *= 1.5 / speed; }
+      }
+
+      // Draw mouse glow
+      if (mouse.x > 0 && mouse.y > 0) {
+        var grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 120);
+        grad.addColorStop(0, isLight ? 'rgba(59,130,246,0.04)' : 'rgba(59,130,246,0.06)');
+        grad.addColorStop(1, 'rgba(59,130,246,0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 120, 0, Math.PI * 2);
+        ctx.fill();
       }
 
       // Draw connections
@@ -507,14 +530,22 @@
           var dy = nodes[i].y - nodes[j].y;
           var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            var alpha = (1 - dist / CONNECTION_DIST) * (isLight ? 0.08 : 0.12);
-            // Color based on layer relationship
+            var baseAlpha = (1 - dist / CONNECTION_DIST) * (isLight ? 0.08 : 0.12);
+            // Boost connections near mouse
+            var midX = (nodes[i].x + nodes[j].x) / 2;
+            var midY = (nodes[i].y + nodes[j].y) / 2;
+            var mDx = midX - mouse.x, mDy = midY - mouse.y;
+            var mDist = Math.sqrt(mDx * mDx + mDy * mDy);
+            var mouseBoost = mDist < MOUSE_RADIUS ? (1 - mDist / MOUSE_RADIUS) * 2.5 : 0;
+            var alpha = Math.min(baseAlpha * (1 + mouseBoost), isLight ? 0.25 : 0.4);
+            var lw = 0.8 + mouseBoost * 0.8;
+
             if (Math.abs(nodes[i].layer - nodes[j].layer) === 1) {
               ctx.strokeStyle = 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + alpha + ')';
             } else {
-              ctx.strokeStyle = 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + (alpha * 0.5) + ')';
+              ctx.strokeStyle = 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + (alpha * 0.6) + ')';
             }
-            ctx.lineWidth = 0.8;
+            ctx.lineWidth = lw;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -532,21 +563,32 @@
         var dx = n.x - mouse.x;
         var dy = n.y - mouse.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_RADIUS) {
-          var glowAlpha = (1 - dist / MOUSE_RADIUS) * (isLight ? 0.2 : 0.35);
+        var isNearMouse = dist < MOUSE_RADIUS;
+        var proximity = isNearMouse ? (1 - dist / MOUSE_RADIUS) : 0;
+
+        if (isNearMouse) {
+          var glowAlpha = proximity * (isLight ? 0.25 : 0.45);
+          var glowR = n.r * (4 + proximity * 6);
+          var grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR);
+          if (n.layer % 2 === 0) {
+            grd.addColorStop(0, 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + glowAlpha * 0.4 + ')');
+          } else {
+            grd.addColorStop(0, 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + glowAlpha * 0.3 + ')');
+          }
+          grd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grd;
           ctx.beginPath();
-          ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
-          ctx.fillStyle = n.layer % 2 === 0
-            ? 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + glowAlpha * 0.3 + ')'
-            : 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + glowAlpha * 0.2 + ')';
+          ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
           ctx.fill();
         }
 
+        var drawR = n.r + (proximity * 1.5);
+        var drawAlpha = nodeAlpha + (proximity * 0.3);
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, drawR, 0, Math.PI * 2);
         ctx.fillStyle = n.layer % 2 === 0
-          ? 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + nodeAlpha + ')'
-          : 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + nodeAlpha * 0.7 + ')';
+          ? 'rgba(' + accentR + ',' + accentG + ',' + accentB + ',' + drawAlpha + ')'
+          : 'rgba(' + ctaR + ',' + ctaG + ',' + ctaB + ',' + drawAlpha * 0.7 + ')';
         ctx.fill();
       }
 
@@ -610,6 +652,224 @@
       }, { threshold: 0.2 });
       traces.forEach(function(el) { observer.observe(el); });
     }
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
+
+  <!-- ============ HERO PARALLAX ============ -->
+  <script>
+  (function HeroParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var orbs = [
+      { el: null, speed: 0.03 },
+      { el: null, speed: -0.02 },
+      { el: null, speed: 0.015 }
+    ];
+    function init() {
+      orbs[0].el = document.getElementById('orb-1');
+      orbs[1].el = document.getElementById('orb-2');
+      orbs[2].el = document.getElementById('orb-3');
+      if (!orbs[0].el) return;
+      var hero = document.getElementById('hero-section');
+      if (!hero) return;
+      hero.addEventListener('mousemove', function(e) {
+        var rect = hero.getBoundingClientRect();
+        var cx = (e.clientX - rect.left) / rect.width - 0.5;
+        var cy = (e.clientY - rect.top) / rect.height - 0.5;
+        orbs.forEach(function(o) {
+          if (!o.el) return;
+          var dx = cx * o.speed * 800;
+          var dy = cy * o.speed * 800;
+          o.el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
+
+  <!-- ============ ROBOT COMPANION ============ -->
+  <style>
+    .robot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 45;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .robot-body {
+      width: 56px;
+      height: 56px;
+      position: relative;
+      animation: robotBob 3s ease-in-out infinite;
+      transition: transform 0.2s ease;
+    }
+    .robot-container:hover .robot-body {
+      transform: scale(1.1);
+    }
+    .robot-container:active .robot-body {
+      transform: scale(0.95);
+    }
+    @keyframes robotBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .robot-container:hover .robot-body {
+      animation: robotWave 0.4s ease-in-out 2;
+    }
+    @keyframes robotWave {
+      0%, 100% { transform: rotate(0deg) scale(1.1); }
+      25% { transform: rotate(-8deg) scale(1.1); }
+      75% { transform: rotate(8deg) scale(1.1); }
+    }
+    /* Blink animation */
+    @keyframes robotBlink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+    .robot-eye {
+      animation: robotBlink 4s ease-in-out infinite;
+    }
+    .robot-eye-r {
+      animation: robotBlink 4s ease-in-out infinite;
+      animation-delay: 0.1s;
+    }
+    /* Tooltip bubble */
+    .robot-tooltip {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 10px;
+      padding: 8px 14px;
+      border-radius: 12px 12px 4px 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      line-height: 1.4;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      background-color: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .robot-tooltip.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Antenna pulse */
+    @keyframes antennaPulse {
+      0%, 100% { opacity: 0.4; r: 3; }
+      50% { opacity: 1; r: 4.5; }
+    }
+    html.light .robot-tooltip {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+  </style>
+
+  <div class="robot-container" id="robot-companion" aria-label="Robot companion">
+    <div class="robot-tooltip" id="robot-tooltip"></div>
+    <div class="robot-body">
+      <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+        <!-- Antenna -->
+        <line x1="28" y1="12" x2="28" y2="4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="28" cy="3" r="3" fill="var(--accent)" opacity="0.4">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Head -->
+        <rect x="12" y="12" width="32" height="24" rx="8" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.5"/>
+
+        <!-- Face screen -->
+        <rect x="16" y="16" width="24" height="14" rx="4" fill="var(--bg)" stroke="var(--border)" stroke-width="0.8"/>
+
+        <!-- Eyes -->
+        <circle class="robot-eye" cx="23" cy="23" r="2.5" fill="var(--accent)"/>
+        <circle class="robot-eye-r" cx="33" cy="23" r="2.5" fill="var(--accent)"/>
+
+        <!-- Mouth (small smile) -->
+        <path d="M24 27 Q28 30 32 27" stroke="var(--accent)" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+        <!-- Body -->
+        <rect x="18" y="37" width="20" height="10" rx="4" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+
+        <!-- Chest light -->
+        <circle cx="28" cy="42" r="2" fill="var(--cta)" opacity="0.7">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Arms -->
+        <rect x="8" y="38" width="8" height="4" rx="2" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1"/>
+        <rect x="40" y="38" width="8" height="4" rx="2" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1"/>
+
+        <!-- Feet -->
+        <rect x="19" y="48" width="7" height="4" rx="2" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1"/>
+        <rect x="30" y="48" width="7" height="4" rx="2" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+  (function RobotCompanion() {
+    var messages = [
+      "Beep boop! I run on zero data.",
+      "Check out the ventures page!",
+      "Built with HTML, CSS & caffeine.",
+      "My creator likes control systems.",
+      "Fun fact: I have no backend.",
+      "I dream of electric sheep.",
+      "Try hovering on the hero section!",
+      "RL agent in training... just kidding.",
+      "K(s) = curiosity / (s + doubt)",
+      "sudo make me a sandwich.",
+      "01001000 01101001 (that's 'Hi')",
+      "PID tuning is my love language.",
+      "I'm not a chatbot. I'm a vibe."
+    ];
+    var msgIndex = 0;
+    var tooltip, robot, hideTimeout;
+
+    function shuffle(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+      }
+    }
+
+    function showMessage() {
+      if (!tooltip) return;
+      clearTimeout(hideTimeout);
+      tooltip.textContent = messages[msgIndex];
+      tooltip.classList.add('show');
+      msgIndex = (msgIndex + 1) % messages.length;
+      if (msgIndex === 0) shuffle(messages);
+      hideTimeout = setTimeout(function() {
+        tooltip.classList.remove('show');
+      }, 3000);
+    }
+
+    function init() {
+      robot = document.getElementById('robot-companion');
+      tooltip = document.getElementById('robot-tooltip');
+      if (!robot || !tooltip) return;
+
+      shuffle(messages);
+
+      // Show greeting after 3s
+      setTimeout(function() {
+        tooltip.textContent = "Hey! I'm Jatin's robot. Click me!";
+        tooltip.classList.add('show');
+        setTimeout(function() { tooltip.classList.remove('show'); }, 3500);
+      }, 3000);
+
+      robot.addEventListener('click', showMessage);
+    }
+
     document.addEventListener('DOMContentLoaded', init);
   })();
   </script>
