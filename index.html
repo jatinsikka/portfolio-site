@@ -81,8 +81,8 @@
     <!-- Smaller sub-grid -->
     <div class="absolute inset-0 pointer-events-none" style="z-index: 2; opacity: 0.015; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 15px 15px;"></div>
 
-    <!-- Animated gradient mesh background -->
-    <div class="absolute inset-0 pointer-events-none" style="z-index: 3; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);"></div>
+    <!-- Animated aurora mesh background -->
+    <div class="aurora-mesh absolute inset-0 pointer-events-none" style="z-index: 3;"></div>
 
     <!-- Noise texture overlay -->
     <div class="absolute inset-0 pointer-events-none" style="z-index: 4; opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
@@ -91,9 +91,9 @@
     <div class="absolute top-0 left-0 right-0 h-px" style="z-index: 5; background: linear-gradient(90deg, transparent, var(--accent), var(--cta), transparent);"></div>
 
     <!-- Floating geometric accent (parallax-enabled) -->
-    <div id="orb-1" class="absolute top-1/4 right-[10%] w-72 h-72 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%); animation: float 8s ease-in-out infinite; transition: transform 0.3s ease-out;"></div>
-    <div id="orb-2" class="absolute bottom-1/4 left-[8%] w-48 h-48 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(249,115,22,0.07), transparent 70%); animation: float 6s ease-in-out infinite reverse; transition: transform 0.3s ease-out;"></div>
-    <div id="orb-3" class="absolute top-[60%] right-[30%] w-36 h-36 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(99,102,241,0.05), transparent 70%); animation: float 10s ease-in-out infinite; transition: transform 0.3s ease-out;"></div>
+    <div id="orb-1" class="absolute top-[15%] right-[5%] w-96 h-96 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%); animation: float 8s ease-in-out infinite; filter: blur(40px); transition: transform 0.3s ease-out;"></div>
+    <div id="orb-2" class="absolute bottom-[15%] left-[5%] w-80 h-80 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(249,115,22,0.10), transparent 70%); animation: float 6s ease-in-out infinite reverse; filter: blur(40px); transition: transform 0.3s ease-out;"></div>
+    <div id="orb-3" class="absolute top-[55%] right-[25%] w-64 h-64 rounded-full pointer-events-none hidden lg:block" style="z-index: 3; background: radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%); animation: float 10s ease-in-out infinite; filter: blur(30px); transition: transform 0.3s ease-out;"></div>
 
     <style>
       @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
@@ -104,6 +104,96 @@
       .hero-reveal-3 { animation-delay: 0.5s; }
       .hero-reveal-4 { animation-delay: 0.7s; }
       .hero-reveal-5 { animation-delay: 0.9s; }
+
+      /* Gradient text on name */
+      .hero-name {
+        background: linear-gradient(135deg, #3B82F6 0%, #818CF8 40%, #F97316 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      html.light .hero-name {
+        background: linear-gradient(135deg, #2563EB 0%, #6366F1 40%, #EA580C 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      /* Aurora mesh */
+      .aurora-mesh {
+        background:
+          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent),
+          radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent),
+          radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);
+        animation: auroraDrift 12s ease-in-out infinite alternate;
+      }
+      @keyframes auroraDrift {
+        0% {
+          background:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent),
+            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.08), transparent),
+            radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99,102,241,0.06), transparent);
+        }
+        50% {
+          background:
+            radial-gradient(ellipse 70% 60% at 30% 10%, rgba(99,102,241,0.12), transparent),
+            radial-gradient(ellipse 50% 50% at 70% 40%, rgba(59,130,246,0.10), transparent),
+            radial-gradient(ellipse 60% 40% at 50% 90%, rgba(249,115,22,0.08), transparent);
+        }
+        100% {
+          background:
+            radial-gradient(ellipse 60% 50% at 70% -10%, rgba(249,115,22,0.10), transparent),
+            radial-gradient(ellipse 80% 40% at 20% 50%, rgba(59,130,246,0.12), transparent),
+            radial-gradient(ellipse 40% 60% at 60% 80%, rgba(99,102,241,0.08), transparent);
+        }
+      }
+
+      /* Animated photo ring */
+      .hero-photo-wrapper {
+        width: 9rem; height: 9rem;
+        position: relative;
+      }
+      @media (min-width: 768px) { .hero-photo-wrapper { width: 11rem; height: 11rem; } }
+      @media (min-width: 1024px) { .hero-photo-wrapper { width: 13rem; height: 13rem; } }
+
+      .hero-photo-ring {
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg, #3B82F6, #818CF8, #F97316, #3B82F6);
+        animation: ringRotate 6s linear infinite;
+        padding: 3px;
+      }
+      @keyframes ringRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .hero-photo-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(59, 130, 246, 0.05);
+      }
+
+      /* Typing cursor blink */
+      .typed-cursor {
+        font-weight: 300;
+        color: var(--accent);
+        animation: cursorBlink 0.8s step-end infinite;
+      }
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .typed-role {
+        font-weight: 600;
+        color: var(--muted-fg);
+      }
 
       /* Circuit board trace pattern for section backgrounds */
       .circuit-bg {
@@ -147,26 +237,30 @@
     </style>
 
     <div class="relative text-center px-6 py-20" style="z-index: 10;">
-      <!-- Photo -->
-      <div class="mx-auto mb-8 w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full overflow-hidden flex items-center justify-center hero-reveal hero-reveal-1" style="background-color: var(--card-bg); border: 3px solid var(--accent); box-shadow: 0 0 60px rgba(59, 130, 246, 0.2), 0 0 120px rgba(59, 130, 246, 0.05);">
-        <img
-          src="assets/images/headshot.jpg"
-          alt="Jatin Sikka"
-          class="w-full h-full object-cover"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <span class="hidden items-center justify-center w-full h-full text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--accent);">JS</span>
+      <!-- Photo with animated ring -->
+      <div class="hero-photo-wrapper mx-auto mb-8 hero-reveal hero-reveal-1">
+        <div class="hero-photo-ring">
+          <div class="hero-photo-inner">
+            <img
+              src="assets/images/headshot.jpg"
+              alt="Jatin Sikka"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <span class="hidden items-center justify-center w-full h-full text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--accent);">JS</span>
+          </div>
+        </div>
       </div>
 
       <!-- Name -->
-      <h1 class="hero-reveal hero-reveal-2 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+      <h1 class="hero-reveal hero-reveal-2 hero-name text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em;">
         Jatin Sikka
       </h1>
 
-      <!-- One-liner with accent highlight -->
+      <!-- One-liner with typing effect -->
       <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-3" style="color: var(--muted-fg);">
-        <span style="color: var(--accent); font-weight: 600;">AI &amp; Robotics</span> Researcher.
-        Founder. Engineer.
+        <span style="color: var(--accent); font-weight: 600;">AI &amp; Robotics</span>
+        <span id="typed-role" class="typed-role"></span><span class="typed-cursor">|</span>
       </p>
 
       <!-- Location -->

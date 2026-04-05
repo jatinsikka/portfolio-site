@@ -340,7 +340,64 @@
 
 
 /* =========================================================
-   5. NEURAL NETWORK CANVAS
+   5. TYPED ROLE CYCLING
+   ========================================================= */
+(function TypedRoleModule() {
+  var roles = ['Researcher.', 'Founder.', 'Engineer.', 'Builder.'];
+  var el = null;
+  var roleIndex = 0;
+  var charIndex = 0;
+  var isDeleting = false;
+  var pauseTime = 0;
+
+  function tick() {
+    if (!el) return;
+    var current = roles[roleIndex];
+
+    if (pauseTime > 0) {
+      pauseTime--;
+      setTimeout(tick, 60);
+      return;
+    }
+
+    if (!isDeleting) {
+      charIndex++;
+      el.textContent = current.substring(0, charIndex);
+      if (charIndex === current.length) {
+        isDeleting = true;
+        pauseTime = 30; // pause before deleting
+      }
+      setTimeout(tick, 80 + Math.random() * 40);
+    } else {
+      charIndex--;
+      el.textContent = current.substring(0, charIndex);
+      if (charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        pauseTime = 8;
+      }
+      setTimeout(tick, 40);
+    }
+  }
+
+  function init() {
+    el = document.getElementById('typed-role');
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = 'Researcher. Founder. Engineer.';
+      var cursor = document.querySelector('.typed-cursor');
+      if (cursor) cursor.style.display = 'none';
+      return;
+    }
+    setTimeout(tick, 1200); // wait for reveal animations
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+
+/* =========================================================
+   6. NEURAL NETWORK CANVAS
    ========================================================= */
 (function NeuralCanvasModule() {
   var canvas, ctx;
