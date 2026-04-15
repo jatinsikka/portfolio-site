@@ -55,6 +55,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <!-- ============ NAV ============ -->
   <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
     <style>
@@ -65,9 +67,9 @@
         JS
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="/ventures" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
-        <a href="/projects" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
-        <a href="/research" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
+        <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
+        <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
         <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
       </div>
       <div class="flex items-center gap-3">
@@ -107,7 +109,7 @@
   </div>
 
   <!-- ============ PAGE HEADER ============ -->
-  <section class="pt-24 pb-8 px-6">
+  <section id="main-content" class="pt-24 pb-8 px-6">
     <div class="max-w-4xl mx-auto">
       <a href="/ventures" class="fade-in text-sm font-medium hover:opacity-80 transition-opacity mb-4 inline-block" style="color: var(--accent);">
         &larr; Back to Ventures
@@ -146,6 +148,7 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/command-palette.js"></script>
   <script>
     var VISIBLE_PAGES = 3; // pages 1-3 (title, contents, contents cont.)
     var pdfUrl = '../assets/LawAI-portfolio.pdf';

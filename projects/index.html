@@ -138,6 +138,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <!-- ============ NAV ============ -->
   <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
     <style>
@@ -148,9 +150,9 @@
         JS
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="/ventures" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
-        <a href="/projects" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Projects</a>
-        <a href="/research" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
+        <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Projects</a>
+        <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
         <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
       </div>
       <div class="flex items-center gap-3">
@@ -190,7 +192,7 @@
   </div>
 
   <!-- ============ PAGE HEADER ============ -->
-  <section class="pt-24 pb-12 px-6">
+  <section id="main-content" class="pt-24 pb-12 px-6">
     <div class="max-w-6xl mx-auto">
       <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
         Projects
@@ -644,5 +646,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/command-palette.js"></script>
 </body>
 </html>

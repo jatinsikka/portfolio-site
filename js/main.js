@@ -340,7 +340,55 @@
 
 
 /* =========================================================
-   5. TYPED ROLE CYCLING
+   5. ACTIVE-PAGE NAV INDICATOR
+   ========================================================= */
+(function ActiveNavModule() {
+  function init() {
+    var path = window.location.pathname.replace(/\/$/, '') || '/';
+    var links = document.querySelectorAll('.nav-link, .mobile-menu a');
+    links.forEach(function (link) {
+      var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      // match /ventures, /ventures/lawai.html, etc. to the Ventures nav link
+      var isMatch = href !== '/' && path.indexOf(href) === 0;
+      var isHome  = href === '/' && path === '/';
+      if (isMatch || isHome) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+
+/* =========================================================
+   6. CONSOLE EASTER EGG
+   ========================================================= */
+(function ConsoleEggModule() {
+  if (typeof console === 'undefined' || !console.log) return;
+  try {
+    console.log(
+      '%c Jatin Sikka %c jatinsikka.me ',
+      'background:#E25C5C;color:#0c0a0c;padding:4px 8px;border-radius:4px 0 0 4px;font-weight:700;',
+      'background:#1a1a1f;color:#E8DFD3;padding:4px 8px;border-radius:0 4px 4px 0;'
+    );
+    console.log(
+      '%cBuilding at the intersection of AI, robotics, and humanoids.',
+      'color:#D6CCC2;font-style:italic;'
+    );
+    console.log(
+      '%cCurious? ⌘K opens the command palette. Or press "/" .',
+      'color:#8a8a8a;'
+    );
+    console.log(
+      '%cWant to build with me? → jatinsikka30@gmail.com',
+      'color:#E25C5C;font-weight:600;'
+    );
+  } catch (e) { /* noop */ }
+})();
+
+
+/* =========================================================
+   7. TYPED ROLE CYCLING
    ========================================================= */
 (function TypedRoleModule() {
   var roles = ['Researcher.', 'Founder.', 'Engineer.', 'Builder.'];
