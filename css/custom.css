@@ -18,9 +18,9 @@
   --border:        #1E293B;
   --text:          #F8FAFC;
 
-  /* Accent */
-  --accent:        #3B82F6;
-  --cta:           #F97316;
+  /* Accent — terracotta/copper palette, matches hero */
+  --accent:        #E25C5C;
+  --cta:           #D97B4F;
 
   /* Status */
   --status-active:    #22C55E;
@@ -39,6 +39,10 @@ html.light {
   --muted-fg: #64748B;
   --border:   #E2E8F0;
   --text:     #1E293B;
+
+  /* Darker, more saturated accent/cta for contrast on the light paper */
+  --accent:   #B54238;
+  --cta:      #8A4A22;
 }
 
 /* ----- Theme Transitions ----- */
@@ -302,9 +306,9 @@ html.light .card-hover:hover {
 }
 
 .btn-cta:hover {
-  background-color: #ea6c10;
+  background-color: #B54238;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+  box-shadow: 0 6px 20px rgba(217, 123, 79, 0.35);
 }
 
 /* ----- Research Interest Pill Hover ----- */
@@ -316,7 +320,7 @@ html.light .card-hover:hover {
 
 .research-pill:hover {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 12px rgba(226, 92, 92, 0.15);
 }
 
 .research-pill::after {
@@ -326,7 +330,7 @@ html.light .card-hover:hover {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba(226, 92, 92, 0.06), transparent);
   transition: left 0.5s ease;
 }
 
@@ -335,7 +339,7 @@ html.light .card-hover:hover {
 }
 
 html.light .research-pill:hover {
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 12px rgba(181, 66, 56, 0.15);
 }
 
 /* ----- Reduced Motion ----- */
