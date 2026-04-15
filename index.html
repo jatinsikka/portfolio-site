@@ -454,49 +454,6 @@
     </div>
   </section>
 
-  <!-- ============ SECTION DIVIDER: Control System Block Diagram ============ -->
-  <div class="relative w-full overflow-hidden hidden md:block" style="height: 80px;">
-    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 80" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.12;">
-      <!-- Feedback control loop -->
-      <!-- Summing junction -->
-      <circle cx="200" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-      <line x1="194" y1="40" x2="206" y2="40" stroke="var(--accent)" stroke-width="1"/>
-      <line x1="200" y1="34" x2="200" y2="46" stroke="var(--accent)" stroke-width="1"/>
-      <!-- Controller block -->
-      <rect x="260" y="25" width="80" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-      <text x="300" y="44" fill="var(--accent)" text-anchor="middle" font-size="9" font-family="Space Grotesk, monospace">K(s)</text>
-      <!-- Plant block -->
-      <rect x="420" y="25" width="80" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-      <text x="460" y="44" fill="var(--accent)" text-anchor="middle" font-size="9" font-family="Space Grotesk, monospace">G(s)</text>
-      <!-- Connections -->
-      <line x1="100" y1="40" x2="188" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
-      <line x1="212" y1="40" x2="260" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
-      <line x1="340" y1="40" x2="420" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
-      <line x1="500" y1="40" x2="600" y2="40" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
-      <!-- Feedback path -->
-      <line x1="560" y1="40" x2="560" y2="70" stroke="var(--accent)" stroke-width="1"/>
-      <line x1="560" y1="70" x2="200" y2="70" stroke="var(--accent)" stroke-width="1"/>
-      <line x1="200" y1="70" x2="200" y2="52" stroke="var(--accent)" stroke-width="1" marker-end="url(#ctrlArrow)"/>
-      <!-- Sensor block on feedback -->
-      <rect x="350" y="60" width="60" height="20" rx="3" fill="none" stroke="var(--cta)" stroke-width="0.8"/>
-      <text x="380" y="73" fill="var(--cta)" text-anchor="middle" font-size="7" font-family="Space Grotesk, monospace">H(s)</text>
-      <!-- Labels -->
-      <text x="120" y="35" fill="var(--muted-fg)" font-size="7" font-family="Space Grotesk, monospace">ref</text>
-      <text x="570" y="35" fill="var(--muted-fg)" font-size="7" font-family="Space Grotesk, monospace">output</text>
-      <!-- Arrow marker -->
-      <defs>
-        <marker id="ctrlArrow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-          <polygon points="0 0, 6 2, 0 4" fill="var(--accent)"/>
-        </marker>
-      </defs>
-
-      <!-- Signal pulse traveling along the path -->
-      <circle r="3" fill="var(--accent)" opacity="0.6">
-        <animateMotion dur="4s" repeatCount="indefinite" path="M100 40 L188 40 L260 40 L340 40 L420 40 L500 40 L560 40 L560 70 L200 70 L200 52"/>
-      </circle>
-    </svg>
-  </div>
-
   <!-- ============ CTA ============ -->
   <section class="relative py-24 px-6 overflow-hidden">
     <!-- Gradient background -->
