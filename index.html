@@ -12,9 +12,17 @@
 <body>
 
   <!-- ============ NAV ============ -->
-  <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+  <nav id="main-nav" class="sticky top-0 z-40" style="background-color: transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); transition: background-color 250ms ease, backdrop-filter 250ms ease, -webkit-backdrop-filter 250ms ease;">
     <style>
-      html.light nav.sticky { background-color: rgba(248,250,252,0.85) !important; }
+      /* Transparent over hero; opaque once scrolled past the hero. */
+      nav#main-nav.scrolled {
+        background-color: rgba(11,11,16,0.85) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+      }
+      html.light nav#main-nav.scrolled {
+        background-color: rgba(248,250,252,0.85) !important;
+      }
     </style>
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
       <!-- Logo -->
@@ -589,6 +597,24 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- ============ NAV TRANSPARENCY (over hero) ============ -->
+  <script>
+  (function NavScrollModule() {
+    const nav = document.getElementById('main-nav');
+    const hero = document.getElementById('hero-section');
+    if (!nav || !hero) return;
+    // Flip at ~80% of the hero's height — before the user actually leaves the hero.
+    function update() {
+      const threshold = hero.offsetHeight * 0.8;
+      if (window.scrollY > threshold) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+  })();
+  </script>
 
   <!-- ============ ARM TRACE ANIMATION TRIGGER ============ -->
   <script>
