@@ -266,14 +266,14 @@
     <div class="relative text-center px-6 py-8" style="z-index: 10; transform: scale(0.85); transform-origin: top center;">
       <!-- Photo with animated ring — margin trick shifts it up 5vh without
            disturbing the following elements' positions. -->
-      <div class="hero-photo-wrapper mx-auto hero-reveal hero-reveal-1" style="margin-top: -5vh; margin-bottom: calc(1.25rem + 5vh);">
+      <div class="hero-photo-wrapper mx-auto hero-reveal hero-reveal-1" style="margin-top: 0; margin-bottom: calc(1.25rem + 5vh);">
         <div class="hero-photo-ring">
           <div class="hero-photo-inner">
             <img
               src="assets/images/headshot.jpg"
               alt="Jatin Sikka"
               class="w-full h-full object-cover"
-              style="object-position: 50% 28%; transform: scale(1.4);"
+              style="object-position: 50% 40%; transform: scale(1.4);"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             />
             <span class="hidden items-center justify-center w-full h-full text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: #E57373;">JS</span>
@@ -282,12 +282,12 @@
       </div>
 
       <!-- Name -->
-      <h1 class="hero-reveal hero-reveal-2 hero-name text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; margin-top: -2vh;">
+      <h1 class="hero-reveal hero-reveal-2 hero-name text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-1" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; margin-top: -2vh;">
         Jatin Sikka
       </h1>
 
       <!-- One-liner with typing effect -->
-      <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-3" style="color: #E8E4DF; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.8);">
+      <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-1" style="color: #E8E4DF; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.8);">
         <span style="color: #E25C5C; font-weight: 600;">AI &amp; Robotics</span>
         <span id="typed-role" class="typed-role"></span><span class="typed-cursor">|</span>
       </p>
@@ -299,7 +299,7 @@
       </p>
 
       <!-- "Now:" live chip → latest active venture -->
-      <div class="hero-reveal hero-reveal-5 flex justify-center mt-5">
+      <div class="hero-reveal hero-reveal-5 flex justify-center mt-3">
         <a href="https://undoom-it.vercel.app/" target="_blank" rel="noopener noreferrer" class="now-chip" aria-label="Currently building Undoom.It">
           <span class="now-dot" aria-hidden="true"></span>
           <span style="color: var(--muted-fg);">Now:</span>
@@ -309,7 +309,7 @@
       </div>
 
       <!-- Quick credential badges — red/grey palette on dark glass backing -->
-      <div class="hero-reveal hero-reveal-5 flex flex-wrap items-center justify-center gap-3 mt-6">
+      <div class="hero-reveal hero-reveal-5 flex flex-wrap items-center justify-center gap-3 mt-3">
         <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm" style="background-color: rgba(12,10,12,0.55); color: #F08A8A; border: 1px solid rgba(226,92,92,0.55);">
           Ex-Tesla
         </span>
