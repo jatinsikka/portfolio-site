@@ -718,21 +718,15 @@ html.light .cmdk-footer {
 
 .transcript-logo {
   flex-shrink: 0;
-  width: 3.375rem;
-  height: 3.375rem;
-  border-radius: 0.875rem;
+  width: 4.05rem;
+  height: 4.05rem;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Grotesk', 'JetBrains Mono', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
   line-height: 1;
   margin-top: 0.125rem;
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid var(--border);
 }
 
 .transcript-logo img {
@@ -742,15 +736,14 @@ html.light .cmdk-footer {
   display: block;
 }
 
+.transcript-logo--padded {
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
 .transcript-logo--padded img {
   object-fit: contain;
   padding: 0.3125rem;
-}
-
-.transcript-logo--me {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: transparent;
 }
 
 .transcript-text {
@@ -790,10 +783,9 @@ html.light .cmdk-footer {
     gap: 0.625rem;
   }
   .transcript-logo {
-    width: 2.8125rem;
-    height: 2.8125rem;
-    font-size: 0.875rem;
-    border-radius: 0.75rem;
+    width: 3.375rem;
+    height: 3.375rem;
+    border-radius: 0.875rem;
   }
   .transcript-text {
     font-size: 0.8125rem;
