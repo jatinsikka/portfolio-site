@@ -730,15 +730,27 @@ html.light .cmdk-footer {
   letter-spacing: 0.02em;
   line-height: 1;
   margin-top: 0.0625rem;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border);
 }
 
-.transcript-logo--light {
-  border: 1px solid var(--border);
+.transcript-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.transcript-logo--padded img {
+  object-fit: contain;
+  padding: 3px;
 }
 
 .transcript-logo--me {
   background: var(--accent);
   color: #ffffff;
+  border-color: transparent;
 }
 
 .transcript-text {
