@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jatin Sikka</title>
   <meta name="description" content="Jatin Sikka · AI & Robotics Researcher. Founder. Engineer." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="css/pixel.css" />
 </head>
+
 <body>
 
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <nav id="main-nav" class="sticky top-0 z-40" style="background-color: transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); transition: background-color 250ms ease, backdrop-filter 250ms ease, -webkit-backdrop-filter 250ms ease;">
+  <nav id="main-nav" class="sticky top-0 z-40"
+    style="background-color: transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); transition: background-color 250ms ease, backdrop-filter 250ms ease, -webkit-backdrop-filter 250ms ease;">
     <style>
       /* Transparent over hero; opaque once scrolled past the hero. */
       nav#main-nav.scrolled {
-        background-color: rgba(11,11,16,0.85) !important;
+        background-color: rgba(10, 14, 24, 0.9) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
       }
+
       html.light nav#main-nav.scrolled {
-        background-color: rgba(248,250,252,0.85) !important;
+        background-color: rgba(244, 237, 225, 0.9) !important;
       }
     </style>
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="text-lg font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">
-        JS
+      <a href="/" class="px-logo text-lg font-bold tracking-tight" style="color: var(--text);">
+        JS<span class="px-cursor">_</span>
       </a>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
-        <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
-        <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
-        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity"
+          style="color: var(--muted-fg);">Ventures</a>
+        <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity"
+          style="color: var(--muted-fg);">Projects</a>
+        <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity"
+          style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer"
+          class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
       </div>
 
       <div class="flex items-center gap-3">
         <!-- Theme toggle -->
-        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity"
+          style="color: var(--text);" aria-label="Toggle color theme">
           <!-- Sun icon (shown in dark mode) -->
-          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
-            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256"
+            fill="currentColor">
+            <path
+              d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z" />
           </svg>
           <!-- Moon icon (shown in light mode) -->
-          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="display:none;">
-            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256"
+            fill="currentColor" style="display:none;">
+            <path
+              d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z" />
           </svg>
         </button>
 
         <!-- Mobile hamburger -->
-        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity"
+          style="color: var(--text);" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
-            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
+            <path
+              d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z" />
           </svg>
         </button>
       </div>
@@ -67,9 +84,11 @@
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <div class="flex items-center justify-between mb-8">
       <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
-      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity"
+        style="color: var(--text);" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
-          <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
+          <path
+            d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z" />
         </svg>
       </button>
     </div>
@@ -77,458 +96,617 @@
       <a href="/ventures" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
       <a href="/projects" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
       <a href="/research" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
-      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer"
+        class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
     </div>
   </div>
 
   <!-- ============ HERO ============ -->
   <main id="main-content">
-  <section id="hero-section" class="relative min-h-screen flex items-start justify-center overflow-hidden" style="padding-top: 11vh; margin-top: -4rem;">
-    <!-- Hero video backdrop — pixel-art moon city workshop loop.
+    <section id="hero-section" class="relative min-h-screen flex items-start justify-center overflow-hidden"
+      style="padding-top: 11vh; margin-top: -4rem;">
+      <!-- Hero video backdrop — pixel-art moon city workshop loop.
          Single <video> with a boomerang-encoded source (forward+reverse concat)
          so `loop` is seamless with no crossfade pulse. -->
-    <div id="hero-video-host" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: 1;">
-      <video id="hero-video-a" class="absolute inset-0 w-full h-full object-cover" muted playsinline autoplay loop preload="auto" style="object-position: center 35%;">
-        <source src="assets/Portfolio-loop.mp4" type="video/mp4">
-      </video>
-      <!-- Light scrim only — text-shadow on the text elements does the
+      <div id="hero-video-host" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: 1;">
+        <video id="hero-video-a" class="absolute inset-0 w-full h-full object-cover" muted playsinline autoplay loop
+          preload="auto" style="object-position: center 35%;">
+          <source src="assets/Portfolio-loop.mp4" type="video/mp4">
+        </video>
+        <!-- Light scrim only — text-shadow on the text elements does the
            heavy legibility lifting so the art stays visible. -->
-      <div class="absolute inset-0" style="background:
+        <div class="absolute inset-0"
+          style="background:
         radial-gradient(ellipse 42% 50% at 50% 45%, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0) 100%),
         linear-gradient(to bottom, rgba(5,8,15,0.30) 0%, rgba(5,8,15,0.02) 15%, rgba(5,8,15,0.02) 82%, rgba(5,8,15,0.35) 100%);"></div>
-      <!-- Preserve canvas so any legacy wiring doesn't 500; hidden. -->
-      <canvas id="hero-particle-canvas" class="hidden"></canvas>
-    </div>
+        <!-- Preserve canvas so any legacy wiring doesn't 500; hidden. -->
+        <canvas id="hero-particle-canvas" class="hidden"></canvas>
+      </div>
 
-    <!-- Blueprint grid overlay -->
-    <div class="absolute inset-0 pointer-events-none" style="z-index: 2; opacity: 0.04; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <!-- Smaller sub-grid -->
-    <div class="absolute inset-0 pointer-events-none" style="z-index: 2; opacity: 0.015; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 15px 15px;"></div>
+      <!-- Blueprint grid overlay -->
+      <div class="absolute inset-0 pointer-events-none"
+        style="z-index: 2; opacity: 0.04; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 60px 60px;">
+      </div>
+      <!-- Smaller sub-grid -->
+      <div class="absolute inset-0 pointer-events-none"
+        style="z-index: 2; opacity: 0.015; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 15px 15px;">
+      </div>
 
-    <!-- Aurora mesh now provided by WebGL hero-backdrop shader; CSS layer muted. -->
-    <div class="aurora-mesh absolute inset-0 pointer-events-none" style="z-index: 3; opacity: 0.25; mix-blend-mode: screen;"></div>
+      <!-- Aurora mesh now provided by WebGL hero-backdrop shader; CSS layer muted. -->
+      <div class="aurora-mesh absolute inset-0 pointer-events-none"
+        style="z-index: 3; opacity: 0.25; mix-blend-mode: screen;"></div>
 
-    <!-- Noise texture overlay -->
-    <div class="absolute inset-0 pointer-events-none" style="z-index: 4; opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+      <!-- Noise texture overlay -->
+      <div class="absolute inset-0 pointer-events-none"
+        style="z-index: 4; opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');">
+      </div>
 
 
-    <!-- Floating geometric accent — disabled while video hero is active (would fight the pixel art). -->
-    <div id="orb-1" class="hidden"></div>
-    <div id="orb-2" class="hidden"></div>
-    <div id="orb-3" class="hidden"></div>
+      <!-- Floating geometric accent — disabled while video hero is active (would fight the pixel art). -->
+      <div id="orb-1" class="hidden"></div>
+      <div id="orb-2" class="hidden"></div>
+      <div id="orb-3" class="hidden"></div>
 
-    <style>
-      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-      @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-      .hero-reveal { animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
-      .hero-reveal-1 { animation-delay: 0.1s; }
-      .hero-reveal-2 { animation-delay: 0.3s; }
-      .hero-reveal-3 { animation-delay: 0.5s; }
-      .hero-reveal-4 { animation-delay: 0.7s; }
-      .hero-reveal-5 { animation-delay: 0.9s; }
+      <style>
+        @keyframes float {
 
-      /* Gradient text on name — muted terracotta → warm grey → smoke.
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+
+        @keyframes reveal {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-reveal {
+          animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+        }
+
+        .hero-reveal-1 {
+          animation-delay: 0.1s;
+        }
+
+        .hero-reveal-2 {
+          animation-delay: 0.3s;
+        }
+
+        .hero-reveal-3 {
+          animation-delay: 0.5s;
+        }
+
+        .hero-reveal-4 {
+          animation-delay: 0.7s;
+        }
+
+        .hero-reveal-5 {
+          animation-delay: 0.9s;
+        }
+
+        /* Gradient text on name — muted terracotta → warm grey → smoke.
          filter drop-shadow gives a halo that survives transparent text
          fill (text-shadow doesn't work with -webkit-text-fill-color). */
-      .hero-name {
-        background: linear-gradient(135deg, #E25C5C 0%, #B0A49D 45%, #6D6560 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        filter: opacity(0.75) drop-shadow(0 2px 24px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.6));
-      }
-      html.light .hero-name {
-        background: linear-gradient(135deg, #B54238 0%, #7C7069 45%, #4A4540 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-
-      /* Aurora mesh — lunar haze (amber / rose / smoke), not sky aurora */
-      .aurora-mesh {
-        background:
-          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226,92,92,0.12), transparent),
-          radial-gradient(ellipse 60% 40% at 80% 60%, rgba(217,123,79,0.10), transparent),
-          radial-gradient(ellipse 50% 50% at 20% 80%, rgba(176,164,157,0.08), transparent);
-        animation: auroraDrift 12s ease-in-out infinite alternate;
-      }
-      @keyframes auroraDrift {
-        0% {
-          background:
-            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226,92,92,0.12), transparent),
-            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(217,123,79,0.10), transparent),
-            radial-gradient(ellipse 50% 50% at 20% 80%, rgba(176,164,157,0.08), transparent);
+        .hero-name {
+          background: linear-gradient(135deg, #E25C5C 0%, #B0A49D 45%, #6D6560 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          filter: opacity(0.75) drop-shadow(0 2px 24px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.6));
         }
-        50% {
-          background:
-            radial-gradient(ellipse 70% 60% at 30% 10%, rgba(176,164,157,0.12), transparent),
-            radial-gradient(ellipse 50% 50% at 70% 40%, rgba(226,92,92,0.10), transparent),
-            radial-gradient(ellipse 60% 40% at 50% 90%, rgba(217,123,79,0.08), transparent);
+
+        html.light .hero-name {
+          background: linear-gradient(135deg, #B54238 0%, #7C7069 45%, #4A4540 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
         }
-        100% {
+
+        /* Aurora mesh — lunar haze (amber / rose / smoke), not sky aurora */
+        .aurora-mesh {
           background:
-            radial-gradient(ellipse 60% 50% at 70% -10%, rgba(217,123,79,0.12), transparent),
-            radial-gradient(ellipse 80% 40% at 20% 50%, rgba(226,92,92,0.10), transparent),
-            radial-gradient(ellipse 40% 60% at 60% 80%, rgba(176,164,157,0.08), transparent);
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226, 92, 92, 0.12), transparent),
+            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(217, 123, 79, 0.10), transparent),
+            radial-gradient(ellipse 50% 50% at 20% 80%, rgba(176, 164, 157, 0.08), transparent);
+          animation: auroraDrift 12s ease-in-out infinite alternate;
         }
-      }
 
-      /* Animated photo ring — warm copper to match moon lanterns */
-      .hero-photo-wrapper {
-        width: 7.75rem; height: 7.75rem;
-        position: relative;
-      }
-      @media (min-width: 768px) { .hero-photo-wrapper { width: 9.5rem; height: 9.5rem; } }
-      @media (min-width: 1024px) { .hero-photo-wrapper { width: 11rem; height: 11rem; } }
+        @keyframes auroraDrift {
+          0% {
+            background:
+              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226, 92, 92, 0.12), transparent),
+              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(217, 123, 79, 0.10), transparent),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(176, 164, 157, 0.08), transparent);
+          }
 
-      .hero-photo-ring {
-        position: absolute;
-        inset: -4px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #D97B4F 0%, #B54238 100%);
-        padding: 3px;
-      }
+          50% {
+            background:
+              radial-gradient(ellipse 70% 60% at 30% 10%, rgba(176, 164, 157, 0.12), transparent),
+              radial-gradient(ellipse 50% 50% at 70% 40%, rgba(226, 92, 92, 0.10), transparent),
+              radial-gradient(ellipse 60% 40% at 50% 90%, rgba(217, 123, 79, 0.08), transparent);
+          }
 
-      .hero-photo-inner {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        overflow: hidden;
-        background-color: var(--card-bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 40px rgba(217, 123, 79, 0.22), 0 0 80px rgba(181, 66, 56, 0.10);
-      }
+          100% {
+            background:
+              radial-gradient(ellipse 60% 50% at 70% -10%, rgba(217, 123, 79, 0.12), transparent),
+              radial-gradient(ellipse 80% 40% at 20% 50%, rgba(226, 92, 92, 0.10), transparent),
+              radial-gradient(ellipse 40% 60% at 60% 80%, rgba(176, 164, 157, 0.08), transparent);
+          }
+        }
 
-      /* Typing cursor blink */
-      .typed-cursor {
-        font-weight: 300;
-        color: var(--accent);
-        animation: cursorBlink 0.8s step-end infinite;
-      }
-      @keyframes cursorBlink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-      }
-      .typed-role {
-        font-weight: 600;
-        color: var(--muted-fg);
-      }
+        /* Animated photo ring — warm copper to match moon lanterns */
+        .hero-photo-wrapper {
+          width: 7.75rem;
+          height: 7.75rem;
+          position: relative;
+        }
 
-      /* Circuit board trace pattern for section backgrounds */
-      .circuit-bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.025;
-        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10 h30 v40 h20 v-20 h40 M140 10 v30 h-20 v40 h30 M10 120 h50 v30 h30 v-20 h40 M160 100 v50 h-40 v20 M40 180 h60 v-30 h40' stroke='%23E25C5C' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='10' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='70' cy='50' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='110' cy='30' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='140' cy='10' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='150' cy='70' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='60' cy='120' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='120' cy='150' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='160' cy='100' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='100' cy='180' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='40' cy='180' r='2' fill='%23E25C5C'/%3E%3C/svg%3E");
-      }
-      html.light .circuit-bg { opacity: 0.045; }
+        @media (min-width: 768px) {
+          .hero-photo-wrapper {
+            width: 9.5rem;
+            height: 9.5rem;
+          }
+        }
 
-      /* Robotic arm path trace animation */
-      @keyframes traceDraw {
-        from { stroke-dashoffset: 800; }
-        to { stroke-dashoffset: 0; }
-      }
-      @keyframes traceGlow {
-        0%, 100% { opacity: 0.15; }
-        50% { opacity: 0.4; }
-      }
-      .arm-trace { stroke-dasharray: 800; stroke-dashoffset: 800; }
-      .arm-trace.visible { animation: traceDraw 3s ease-out forwards; }
-      .arm-joint { opacity: 0; transition: opacity 0.5s ease; }
-      .arm-joint.visible { opacity: 1; }
+        @media (min-width: 1024px) {
+          .hero-photo-wrapper {
+            width: 11rem;
+            height: 11rem;
+          }
+        }
 
-      /* Signal pulse on wires */
-      @keyframes signalPulse {
-        0% { offset-distance: 0%; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { offset-distance: 100%; opacity: 0; }
-      }
+        .hero-photo-ring {
+          position: absolute;
+          inset: -4px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #D97B4F 0%, #B54238 100%);
+          padding: 3px;
+        }
 
-      /* Coordinate axis labels */
-      .coord-label {
-        font-family: 'Space Grotesk', monospace;
-        font-size: 0.6rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
+        .hero-photo-inner {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+          background-color: var(--card-bg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 40px rgba(217, 123, 79, 0.22), 0 0 80px rgba(181, 66, 56, 0.10);
+        }
 
-      /* Pixel-art lunar horizon — twinkling stars */
-      @keyframes moonStarTwinkle {
-        0%, 100% { opacity: var(--tw-max, 0.8); }
-        50%      { opacity: 0.1; }
-      }
-      .moon-star { animation: moonStarTwinkle 3.4s ease-in-out infinite; }
-    </style>
+        /* Typing cursor blink */
+        .typed-cursor {
+          font-weight: 300;
+          color: var(--accent);
+          animation: cursorBlink 0.8s step-end infinite;
+        }
 
-    <div class="relative text-center px-6 py-8" style="z-index: 10; transform: scale(0.85); transform-origin: top center;">
-      <!-- Photo with animated ring — margin trick shifts it up 5vh without
+        @keyframes cursorBlink {
+
+          0%,
+          100% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: 0;
+          }
+        }
+
+        .typed-role {
+          font-weight: 600;
+          color: var(--muted-fg);
+        }
+
+        /* Circuit board trace pattern for section backgrounds */
+        .circuit-bg {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.025;
+          background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10 h30 v40 h20 v-20 h40 M140 10 v30 h-20 v40 h30 M10 120 h50 v30 h30 v-20 h40 M160 100 v50 h-40 v20 M40 180 h60 v-30 h40' stroke='%23E25C5C' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='10' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='70' cy='50' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='110' cy='30' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='140' cy='10' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='150' cy='70' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='60' cy='120' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='120' cy='150' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='160' cy='100' r='2' fill='%23E25C5C'/%3E%3Ccircle cx='100' cy='180' r='3' fill='%23E25C5C'/%3E%3Ccircle cx='40' cy='180' r='2' fill='%23E25C5C'/%3E%3C/svg%3E");
+        }
+
+        html.light .circuit-bg {
+          opacity: 0.045;
+        }
+
+        /* Robotic arm path trace animation */
+        @keyframes traceDraw {
+          from {
+            stroke-dashoffset: 800;
+          }
+
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes traceGlow {
+
+          0%,
+          100% {
+            opacity: 0.15;
+          }
+
+          50% {
+            opacity: 0.4;
+          }
+        }
+
+        .arm-trace {
+          stroke-dasharray: 800;
+          stroke-dashoffset: 800;
+        }
+
+        .arm-trace.visible {
+          animation: traceDraw 3s ease-out forwards;
+        }
+
+        .arm-joint {
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+
+        .arm-joint.visible {
+          opacity: 1;
+        }
+
+        /* Signal pulse on wires */
+        @keyframes signalPulse {
+          0% {
+            offset-distance: 0%;
+            opacity: 0;
+          }
+
+          10% {
+            opacity: 1;
+          }
+
+          90% {
+            opacity: 1;
+          }
+
+          100% {
+            offset-distance: 100%;
+            opacity: 0;
+          }
+        }
+
+        /* Coordinate axis labels */
+        .coord-label {
+          font-family: 'Space Grotesk', monospace;
+          font-size: 0.6rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+
+        /* Pixel-art lunar horizon — twinkling stars */
+        @keyframes moonStarTwinkle {
+
+          0%,
+          100% {
+            opacity: var(--tw-max, 0.8);
+          }
+
+          50% {
+            opacity: 0.1;
+          }
+        }
+
+        .moon-star {
+          animation: moonStarTwinkle 3.4s ease-in-out infinite;
+        }
+      </style>
+
+      <div class="relative text-center px-6 py-8"
+        style="z-index: 10; transform: scale(0.85); transform-origin: top center;">
+        <!-- Photo with animated ring — margin trick shifts it up 5vh without
            disturbing the following elements' positions. -->
-      <div class="hero-photo-wrapper mx-auto hero-reveal hero-reveal-1" style="margin-top: 0; margin-bottom: calc(1.25rem + 5vh);">
-        <div class="hero-photo-ring">
-          <div class="hero-photo-inner">
-            <img
-              src="assets/images/headshot.jpg"
-              alt="Jatin Sikka"
-              class="w-full h-full object-cover"
-              style="object-position: 50% 0%; transform: scale(1.4);"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <span class="hidden items-center justify-center w-full h-full text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: #E57373;">JS</span>
+        <div class="hero-photo-wrapper mx-auto hero-reveal hero-reveal-1"
+          style="margin-top: 0; margin-bottom: calc(1.25rem + 5vh);">
+          <div class="hero-photo-ring">
+            <div class="hero-photo-inner">
+              <img src="assets/images/headshot.jpg" alt="Jatin Sikka" class="w-full h-full object-cover"
+                style="object-position: 50% 15%; transform: scale(1.0); filter: contrast(1.1) saturate(1.05);"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <span class="hidden items-center justify-center w-full h-full text-3xl md:text-4xl font-bold"
+                style="font-family: 'Space Grotesk', sans-serif; color: #E57373;">JS</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Name -->
-      <h1 class="hero-reveal hero-reveal-2 hero-name text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-1" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; margin-top: -2vh;">
-        Jatin Sikka
-      </h1>
+        <!-- Name -->
+        <h1 class="hero-reveal hero-reveal-2 hero-name text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-1"
+          style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; margin-top: -2vh;">
+          Jatin Sikka
+        </h1>
 
-      <!-- One-liner with typing effect -->
-      <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-1" style="color: #E8E4DF; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.8);">
-        <span style="color: #E25C5C; font-weight: 600;">AI &amp; Robotics</span>
-        <span id="typed-role" class="typed-role"></span><span class="typed-cursor">|</span>
-      </p>
+        <!-- One-liner with typing effect -->
+        <p class="hero-reveal hero-reveal-3 text-lg md:text-xl max-w-2xl mx-auto mb-1"
+          style="color: #E8E4DF; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.8);">
+          <span style="color: #E25C5C; font-weight: 600;">AI &amp; Robotics</span>
+          <span id="typed-role" class="typed-role"></span><span class="typed-cursor">|</span>
+        </p>
 
-      <!-- Location -->
-      <p class="hero-reveal hero-reveal-4 text-sm" style="color: #D4CFC8; text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.8);">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline-block mr-1 -mt-0.5" viewBox="0 0 256 256" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg>
-        Austin, TX
-      </p>
+        <!-- Location -->
+        <p class="hero-reveal hero-reveal-4 text-sm"
+          style="color: #D4CFC8; text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.8);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline-block mr-1 -mt-0.5" viewBox="0 0 256 256"
+            fill="currentColor">
+            <path
+              d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z" />
+          </svg>
+          Austin, TX
+        </p>
 
-      <!-- "Now:" live chip → latest active venture -->
-      <div class="hero-reveal hero-reveal-5 flex justify-center mt-3">
-        <a href="https://undoom-it.vercel.app/" target="_blank" rel="noopener noreferrer" class="now-chip" aria-label="Currently building Undoom.It">
-          <span class="now-dot" aria-hidden="true"></span>
-          <span style="color: var(--muted-fg);">Now:</span>
-          <span style="font-weight: 600;">Building Undoom.It</span>
-          <span style="color: var(--muted-fg);">· make doomscrolling productive</span>
-        </a>
-      </div>
+        <!-- "Now:" live chip → latest active venture -->
 
-      <!-- Quick credential badges — red/grey palette on dark glass backing -->
-      <div class="hero-reveal hero-reveal-5 flex flex-wrap items-center justify-center gap-3 mt-3">
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm" style="background-color: rgba(12,10,12,0.55); color: #F08A8A; border: 1px solid rgba(226,92,92,0.55);">
-          Ex-Tesla
-        </span>
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm" style="background-color: rgba(12,10,12,0.55); color: #D6CCC2; border: 1px solid rgba(214,204,194,0.45);">
-          Ex-Fortive
-        </span>
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm" style="background-color: rgba(12,10,12,0.55); color: #FF8C3F; border: 1px solid rgba(191,87,0,0.65);">
-          UT Austin
-        </span>
-      </div>
 
-      <!-- Scroll hint -->
-      <div class="mt-16 hero-reveal hero-reveal-5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto animate-bounce" viewBox="0 0 256 256" fill="currentColor" style="color: var(--muted-fg); opacity: 0.5;"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ ABOUT ============ -->
-  <section class="relative py-24 px-6 overflow-hidden">
-    <!-- Circuit board trace pattern -->
-    <div class="circuit-bg"></div>
-
-    <!-- Subtle side accent -->
-    <div class="absolute top-0 left-0 w-px h-full hidden lg:block" style="background: linear-gradient(to bottom, transparent, var(--accent), transparent); opacity: 0.15;"></div>
-
-    <div class="max-w-3xl mx-auto">
-      <div class="transcript fade-in" role="region" aria-label="About Jatin, written as a terminal transcript">
-        <div class="transcript-header">
-          <span class="transcript-dots" aria-hidden="true">
-            <span></span><span></span><span></span>
+        <!-- Quick credential badges — red/grey palette on dark glass backing -->
+        <div class="hero-reveal hero-reveal-5 flex flex-wrap items-center justify-center gap-3 mt-3">
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm"
+            style="background-color: rgba(12,10,12,0.55); color: #F08A8A; border: 1px solid rgba(226,92,92,0.55);">
+            Ex-Tesla
           </span>
-          <span class="transcript-title">about_me.txt</span>
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm"
+            style="background-color: rgba(12,10,12,0.55); color: #D6CCC2; border: 1px solid rgba(214,204,194,0.45);">
+            Ex-Fortive
+          </span>
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm"
+            style="background-color: rgba(12,10,12,0.55); color: #FF8C3F; border: 1px solid rgba(191,87,0,0.65);">
+            UT Austin
+          </span>
         </div>
-        <div class="transcript-body">
-          <div class="transcript-msg fade-in">
-            <div class="transcript-logo">
-              <img src="assets/logos/ut-austin.png" alt="UT Austin" loading="lazy" decoding="async">
-            </div>
-            <div class="transcript-text">
-              Robotics student at <span class="transcript-ut">UT Austin</span>. Researching in the Human Centered Robotics Lab on humanoids, TA'ing senior design, and mentoring student projects.
-            </div>
-          </div>
-          <div class="transcript-msg fade-in">
-            <div class="transcript-logo">
-              <img src="assets/logos/tesla.png" alt="Tesla" loading="lazy" decoding="async">
-            </div>
-            <div class="transcript-text">
-              Two <span class="transcript-em">Tesla</span> internships. Mechanical Engineer, then Software Data Engineer. Worked on CyberTruck and Model S/3/X/Y.
-            </div>
-          </div>
-          <div class="transcript-msg fade-in">
-            <div class="transcript-logo transcript-logo--padded">
-              <img src="assets/logos/fortive.png" alt="Fortive" loading="lazy" decoding="async">
-            </div>
-            <div class="transcript-text">
-              <span class="transcript-em">Fortive</span> rotational at Hengstler Dynapar. Helped with a plant acquisition, $500k/month revenue cells. Fastest way I've ever learned a factory from the shop floor up.
-            </div>
-          </div>
-          <div class="transcript-msg fade-in">
-            <div class="transcript-logo transcript-logo--padded">
-              <img src="assets/logos/pack-motorsports.png" alt="Pack Motorsports FSAE" loading="lazy" decoding="async">
-            </div>
-            <div class="transcript-text">
-              Two years on <span class="transcript-em">Pack Motorsports</span> FSAE, aero team. CFD, FEA, carbon fiber. I built race cars before I built products.
-            </div>
-          </div>
-          <div class="transcript-msg fade-in">
-            <div class="transcript-logo">
-              <img src="assets/logos/nc-state-mae.png" alt="NC State Mechanical and Aerospace Engineering" loading="lazy" decoding="async">
-            </div>
-            <div class="transcript-text">
-              BS Mech E with a CS minor at <span class="transcript-em">NC State</span>. Two research labs: one where I taught cars to drive themselves with RL, and one where I grew lung phantoms out of hydrogel.
-            </div>
-          </div>
+
+        <!-- Scroll hint -->
+        <div class="mt-16 hero-reveal hero-reveal-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto animate-bounce" viewBox="0 0 256 256"
+            fill="currentColor" style="color: var(--muted-fg); opacity: 0.5;">
+            <path
+              d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z" />
+          </svg>
         </div>
       </div>
+    </section>
 
+    <div class="px-divider" aria-hidden="true"></div>
 
+    <!-- ============ ABOUT ============ -->
+    <section class="relative py-20 px-6 overflow-hidden">
+      <div class="mx-auto" style="max-width: 55rem;">
 
-    </div>
-  </section>
-
-  <!-- ============ EXPLORE ============ -->
-  <section class="relative py-24 px-6">
-    <!-- Background accent -->
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(226,92,92,0.04), transparent);"></div>
-
-    <!-- Coordinate system overlay (bottom-left corner) -->
-    <svg class="absolute bottom-8 left-8 pointer-events-none hidden lg:block" width="120" height="120" viewBox="0 0 120 120" style="opacity: 0.12;">
-      <!-- Axes -->
-      <line x1="10" y1="110" x2="110" y2="110" stroke="var(--accent)" stroke-width="1"/>
-      <line x1="10" y1="110" x2="10" y2="10" stroke="var(--accent)" stroke-width="1"/>
-      <!-- Arrowheads -->
-      <polygon points="110,106 110,114 118,110" fill="var(--accent)"/>
-      <polygon points="6,10 14,10 10,2" fill="var(--accent)"/>
-      <!-- Tick marks -->
-      <line x1="35" y1="108" x2="35" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
-      <line x1="60" y1="108" x2="60" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
-      <line x1="85" y1="108" x2="85" y2="112" stroke="var(--accent)" stroke-width="0.8"/>
-      <line x1="8" y1="85" x2="12" y2="85" stroke="var(--accent)" stroke-width="0.8"/>
-      <line x1="8" y1="60" x2="12" y2="60" stroke="var(--accent)" stroke-width="0.8"/>
-      <line x1="8" y1="35" x2="12" y2="35" stroke="var(--accent)" stroke-width="0.8"/>
-      <!-- Labels -->
-      <text x="115" y="108" fill="var(--accent)" class="coord-label" font-size="8">x</text>
-      <text x="14" y="14" fill="var(--accent)" class="coord-label" font-size="8">y</text>
-    </svg>
-
-    <!-- Subtle state-space trajectory (top-right) -->
-    <svg class="absolute top-12 right-12 pointer-events-none hidden lg:block" width="160" height="160" viewBox="0 0 160 160" style="opacity: 0.08;">
-      <!-- Phase portrait spiral -->
-      <path d="M80 80 Q90 60 100 70 Q110 80 100 95 Q90 110 75 100 Q60 90 70 75 Q80 60 95 65 Q110 70 105 90 Q100 110 80 105 Q60 100 65 80" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-      <!-- Equilibrium point -->
-      <circle cx="80" cy="80" r="2" fill="var(--accent)"/>
-      <!-- Vector field arrows -->
-      <line x1="40" y1="40" x2="50" y2="50" stroke="var(--muted-fg)" stroke-width="0.5" marker-end="url(#arrowSmall)"/>
-      <line x1="120" y1="40" x2="110" y2="50" stroke="var(--muted-fg)" stroke-width="0.5"/>
-      <line x1="40" y1="120" x2="50" y2="110" stroke="var(--muted-fg)" stroke-width="0.5"/>
-      <line x1="120" y1="120" x2="110" y2="110" stroke="var(--muted-fg)" stroke-width="0.5"/>
-    </svg>
-
-    <div class="max-w-6xl mx-auto relative z-10">
-      <div class="text-center mb-14">
-        <div class="flex items-center justify-center gap-3 mb-4 fade-in">
-          <div class="w-8 h-0.5 rounded-full" style="background-color: var(--accent);"></div>
-          <h2 class="text-3xl md:text-4xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-            Explore
-          </h2>
-          <div class="w-8 h-0.5 rounded-full" style="background-color: var(--accent);"></div>
+        <div class="transcript fade-in" role="region" aria-label="About Jatin, written as a terminal transcript">
+          <div class="transcript-header">
+            <span class="transcript-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="transcript-title">about_me.txt</span>
+          </div>
+          <div class="transcript-body">
+            <div class="transcript-msg fade-in">
+              <div class="transcript-logo">
+                <img src="assets/logos/ut-austin.png" alt="UT Austin" loading="lazy" decoding="async">
+              </div>
+              <div class="transcript-text">
+                <p class="transcript-co" style="color: #BF5700;">UT Austin &middot; now</p>
+                <p>Robotics student researching humanoids in the Human Centered Robotics Lab. TA for senior design,
+                  mentor to student projects.</p>
+              </div>
+            </div>
+            <div class="transcript-msg fade-in">
+              <div class="transcript-logo">
+                <img src="assets/logos/tesla.png" alt="Tesla" loading="lazy" decoding="async">
+              </div>
+              <div class="transcript-text">
+                <p class="transcript-co" style="color: #E25C5C;">Tesla &times;2</p>
+                <p>Two internships &mdash; Mechanical Engineer, then Software Data Engineer. Worked on Model
+                  S/3/X/Y and one of the first 10 Cybertrucks.</p>
+              </div>
+            </div>
+            <div class="transcript-msg fade-in">
+              <div class="transcript-logo transcript-logo--padded">
+                <img src="assets/logos/fortive.png" alt="Fortive" loading="lazy" decoding="async">
+              </div>
+              <div class="transcript-text">
+                <p class="transcript-co" style="color: #4CAF50;">Fortive</p>
+                <p>Project Engineer at Hengstler Dynapar. Helped with a plant acquisition, directly in charge of 2 cells with ~$500k/month revenue.
+                  Fastest way I've ever learned a factory from the shop floor up.</p>
+              </div>
+            </div>
+            <div class="transcript-msg fade-in">
+              <div class="transcript-logo transcript-logo--padded">
+                <img src="assets/logos/pack-motorsports.png" alt="Pack Motorsports FSAE" loading="lazy"
+                  decoding="async">
+              </div>
+              <div class="transcript-text">
+                <p class="transcript-co" style="color: #ECE6DC;">Pack Motorsports &middot; FSAE</p>
+                <p>Two years on the aero team. CAD &rarr; CFD, FEA &rarr; a whole lotta carbon fiber. I built race cars before I built products.</p>
+              </div>
+            </div>
+            <div class="transcript-msg fade-in">
+              <div class="transcript-logo">
+                <img src="assets/logos/nc-state-mae.png" alt="NC State Mechanical and Aerospace Engineering"
+                  loading="lazy" decoding="async">
+              </div>
+              <div class="transcript-text">
+                <p class="transcript-co" style="color: #CC0000;">NC State</p>
+                <p>BS Mech E with a CS minor. Two research lab positions: one where I taught cars to drive themselves with RL,
+                  and one where I designed and 3D-printed lung phantoms out of hydrogel.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="fade-in text-sm" style="color: var(--muted-fg);">Where the work lives.</p>
+
+
+
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Ventures -->
-        <a href="/ventures" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(217,123,79,0.10), transparent 70%);"></div>
-          <div class="relative z-10">
-            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(217,123,79,0.18), rgba(217,123,79,0.05)); border: 1px solid rgba(217,123,79,0.25);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="color: var(--cta);"><path d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z"/></svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ventures</h3>
-            <p class="text-sm mb-4" style="color: var(--muted-fg);">Live products and startups I'm building, from productivity tools to humanoid tech.</p>
-            <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--cta);">View all &rarr;</span>
-          </div>
-        </a>
+    <div class="px-divider px-divider--flip" aria-hidden="true"></div>
 
-        <!-- Projects -->
-        <a href="/projects" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(226,92,92,0.10), transparent 70%);"></div>
-          <div class="relative z-10">
-            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(226,92,92,0.18), rgba(226,92,92,0.05)); border: 1px solid rgba(226,92,92,0.25);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="color: var(--accent);"><path d="M226.76,69a8,8,0,0,0-12.84-2.88l-40.3,37.19-17.23-3.7-3.7-17.23,37.19-40.3A8,8,0,0,0,187,29.24,72,72,0,0,0,88,96,72.34,72.34,0,0,0,94,124.94L33.79,177c-.15.12-.29.26-.43.39a32,32,0,0,0,45.26,45.26c.13-.13.27-.28.39-.42L131.06,162A72,72,0,0,0,232,96,71.56,71.56,0,0,0,226.76,69ZM160,152a56.14,56.14,0,0,1-27.07-7,8,8,0,0,0-9.92,1.77L67.11,211.51a16,16,0,0,1-22.62-22.62L109.18,133a8,8,0,0,0,1.77-9.93,56,56,0,0,1,58.36-82.31l-31.2,33.81a8,8,0,0,0-1.94,7.1L141.83,108a8,8,0,0,0,6.14,6.14l26.35,5.66a8,8,0,0,0,7.1-1.94l33.81-31.2A56.06,56.06,0,0,1,160,152Z"/></svg>
+    <!-- ============ EXPLORE ============ -->
+    <section class="relative py-20 px-6">
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-14">
+          <p class="fade-in px-eyebrow mb-4" style="justify-content: center;">map / districts</p>
+          <h2 class="fade-in text-3xl md:text-4xl font-bold mb-3"
+            style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">Explore</h2>
+          <p class="fade-in text-sm" style="color: var(--muted-fg);">Where the work lives.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Ventures -->
+          <a href="/ventures"
+            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
+            style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
+              style="background: radial-gradient(circle at top right, rgba(217,123,79,0.10), transparent 70%);"></div>
+            <div class="relative z-10">
+              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
+                style="background: linear-gradient(135deg, rgba(217,123,79,0.18), rgba(217,123,79,0.05)); border: 1px solid rgba(217,123,79,0.25);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
+                  style="color: var(--cta);">
+                  <path
+                    d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2"
+                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ventures</h3>
+              <p class="text-sm mb-4" style="color: var(--muted-fg);">Shipped products and startups — AI tools and
+                humanoid robotics.</p>
+              <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--cta);">View all
+                &rarr;</span>
             </div>
-            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Projects</h3>
-            <p class="text-sm mb-4" style="color: var(--muted-fg);">Robotics, CAD, mechatronics, from simulation to hardware on the bench.</p>
-            <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--accent);">View all &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <!-- Research -->
-        <a href="/research" class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none" style="background: radial-gradient(circle at top right, rgba(176,164,157,0.12), transparent 70%);"></div>
-          <div class="relative z-10">
-            <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(176,164,157,0.22), rgba(176,164,157,0.06)); border: 1px solid rgba(176,164,157,0.30);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="color: #B0A49D;"><path d="M196.12,128c24.65-34.61,37.22-70.38,19.74-87.86S162.61,35.23,128,59.88C93.39,35.23,57.62,22.66,40.14,40.14S35.23,93.39,59.88,128c-24.65,34.61-37.22,70.38-19.74,87.86h0c5.63,5.63,13.15,8.14,21.91,8.14,18.48,0,42.48-11.17,66-27.88C151.47,212.83,175.47,224,194,224c8.76,0,16.29-2.52,21.91-8.14h0C233.34,198.38,220.77,162.61,196.12,128Zm8.43-76.55c7.64,7.64,2.48,32.4-18.52,63.28a300.33,300.33,0,0,0-21.19-23.57A300.33,300.33,0,0,0,141.27,70C172.15,49,196.91,43.8,204.55,51.45ZM176.29,128a289.14,289.14,0,0,1-22.76,25.53A289.14,289.14,0,0,1,128,176.29a289.14,289.14,0,0,1-25.53-22.76A289.14,289.14,0,0,1,79.71,128,298.62,298.62,0,0,1,128,79.71a289.14,289.14,0,0,1,25.53,22.76A289.14,289.14,0,0,1,176.29,128ZM51.45,51.45c2.2-2.21,5.83-3.35,10.62-3.35C73.89,48.1,92.76,55,114.72,70A304,304,0,0,0,91.16,91.16,300.33,300.33,0,0,0,70,114.73C49,83.85,43.81,59.09,51.45,51.45Zm0,153.1C43.81,196.91,49,172.15,70,141.27a300.33,300.33,0,0,0,21.19,23.57A304.18,304.18,0,0,0,114.73,186C83.85,207,59.09,212.2,51.45,204.55Zm153.1,0c-7.64,7.65-32.4,2.48-63.28-18.52a304.18,304.18,0,0,0,23.57-21.19A300.33,300.33,0,0,0,186,141.27C207,172.15,212.19,196.91,204.55,204.55ZM140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"/></svg>
+          <!-- Projects -->
+          <a href="/projects"
+            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
+            style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
+              style="background: radial-gradient(circle at top right, rgba(226,92,92,0.10), transparent 70%);"></div>
+            <div class="relative z-10">
+              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
+                style="background: linear-gradient(135deg, rgba(226,92,92,0.18), rgba(226,92,92,0.05)); border: 1px solid rgba(226,92,92,0.25);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
+                  style="color: var(--accent);">
+                  <path
+                    d="M226.76,69a8,8,0,0,0-12.84-2.88l-40.3,37.19-17.23-3.7-3.7-17.23,37.19-40.3A8,8,0,0,0,187,29.24,72,72,0,0,0,88,96,72.34,72.34,0,0,0,94,124.94L33.79,177c-.15.12-.29.26-.43.39a32,32,0,0,0,45.26,45.26c.13-.13.27-.28.39-.42L131.06,162A72,72,0,0,0,232,96,71.56,71.56,0,0,0,226.76,69ZM160,152a56.14,56.14,0,0,1-27.07-7,8,8,0,0,0-9.92,1.77L67.11,211.51a16,16,0,0,1-22.62-22.62L109.18,133a8,8,0,0,0,1.77-9.93,56,56,0,0,1,58.36-82.31l-31.2,33.81a8,8,0,0,0-1.94,7.1L141.83,108a8,8,0,0,0,6.14,6.14l26.35,5.66a8,8,0,0,0,7.1-1.94l33.81-31.2A56.06,56.06,0,0,1,160,152Z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2"
+                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Projects</h3>
+              <p class="text-sm mb-4" style="color: var(--muted-fg);">Robotics, CAD, mechatronics, from simulation to
+                hardware on the bench.</p>
+              <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--accent);">View all
+                &rarr;</span>
             </div>
-            <h3 class="text-lg font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Research</h3>
-            <p class="text-sm mb-4" style="color: var(--muted-fg);">RL, control systems, and robotics: papers, presentations, and reports.</p>
-            <span class="text-xs font-semibold uppercase tracking-wider" style="color: #B0A49D;">View all &rarr;</span>
-          </div>
-        </a>
+          </a>
+
+          <!-- Research -->
+          <a href="/research"
+            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
+            style="background-color: var(--card-bg); border: 1px solid var(--border);">
+            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
+              style="background: radial-gradient(circle at top right, rgba(176,164,157,0.12), transparent 70%);"></div>
+            <div class="relative z-10">
+              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
+                style="background: linear-gradient(135deg, rgba(176,164,157,0.22), rgba(176,164,157,0.06)); border: 1px solid rgba(176,164,157,0.30);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
+                  style="color: #B0A49D;">
+                  <path
+                    d="M196.12,128c24.65-34.61,37.22-70.38,19.74-87.86S162.61,35.23,128,59.88C93.39,35.23,57.62,22.66,40.14,40.14S35.23,93.39,59.88,128c-24.65,34.61-37.22,70.38-19.74,87.86h0c5.63,5.63,13.15,8.14,21.91,8.14,18.48,0,42.48-11.17,66-27.88C151.47,212.83,175.47,224,194,224c8.76,0,16.29-2.52,21.91-8.14h0C233.34,198.38,220.77,162.61,196.12,128Zm8.43-76.55c7.64,7.64,2.48,32.4-18.52,63.28a300.33,300.33,0,0,0-21.19-23.57A300.33,300.33,0,0,0,141.27,70C172.15,49,196.91,43.8,204.55,51.45ZM176.29,128a289.14,289.14,0,0,1-22.76,25.53A289.14,289.14,0,0,1,128,176.29a289.14,289.14,0,0,1-25.53-22.76A289.14,289.14,0,0,1,79.71,128,298.62,298.62,0,0,1,128,79.71a289.14,289.14,0,0,1,25.53,22.76A289.14,289.14,0,0,1,176.29,128ZM51.45,51.45c2.2-2.21,5.83-3.35,10.62-3.35C73.89,48.1,92.76,55,114.72,70A304,304,0,0,0,91.16,91.16,300.33,300.33,0,0,0,70,114.73C49,83.85,43.81,59.09,51.45,51.45Zm0,153.1C43.81,196.91,49,172.15,70,141.27a300.33,300.33,0,0,0,21.19,23.57A304.18,304.18,0,0,0,114.73,186C83.85,207,59.09,212.2,51.45,204.55Zm153.1,0c-7.64,7.65-32.4,2.48-63.28-18.52a304.18,304.18,0,0,0,23.57-21.19A300.33,300.33,0,0,0,186,141.27C207,172.15,212.19,196.91,204.55,204.55ZM140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2"
+                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Research</h3>
+              <p class="text-sm mb-4" style="color: var(--muted-fg);">RL, control systems, and robotics: papers,
+                presentations, and reports.</p>
+              <span class="text-xs font-semibold uppercase tracking-wider" style="color: #B0A49D;">View all
+                &rarr;</span>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ CTA ============ -->
-  <section class="relative py-24 px-6 overflow-hidden">
-    <!-- Gradient background -->
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(226,92,92,0.06), transparent);"></div>
+    <div class="px-divider" aria-hidden="true"></div>
 
-    <!-- Blueprint grid (subtle) -->
-    <div class="absolute inset-0 pointer-events-none" style="opacity: 0.02; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <!-- ============ CTA ============ -->
+    <section class="relative py-20 px-6 overflow-hidden">
+      <!-- Gradient background -->
+      <div class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(226,92,92,0.06), transparent);"></div>
 
-    <div class="max-w-3xl mx-auto text-center relative z-10">
-      <h2 class="fade-in text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        Let's connect
-      </h2>
-      <p class="fade-in text-base md:text-lg mb-8" style="color: var(--muted-fg);">
-        Always open to conversations about AI, robotics, startups, or interesting problems worth solving.
-      </p>
-      <div class="fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; background-color: #0A66C2; color: #fff; box-shadow: 0 4px 20px rgba(10,102,194,0.3);">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="mailto:jsikka@utexas.edu" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"/></svg>
-          Email
-        </a>
-        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
-        </a>
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <p class="fade-in px-eyebrow mb-4" style="justify-content: center;">comms / open channel</p>
+        <h2 class="fade-in text-3xl md:text-4xl font-bold mb-4"
+          style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+          Let's connect
+        </h2>
+        <p class="fade-in text-base md:text-lg mb-8" style="color: var(--muted-fg);">
+          Always open to conversations about AI, robotics, startups, or interesting problems worth solving.
+        </p>
+        <div class="fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer"
+            class="px-btn inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5"
+            style="font-family: 'Space Grotesk', sans-serif; background-color: #0A66C2; color: #fff; box-shadow: 0 4px 20px rgba(10,102,194,0.3);">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="mailto:jsikka@utexas.edu"
+            class="px-btn inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5"
+            style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+              <path
+                d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z" />
+            </svg>
+            Email
+          </a>
+          <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer"
+            class="px-btn inline-flex items-center gap-2 cursor-pointer px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:opacity-80 hover:-translate-y-0.5"
+            style="font-family: 'Space Grotesk', sans-serif; color: var(--text); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </main>
 
   <!-- ============ FOOTER ============ -->
   <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <p class="text-sm" style="color: var(--muted-fg);">
+      <p class="px-footer-tag" style="color: var(--muted-fg);">
         &copy; 2026 Jatin Sikka
       </p>
       <div class="flex items-center gap-6">
-        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
-        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
-        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer"
+          class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer"
+          class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity"
+          style="color: var(--muted-fg);">Email</a>
       </div>
     </div>
   </footer>
@@ -538,74 +716,75 @@
 
   <!-- ============ NAV TRANSPARENCY (over hero) ============ -->
   <script>
-  (function NavScrollModule() {
-    const nav = document.getElementById('main-nav');
-    const hero = document.getElementById('hero-section');
-    if (!nav || !hero) return;
-    // Flip at ~80% of the hero's height — before the user actually leaves the hero.
-    function update() {
-      const threshold = hero.offsetHeight * 0.8;
-      if (window.scrollY > threshold) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    }
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-  })();
+    (function NavScrollModule() {
+      const nav = document.getElementById('main-nav');
+      const hero = document.getElementById('hero-section');
+      if (!nav || !hero) return;
+      // Flip at ~80% of the hero's height — before the user actually leaves the hero.
+      function update() {
+        const threshold = hero.offsetHeight * 0.8;
+        if (window.scrollY > threshold) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    })();
   </script>
 
   <!-- ============ ARM TRACE ANIMATION TRIGGER ============ -->
   <script>
-  (function ArmTraceModule() {
-    function init() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var traces = document.querySelectorAll('.arm-trace');
-      if (!traces.length || !('IntersectionObserver' in window)) return;
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      traces.forEach(function(el) { observer.observe(el); });
-    }
-    document.addEventListener('DOMContentLoaded', init);
-  })();
+    (function ArmTraceModule() {
+      function init() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var traces = document.querySelectorAll('.arm-trace');
+        if (!traces.length || !('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        traces.forEach(function (el) { observer.observe(el); });
+      }
+      document.addEventListener('DOMContentLoaded', init);
+    })();
   </script>
 
   <!-- ============ HERO PARALLAX ============ -->
   <script>
-  (function HeroParallax() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var orbs = [
-      { el: null, speed: 0.03 },
-      { el: null, speed: -0.02 },
-      { el: null, speed: 0.015 }
-    ];
-    function init() {
-      orbs[0].el = document.getElementById('orb-1');
-      orbs[1].el = document.getElementById('orb-2');
-      orbs[2].el = document.getElementById('orb-3');
-      if (!orbs[0].el) return;
-      var hero = document.getElementById('hero-section');
-      if (!hero) return;
-      hero.addEventListener('mousemove', function(e) {
-        var rect = hero.getBoundingClientRect();
-        var cx = (e.clientX - rect.left) / rect.width - 0.5;
-        var cy = (e.clientY - rect.top) / rect.height - 0.5;
-        orbs.forEach(function(o) {
-          if (!o.el) return;
-          var dx = cx * o.speed * 800;
-          var dy = cy * o.speed * 800;
-          o.el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    (function HeroParallax() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var orbs = [
+        { el: null, speed: 0.03 },
+        { el: null, speed: -0.02 },
+        { el: null, speed: 0.015 }
+      ];
+      function init() {
+        orbs[0].el = document.getElementById('orb-1');
+        orbs[1].el = document.getElementById('orb-2');
+        orbs[2].el = document.getElementById('orb-3');
+        if (!orbs[0].el) return;
+        var hero = document.getElementById('hero-section');
+        if (!hero) return;
+        hero.addEventListener('mousemove', function (e) {
+          var rect = hero.getBoundingClientRect();
+          var cx = (e.clientX - rect.left) / rect.width - 0.5;
+          var cy = (e.clientY - rect.top) / rect.height - 0.5;
+          orbs.forEach(function (o) {
+            if (!o.el) return;
+            var dx = cx * o.speed * 800;
+            var dy = cy * o.speed * 800;
+            o.el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+          });
         });
-      });
-    }
-    document.addEventListener('DOMContentLoaded', init);
-  })();
+      }
+      document.addEventListener('DOMContentLoaded', init);
+    })();
   </script>
 
 </body>
+
 </html>

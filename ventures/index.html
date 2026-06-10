@@ -4,48 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ventures | Jatin Sikka</title>
-  <meta name="description" content="Live products and startups Jatin Sikka is building, from productivity tools to humanoid tech." />
+  <meta name="description" content="Products and startups Jatin Sikka is building — AI tools, humanoid robotics research, and quant systems." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/custom.css" />
+  <link rel="stylesheet" href="../css/pixel.css" />
 </head>
 <body>
 
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <nav class="sticky top-0 z-40" style="background-color: rgba(11,11,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+  <nav class="sticky top-0 z-40" style="background-color: rgba(10,14,24,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
     <style>
-      html.light nav.sticky { background-color: rgba(248,250,252,0.85) !important; }
+      html.light nav.sticky { background-color: rgba(244,237,225,0.88) !important; }
     </style>
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="/" class="text-lg font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">
-        JS
+      <a href="/" class="px-logo text-lg font-bold tracking-tight" style="color: var(--text);">
+        JS<span class="px-cursor">_</span>
       </a>
-
-      <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Ventures</a>
+        <a href="/ventures" aria-current="page" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Ventures</a>
         <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
         <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
         <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
       </div>
-
       <div class="flex items-center gap-3">
-        <!-- Theme toggle -->
         <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
-          <!-- Sun icon (shown in dark mode) -->
           <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
             <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
           </svg>
-          <!-- Moon icon (shown in light mode) -->
           <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="display:none;">
             <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
           </svg>
         </button>
-
-        <!-- Mobile hamburger -->
         <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
             <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
@@ -58,7 +50,7 @@
   <!-- ============ MOBILE MENU ============ -->
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <div class="flex items-center justify-between mb-8">
-      <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
+      <span class="text-lg font-bold px-logo" style="color: var(--text);">Menu</span>
       <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
           <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
@@ -74,210 +66,80 @@
   </div>
 
   <!-- ============ PAGE HEADER ============ -->
-  <section id="main-content" class="pt-24 pb-12 px-6">
+  <section id="main-content" class="pt-24 pb-10 px-6">
     <div class="max-w-6xl mx-auto">
-      <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+      <p class="fade-in px-eyebrow mb-4">sector / ventures</p>
+      <h1 class="fade-in px-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
         Ventures
       </h1>
       <p class="fade-in text-lg md:text-xl max-w-3xl" style="color: var(--muted-fg);">
-        Live products and startups I'm building, from robotics and AI to productivity tools.
+        What I'm building right now &mdash; shipped products and research with a startup path.
       </p>
     </div>
   </section>
 
-  <!-- ============ PRODUCTIVITY ECOSYSTEM ============ -->
-  <section class="py-12 px-6">
+  <div class="px-divider" aria-hidden="true"></div>
+
+  <!-- ============ ACTIVE VENTURES ============ -->
+  <section class="py-14 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="fade-in rounded-2xl p-6 md:p-10" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
-        <!-- Ecosystem header -->
-        <div class="mb-8">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(226,92,92,0.12);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor" style="color: var(--accent);"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></svg>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-              Productivity Ecosystem
-            </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Undoom.It -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Undoom.It</h3>
+            <span class="px-chip px-chip--live">Live</span>
           </div>
-          <p class="text-sm md:text-base" style="color: var(--muted-fg);">
-            Three tools designed to work together: capture, focus, accountability.
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">You're going to scroll anyway. Make it count.</p>
+          <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted-fg);">
+            Save content from any app via the iOS Share Sheet. AI processes and categorises everything you capture, then delivers a daily digest email so you actually act on what you saved instead of hoarding it.
           </p>
-        </div>
-
-        <!-- Ecosystem connector -->
-        <div class="hidden md:flex items-center justify-center gap-2 mb-6">
-          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(226,92,92,0.08); border: 1px solid rgba(226,92,92,0.20);">Capture</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor" style="color: var(--muted-fg);"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg>
-          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(226,92,92,0.08); border: 1px solid rgba(226,92,92,0.20);">Focus</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor" style="color: var(--muted-fg);"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg>
-          <span class="text-xs font-medium px-3 py-1 rounded-full" style="color: var(--accent); background-color: rgba(226,92,92,0.08); border: 1px solid rgba(226,92,92,0.20);">Accountability</span>
-        </div>
-
-        <!-- Ecosystem cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Undoom.It -->
-          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Undoom.It</h3>
-              <span class="badge-active">Active</span>
-            </div>
-            <p class="text-sm font-medium mb-2" style="color: var(--text);">You're going to scroll anyway. Make it count.</p>
-            <p class="text-sm mb-4" style="color: var(--muted-fg);">
-              Save content from any app via iOS Share Sheet. Gemini AI processes, categorises, and delivers a daily digest email so you actually act on what you saved.
-            </p>
-            <a href="https://undoom-it.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
-              Live Demo &rarr;
-            </a>
-          </div>
-
-          <!-- FocusOS -->
-          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">FocusOS</h3>
-              <span class="badge-active">Active</span>
-            </div>
-            <p class="text-sm font-medium mb-2" style="color: var(--text);">Deep work, distraction-free.</p>
-            <p class="text-sm mb-4" style="color: var(--muted-fg);">
-              A productivity web app built around frameworks extracted from top performers like Elon Musk, Bill Gates, and other high-output thinkers. Blocks noise, structures your sessions, and keeps you locked into what matters.
-            </p>
-            <a href="https://magnificent-banoffee-b8b141.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
-              Live Demo &rarr;
-            </a>
-          </div>
-
-          <!-- FocusPact -->
-          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">FocusPact</h3>
-              <span class="badge-active">Active</span>
-            </div>
-            <p class="text-sm font-medium mb-2" style="color: var(--text);">Accountability that works.</p>
-            <p class="text-sm" style="color: var(--muted-fg);">
-              An iOS app that pairs you with accountability partners and uses screen-time controls to keep commitments real. Built on the same productivity frameworks as FocusOS, but enforced through pacts. No cheating, no excuses.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ROBOTICS & AI ============ -->
-  <section class="py-12 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="fade-in rounded-2xl p-6 md:p-10" style="background-color: var(--muted-bg); border: 1px solid var(--border);">
-        <!-- Section header -->
-        <div class="mb-8">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(239,68,68,0.12);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor" style="color: #ef4444;"><path d="M200,48H136V16a8,8,0,0,0-16,0V48H56A32,32,0,0,0,24,80V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32V80A32,32,0,0,0,200,48Zm16,144a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V80A16,16,0,0,1,56,64H200a16,16,0,0,1,16,16Zm-52-56H92a28,28,0,0,0,0,56h72a28,28,0,0,0,0-56Zm-24,16v24H116V152ZM80,164a12,12,0,0,1,12-12h8v24H92A12,12,0,0,1,80,164Zm84,12h-8V152h8a12,12,0,0,1,0,24ZM72,108a12,12,0,1,1,12,12A12,12,0,0,1,72,108Zm88,0a12,12,0,1,1,12,12A12,12,0,0,1,160,108Z"/></svg>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-              Robotics &amp; AI
-            </h2>
-          </div>
-          <p class="text-sm md:text-base" style="color: var(--muted-fg);">
-            Ventures rooted in my PhD research: applied humanoids, reinforcement learning, and computer vision.
-          </p>
-        </div>
-
-        <!-- Robotics cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- InspectAI -->
-          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">InspectAI</h3>
-              <span class="badge-exploring">Exploring</span>
-            </div>
-            <p class="text-sm font-medium mb-2" style="color: var(--text);">AI-powered factory quality control.</p>
-            <p class="text-sm" style="color: var(--muted-fg);">
-              Camera-based visual inspection that catches manufacturing defects in real-time, no expensive hardware. Uses fine-tuned vision models on edge devices to replace manual QC on the factory floor. Currently deploying at a 30-year hand tools manufacturer in India.
-            </p>
-          </div>
-
-          <!-- Humanoid Skills -->
-          <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Humanoid Skills</h3>
-              <span class="badge-exploring">Exploring</span>
-            </div>
-            <p class="text-sm font-medium mb-2" style="color: var(--text);">Teach once, deploy anywhere.</p>
-            <p class="text-sm" style="color: var(--muted-fg);">
-              A cross-embodiment skill transfer framework for humanoid robots. A human demonstrates a task once, and the system learns a policy that generalizes across different robot platforms with different morphologies, actuators, and sensors. Research-to-product pipeline via MS thesis.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ STANDALONE VENTURES ============ -->
-  <section class="py-12 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        Standalone Ventures
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- SubletSync -->
-        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">SubletSync</h3>
-            <span class="badge-active">Active</span>
-          </div>
-          <p class="text-sm font-medium mb-2" style="color: var(--text);">Trust-based subleasing.</p>
-          <p class="text-sm mb-4" style="color: var(--muted-fg);">
-            A trust-based subleasing platform where escrow services handle lease and tenant matching. <span style="color: var(--text); font-weight: 500;">Stage 1 (live):</span> Badge verification system + AI that auto-fills your listing if you've already posted on Facebook or other platforms. <span style="color: var(--text); font-weight: 500;">Stage 2:</span> Full escrow-backed lease management and tenant matching.
-          </p>
-          <a href="https://subletsync.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
-            subletsync.com &rarr;
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPLORING ============ -->
-  <section class="py-12 pb-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        Exploring
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- LawAI -->
-        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">LawAI</h3>
-            <span class="badge-exploring">Exploring</span>
-          </div>
-          <p class="text-sm font-medium mb-2" style="color: var(--text);">Harvey AI for India.</p>
-          <p class="text-sm mb-4" style="color: var(--muted-fg);">
-            Making legal research and document drafting accessible to Indian lawyers and firms through AI. Early-stage exploration.
-          </p>
-          <a href="/ventures/lawai" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">
-            View Report &rarr;
+          <a href="https://undoomit.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+            undoomit.com &rarr;
           </a>
         </div>
 
-        <!-- NeuraSutical -->
-        <div class="card-hover fade-in rounded-xl p-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">NeuraSutical</h3>
-            <span class="badge-exploring">Exploring</span>
+        <!-- Sequent Robotics -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent Robotics</h3>
+            <span class="px-chip px-chip--research">Research</span>
           </div>
-          <p class="text-sm font-medium mb-2" style="color: var(--text);">AI-powered diagnostics.</p>
-          <p class="text-sm" style="color: var(--muted-fg);">
-            Exploring how AI can assist with preliminary medical assessments and health insights. Early research phase.
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">A humanoid that knows when it can't.</p>
+          <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted-fg);">
+            A humanoid system that verifies whether a planned action is physically feasible before executing it &mdash; and re-plans instantly when a step would fail. MuJoCo proof-of-concept today; research-to-product path via my PhD work at UT Austin.
           </p>
+          <a href="https://sequent-robotics.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+            View the demo &rarr;
+          </a>
         </div>
+
+        <!-- Waiv -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Waiv</h3>
+            <span class="px-chip px-chip--building">Building</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">Right card, every checkout.</p>
+          <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted-fg);">
+            Automatic credit-card routing that picks the optimal card for every purchase to maximize rewards. My sister's venture &mdash; I'm the technical co-builder behind the engineering.
+          </p>
+          <a href="https://www.waivme.com/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+            waivme.com &rarr;
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <div class="px-divider px-divider--flip" aria-hidden="true"></div>
 
   <!-- ============ FOOTER ============ -->
   <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <p class="text-sm" style="color: var(--muted-fg);">
+      <p class="px-footer-tag" style="color: var(--muted-fg);">
         &copy; 2026 Jatin Sikka
       </p>
       <div class="flex items-center gap-6">
