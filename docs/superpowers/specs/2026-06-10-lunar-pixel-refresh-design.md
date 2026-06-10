@@ -24,9 +24,16 @@ system. Built as previews first, promoted after Jatin reviews locally.
 - `about_me.txt` terminal transcript stays, reskinned with pixel chrome.
 
 ## Content audit
-- /ventures rebuilt with exactly: Undoom.It, Humanoid Skills, quant-terminal,
-  Waiv (tagged "supporting — my sister's venture"). Pixel status chips
-  (LIVE / RESEARCH / BUILDING). HakkHealth deliberately excluded (Jatin's call).
+- /ventures rebuilt with exactly: Undoom.It (LIVE, undoomit.com),
+  Sequent Robotics (RESEARCH, sequent-robotics.vercel.app — renamed from
+  Humanoid Skills per Jatin 2026-06-10), Waiv (BUILDING, waivme.com,
+  credited as sister's venture). quant-terminal and HakkHealth deliberately
+  excluded (Jatin's call).
+
+## Revision 2026-06-10 (Jatin feedback round 1)
+- About transcript: airier layout — pixel company labels (Silkscreen) above
+  DM Sans body text, no left border bars, bigger padding/gaps.
+- Skyline divider replaced by minimal centered three-pixel glyph.
 - Delete dead ventures + `ventures/lawai.html`.
 - "Now" chip links to https://undoomit.com (not undoom-it.vercel.app).
 - /projects and /research: content unchanged, restyle only.
