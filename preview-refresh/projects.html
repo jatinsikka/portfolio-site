@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Jatin Sikka</title>
+  <meta name="description" content="Engineering and research projects by Jatin Sikka on robotics, reinforcement learning, humanoid control, and mechanical design." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <link rel="stylesheet" href="pixel.css" />
+  <style>
+    .project-card-img {
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      width: 100%;
+      border-radius: 0.75rem 0.75rem 0 0;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background-color: var(--muted-bg);
+    }
+    .project-card:hover .project-card-img {
+      transform: scale(1.04);
+    }
+    .project-card .img-wrap {
+      overflow: hidden;
+      border-radius: 0.75rem 0.75rem 0 0;
+      position: relative;
+    }
+    .project-card .img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.45));
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover .img-wrap::after {
+      opacity: 1;
+    }
+    .category-line {
+      width: 2rem;
+      height: 2px;
+      display: inline-block;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      border-radius: 1px;
+    }
+    .nda-notice {
+      border-left: 3px solid var(--muted-fg);
+      padding-left: 1rem;
+    }
+    .nda-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03));
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .nda-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: #e74c3c;
+      border-radius: 4px 0 0 4px;
+    }
+    html.light .nda-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+    }
+    .tesla-group {
+      background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .tesla-group::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #e74c3c, transparent);
+    }
+    html.light .tesla-group {
+      background: linear-gradient(135deg, rgba(239,68,68,0.04), rgba(239,68,68,0.01));
+    }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .featured-card { grid-template-columns: 1fr 1fr; }
+    }
+    .featured-card .featured-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: var(--muted-bg);
+    }
+    @media (min-width: 768px) {
+      .featured-card .featured-img { min-height: 280px; max-height: 360px; }
+    }
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+    }
+    /* Consolidated project gallery */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .project-gallery { grid-template-columns: repeat(3, 1fr); }
+    }
+    .project-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: var(--muted-bg);
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .project-gallery img:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(10,14,24,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+    <style>
+      html.light nav.sticky { background-color: rgba(244,237,225,0.88) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="px-logo text-lg font-bold tracking-tight" style="color: var(--text);">
+        JS<span class="px-cursor">_</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="ventures.html" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Ventures</a>
+        <a href="projects.html" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Projects</a>
+        <a href="research.html" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="display:none;">
+            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="ventures.html" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="projects.html" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="research.html" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section id="main-content" class="pt-24 pb-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="fade-in px-eyebrow mb-4">sector / projects</p>
+      <h1 class="fade-in px-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+        Projects
+      </h1>
+      <p class="fade-in text-lg md:text-xl max-w-3xl" style="color: var(--muted-fg);">
+        Robotics, reinforcement learning, humanoid control, and hands-on mechanical design, from simulation to hardware.
+      </p>
+    </div>
+  </section>
+
+  <div class="px-divider" aria-hidden="true"></div>
+
+  <!-- ============ ROBOTICS & RL ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--accent);"></span>Robotics &amp; Reinforcement Learning
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- So-Arm RL Training (video-only) -->
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Training using RL (PPO) in Isaac Lab</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">Trained a So-Arm robotic manipulator using Proximal Policy Optimization (PPO) in NVIDIA Isaac Lab. The agent progresses from random movements to precise, coordinated grasping.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Isaac Lab</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PPO</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Manipulation</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
+                <source src="../assets/So_Arm_init.mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-2 text-center" style="color: var(--muted-fg);">Stage 1: Initial (untrained)</p>
+            </div>
+            <div>
+              <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
+                <source src="../assets/So_Arm_mid.mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-2 text-center" style="color: var(--muted-fg);">Stage 2: Mid-training</p>
+            </div>
+            <div>
+              <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
+                <source src="../assets/So_Arm_trained.mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-2 text-center" style="color: var(--muted-fg);">Stage 3: Fully trained</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loco-manipulation (video-only) -->
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation using RL &amp; AMO Controller in MuJoCo</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">Combined locomotion and manipulation on a quadruped robot using RL with a pretrained AMO controller. The robot walks to objects and manipulates them, demonstrated with a screwdriver pick-and-place task.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">MuJoCo</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">RL</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Locomotion</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+            <div>
+              <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
+                <source src="../assets/Untitled video - Made with Clipchamp (1).mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-2 text-center" style="color: var(--muted-fg);">Locomotion + manipulation task</p>
+            </div>
+            <div>
+              <video controls preload="metadata" class="w-full rounded-lg" style="aspect-ratio: 16/9; background: #000;">
+                <source src="../assets/screwdriver (1).mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-2 text-center" style="color: var(--muted-fg);">Screwdriver task</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Whole Body Control & Bipedal Walking: Consolidated Featured Project -->
+        <div class="fade-in rounded-xl p-5 lg:col-span-3" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <h3 class="text-lg font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
+          <p class="text-sm mb-4" style="color: var(--muted-fg);">End-to-end humanoid locomotion system combining Whole Body Control, DCM-based trajectory planning, and multi-directional gait generation. WBC is formulated as a QP minimizing joint accelerations and reaction forces subject to full-body dynamics constraints, providing real-time torque commands for balancing. The DCM planner decomposes CoM dynamics into stable/unstable components for footstep trajectory generation with ZMP constraints. Together they enable forward, backward, and lateral walking with Lyapunov-guaranteed stability.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">WBC</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">DCM Planner</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">QP Optimization</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">ZMP</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Lyapunov Stability</span>
+            <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Multi-Directional Gait</span>
+          </div>
+          <div class="project-gallery">
+            <img src="../assets/images/projects/so-arm-rl.gif" alt="Humanoid stand and balance, WBC controller" loading="lazy" />
+            <img src="../assets/images/projects/wbc-balance.jpg" alt="Humanoid walking in Bullet Physics sim" loading="lazy" />
+            <img src="../assets/images/projects/loco-manipulation.png" alt="DCM planner: footstep trajectories and CoM tracking" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MECHATRONICS & MECHANICAL DESIGN ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--cta);"></span>Mechatronics &amp; Mechanical Design
+      </h2>
+
+      <!-- Tesla NDA Group -->
+      <div class="fade-in tesla-group mb-10">
+        <div class="p-6 md:p-8">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Tesla · Gigafactory</h3>
+              <div class="flex items-center gap-2 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="#e74c3c"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"/></svg>
+                <span class="text-xs font-semibold uppercase tracking-wider" style="color: #e74c3c;">Under NDA · No visuals or proprietary details</span>
+              </div>
+            </div>
+            <img src="../assets/tesla-logo.png" alt="Tesla" class="h-5 md:h-6 object-contain flex-shrink-0" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Stripper Plates · MS/X</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Identified a recurring punch retraction issue causing quality defects. Designed 4 new stripper plates in SolidWorks, 3D-printed prototypes for rapid iteration, and validated compatibility with the rocker punch machine. Mitigated 95% of quality issues and improved production consistency.</p>
+            </div>
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Frunk Clip Covers · M3</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Addressed frequent scratching and warping of M3 Frunk Clips during transportation to General Assembly. Designed custom protective clip covers in SolidWorks, 3D-printed prototypes, and iterated on durability. Achieved a 97% reduction in clip damage and significantly reduced scrap.</p>
+            </div>
+            <div class="rounded-lg p-4" style="background-color: rgba(0,0,0,0.15);">
+              <h4 class="text-sm font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">PA Sensor Installation Tool · MS/X</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--muted-fg);">Engineered a spring-loaded installation tool for Parking Assist sensors to eliminate Not-Seated-Properly (NSP) defects. Designed in SolidWorks, validated through multiple prototypes, and refined with production teams for ergonomic use. Delivered proof of concept with full documentation for continued development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Projects -->
+      <h3 class="fade-in text-lg font-semibold mb-6 mt-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--muted-fg);">Featured Projects</h3>
+      <div class="space-y-6 mb-10">
+
+        <!-- Robotic Arm Project -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/dcm-planner.png" alt="Robotic Arm Manipulation" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-medium" style="color: var(--accent);">MAE &middot; Robotics</span>
+              <img src="../assets/images/projects/MAE.png" alt="MAE" class="h-4 md:h-5 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Robotic Arm Manipulation</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Built a robotic arm manipulation pipeline with forward/inverse kinematics, trajectory generation, and real-time control. The system computes joint-space trajectories from task-space goals using analytical IK, then executes smooth motion profiles with PD control and gravity compensation. Tested in simulation with pick-and-place tasks requiring precise end-effector orientation.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Forward/Inverse Kinematics</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">PD Control</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Gravity Compensation</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Trajectory Planning</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pentair Senior Design · 1st Place -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/pentair-senior-design.png" alt="Pentair Water Level Sensing System" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="stat-pill" style="background-color: rgba(245,158,11,0.15); color: #f59e0b;">1st Place</span>
+                <span class="text-xs font-medium" style="color: var(--accent);">Pentair &middot; Senior Design</span>
+              </div>
+              <img src="../assets/images/projects/Pentair.png" alt="Pentair" class="h-5 md:h-6 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Water Level Sensing System</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Automated water management system for swimming pools. Designed in SolidWorks with a 3D-printed casing mounted on the skimmer lid. Raspberry Pi with ultrasonic sensors and solenoid valves monitors and controls water levels in real-time.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">&plusmn;2 cm accuracy</span>
+              <span class="stat-pill" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">Reduced wastage</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Raspberry Pi</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">3D Printing</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Ultrasonic Sensors</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fortive Rotary Encoder Fixture -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/fortive-encoder-fixture.png" alt="Fortive Rotary Encoder Fixture" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-medium" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
+              <img src="../assets/images/projects/Fortive.png" alt="Fortive" class="h-5 md:h-6 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Fixture for Rotary Encoder</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Versatile fixture to securely hold rotary encoder modules at precise angles for cover assembly. Designed in SolidWorks and manufactured using a resin 3D printer. Minimized operator error and increased safety, since operators no longer need to hold the module during screwing.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">61% less errors</span>
+              <span class="stat-pill" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">42% faster</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Resin 3D Print</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Fixture Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fortive PCB Soldering Fixture -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/fortive-pcb-fixture.png" alt="PCB Soldering Fixture · Fortive" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-medium" style="color: var(--accent);">Fortive / Hengstler Dynapar</p>
+              <img src="../assets/images/projects/Fortive.png" alt="Fortive" class="h-5 md:h-6 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">PCB Soldering Fixture</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Designed a fixture to firmly secure PCBs while soldering wire connectors. Designed in SolidWorks, prototyped via 3D printing, and final version manufactured using CNC machining. Improved safety as operators no longer need to hold the board during soldering.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">31% less errors</span>
+              <span class="stat-pill" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">28% faster</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">CNC</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">3D Printing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FSAE Aerodynamics -->
+        <div class="fade-in featured-card" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <img src="../assets/images/projects/Aerodynamics.png" alt="FSAE Sidepod and Sidewing" class="featured-img" loading="lazy" />
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-medium" style="color: var(--accent);">Pack Motorsports &middot; FSAE</p>
+              <img src="../assets/images/projects/Pack.png" alt="Pack Motorsports" class="h-5 md:h-6 object-contain flex-shrink-0" />
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sidepod &amp; Sidewing Aerodynamics</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Developed a concept for sidepods and side wings for the FSAE EV car. Focused on reducing drag and increasing downforce through CFD-optimized geometry, validated with extensive simulation runs.</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="stat-pill" style="background-color: rgba(34,197,94,0.12); color: #22c55e;">6% less drag</span>
+              <span class="stat-pill" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">11% lighter</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">CFD</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">SolidWorks</span>
+              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Aerodynamics</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Other CAD Projects Grid -->
+      <h3 class="fade-in text-lg font-semibold mb-6" style="font-family: 'Space Grotesk', sans-serif; color: var(--muted-fg);">Other CAD &amp; Hardware</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Connector Soldering Station -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Connector Soldering Station"
+             data-project-desc="Designed and built a custom connector soldering station for precision electronics assembly. The fixture holds connectors securely during soldering, improving consistency and reducing defects in production."
+             data-project-img="../assets/images/projects/connector-soldering.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/connector-soldering.png" alt="Connector Soldering Station" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Connector Soldering Station</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Custom fixture for precision electronics assembly.</p>
+          </div>
+        </div>
+
+        <!-- Bearing Holder -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Bearing Holder"
+             data-project-desc="Designed a precision bearing holder for mechanical assemblies. CAD-modeled and manufactured to tight tolerances for reliable rotational support in production equipment."
+             data-project-img="../assets/images/projects/bearing-holder.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/bearing-holder.png" alt="Bearing Holder CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Bearing Holder</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Precision-toleranced bearing mount for production equipment.</p>
+          </div>
+        </div>
+
+        <!-- Mold Curing Station -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Mold Curing Station"
+             data-project-desc="Designed a mold curing station for composite and polymer part production. Temperature-controlled environment ensures consistent curing conditions for repeatable part quality."
+             data-project-img="../assets/images/projects/mold-curing.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/mold-curing.png" alt="Mold Curing Station" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Mold Curing Station</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Temperature-controlled curing environment for composite parts.</p>
+          </div>
+        </div>
+
+        <!-- Bracket -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Bracket"
+             data-project-desc="Custom-designed structural bracket for mounting and support applications. Optimized for load distribution and manufacturability."
+             data-project-img="../assets/images/projects/bracket.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/bracket.png" alt="Bracket CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Bracket</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Structural mount optimized for load distribution.</p>
+          </div>
+        </div>
+
+        <!-- Safety Enclosure -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Safety Enclosure"
+             data-project-desc="Designed a safety enclosure for industrial equipment, providing operator protection while maintaining accessibility for maintenance. Meets safety standards for production environments."
+             data-project-img="../assets/images/projects/safety-enclosure.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/safety-enclosure.png" alt="Safety Enclosure CAD" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Safety Enclosure</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Industrial equipment enclosure meeting production safety standards.</p>
+          </div>
+        </div>
+
+        <!-- Specialized Wrench -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Specialized Wrench"
+             data-project-desc="Custom-designed wrench for specialized fastener applications where standard tools cannot reach or apply correct torque. Purpose-built for specific assembly operations."
+             data-project-img="../assets/images/projects/specialized-wrench.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/specialized-wrench.png" alt="Specialized Wrench" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Specialized Wrench</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Custom tool for hard-to-reach fastener applications.</p>
+          </div>
+        </div>
+
+        <!-- Magnetic Latch -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Magnetic Latch"
+             data-project-desc="Designed a magnetic latching mechanism for quick-release applications. Uses permanent magnets for tool-less engagement and disengagement while maintaining secure hold during operation."
+             data-project-img="../assets/images/projects/magnetic-latch.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/magnetic-latch.png" alt="Magnetic Latch" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Magnetic Latch</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Quick-release magnetic mechanism for tool-less operation.</p>
+          </div>
+        </div>
+
+        <!-- Beater Assembly Stand -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Beater Assembly · Stand Fixture"
+             data-project-desc="Designed a stand fixture for beater assembly operations. The fixture positions the assembly at ergonomic working height and secures it during the build process for consistent, efficient production."
+             data-project-img="../assets/images/projects/beater-assembly.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/beater-assembly.png" alt="Beater Assembly Stand Fixture" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Beater Assembly Stand</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Ergonomic fixture for assembly-line production.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISCELLANEOUS ============ -->
+  <section class="py-12 pb-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--status-active);"></span>Miscellaneous
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Line Following Bot -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Line Following Bot"
+             data-project-desc="Built an autonomous line-following robot using IR sensors and a microcontroller. The bot tracks a black line on a white surface, adjusting motor speeds in real-time based on sensor feedback for smooth path following."
+             data-project-img="../assets/images/projects/line-following-bot.png">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/line-following-bot.png" alt="Line Following Bot" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Line Following Bot</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Autonomous IR-sensor robot with real-time path tracking.</p>
+          </div>
+        </div>
+
+        <!-- 3D Prints -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="3D Models: Cybertruck, Robot, Iron Man"
+             data-project-desc="CAD-modeled and 3D-printed scale replicas including a Tesla Cybertruck, a humanoid robot figure, and an Iron Man helmet/bust. Projects exploring CAD design, slicing parameters, and print optimization for detailed models."
+             data-project-img="../assets/images/projects/3d-models.jpg">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/3d-models.jpg" alt="3D printed models" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">3D Models &amp; Prints</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">Cybertruck, Robot, Iron Man: CAD to 3D print.</p>
+          </div>
+        </div>
+
+        <!-- Hardware Repair -->
+        <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
+             data-project
+             data-project-title="Hardware Repair Projects"
+             data-project-desc="Hands-on repair projects including an iPhone screen replacement (full display assembly swap) and a water-damaged laptop restoration attempt (disassembly, cleaning, component-level diagnosis). Getting deep into consumer electronics internals."
+             data-project-img="../assets/images/projects/iphone-repair.jpg">
+          <div class="img-wrap">
+            <img src="../assets/images/projects/iphone-repair.jpg" alt="iPhone screen repair" class="project-card-img" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-semibold mb-1.5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Hardware Repair</h3>
+            <p class="text-sm" style="color: var(--muted-fg);">iPhone screen replacement &amp; water-damaged laptop restore.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="px-divider px-divider--flip" aria-hidden="true"></div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="px-footer-tag" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/command-palette.js"></script>
+</body>
+</html>

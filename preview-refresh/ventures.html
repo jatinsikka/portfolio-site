@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventures | Jatin Sikka</title>
+  <meta name="description" content="Products and startups Jatin Sikka is building — AI tools, humanoid robotics research, and quant systems." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <link rel="stylesheet" href="pixel.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(10,14,24,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+    <style>
+      html.light nav.sticky { background-color: rgba(244,237,225,0.88) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="px-logo text-lg font-bold tracking-tight" style="color: var(--text);">
+        JS<span class="px-cursor">_</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="ventures.html" aria-current="page" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Ventures</a>
+        <a href="projects.html" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
+        <a href="research.html" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="display:none;">
+            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold px-logo" style="color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="ventures.html" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="projects.html" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="research.html" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section id="main-content" class="pt-24 pb-10 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="fade-in px-eyebrow mb-4">sector / ventures</p>
+      <h1 class="fade-in px-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+        Ventures
+      </h1>
+      <p class="fade-in text-lg md:text-xl max-w-3xl" style="color: var(--muted-fg);">
+        What I'm building right now. Shipped products, research with a startup path, and systems I use every day.
+      </p>
+    </div>
+  </section>
+
+  <div class="px-divider" aria-hidden="true"></div>
+
+  <!-- ============ ACTIVE VENTURES ============ -->
+  <section class="py-14 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Undoom.It -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Undoom.It</h3>
+            <span class="px-chip px-chip--live">Live</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">You're going to scroll anyway. Make it count.</p>
+          <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted-fg);">
+            Save content from any app via the iOS Share Sheet. AI processes and categorises everything you capture, then delivers a daily digest email so you actually act on what you saved instead of hoarding it.
+          </p>
+          <a href="https://undoomit.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+            undoomit.com &rarr;
+          </a>
+        </div>
+
+        <!-- Humanoid Skills -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Humanoid Skills</h3>
+            <span class="px-chip px-chip--research">Research</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">Teach once, deploy anywhere.</p>
+          <p class="text-sm leading-relaxed" style="color: var(--muted-fg);">
+            A cross-embodiment skill transfer framework for humanoid robots. A human demonstrates a task once, and the system learns a policy that generalizes across robot platforms with different morphologies, actuators, and sensors. Research-to-product pipeline via my PhD work at UT Austin.
+          </p>
+        </div>
+
+        <!-- quant-terminal -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">quant-terminal</h3>
+            <span class="px-chip px-chip--building">Building</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">A research terminal for finding asymmetric bets.</p>
+          <p class="text-sm leading-relaxed" style="color: var(--muted-fg);">
+            A Python equity-research system: on-demand due-diligence briefs, a 12-signal parabolic precursor scanner, fundamentals gating, and a live web dashboard. Covers US and Indian markets. Built for my own capital, which keeps the incentives honest.
+          </p>
+        </div>
+
+        <!-- Waiv -->
+        <div class="card-hover fade-in rounded-xl p-6 md:p-7" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Waiv</h3>
+            <span class="px-chip px-chip--building">Building</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color: var(--px-amber);">The right card, every swipe.</p>
+          <p class="text-sm leading-relaxed" style="color: var(--muted-fg);">
+            Automatic credit-card routing that picks the optimal card for every purchase to maximize rewards. My sister's venture &mdash; I'm the technical co-builder behind the engineering.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="px-divider px-divider--flip" aria-hidden="true"></div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="px-footer-tag" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/command-palette.js"></script>
+</body>
+</html>
