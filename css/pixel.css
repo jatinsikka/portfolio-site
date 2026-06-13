@@ -193,6 +193,7 @@ html.light .card-hover:hover {
 .px-chip--live::before { animation: pxBlink 1.6s step-end infinite; }
 .px-chip--building { color: var(--px-amber); }
 .px-chip--research { color: var(--px-moon); }
+.px-chip--sunset   { color: var(--muted-fg); opacity: 0.9; }
 html.light .px-chip--live { color: #2E8540; }
 html.light .px-chip--research { color: #7A6E63; }
 
