@@ -561,85 +561,57 @@
 
     <!-- ============ EXPLORE ============ -->
     <section class="relative py-20 px-6">
+      <style>
+        .exp-tile { display:flex; flex-direction:column; overflow:hidden; text-decoration:none; --tile:var(--accent); }
+        .exp-thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--muted-bg); }
+        .exp-thumb img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:saturate(.92); transition:transform .55s cubic-bezier(.25,.46,.45,.94), filter .55s ease; }
+        .exp-tile:hover .exp-thumb img { transform:scale(1.05); filter:saturate(1.05); }
+        .exp-thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 42%, var(--card-bg) 97%); pointer-events:none; }
+        .exp-body { position:relative; z-index:1; margin-top:-2rem; padding:0 1.4rem 1.4rem; }
+        .exp-head { display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin-bottom:.5rem; }
+        .exp-head h3 { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:600; color:var(--text); letter-spacing:-0.01em; }
+        .exp-stat { font-family:var(--px-font); font-size:.5rem; letter-spacing:.12em; text-transform:uppercase; padding:.25rem .5rem; border:1px solid currentColor; color:var(--tile); white-space:nowrap; opacity:.9; }
+        .exp-desc { font-size:.83rem; line-height:1.55; color:var(--muted-fg); margin-bottom:1rem; }
+        .exp-enter { display:inline-flex; align-items:center; gap:.4rem; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--tile); }
+        .exp-enter svg { width:.8rem; height:.8rem; transition:transform .25s ease; }
+        .exp-tile:hover .exp-enter svg { transform:translateX(5px); }
+        .exp-tile:hover { border-color:color-mix(in srgb, var(--tile) 55%, var(--border)) !important; }
+      </style>
       <div class="max-w-6xl mx-auto relative z-10">
         <div class="text-center mb-14">
-          <p class="fade-in px-eyebrow mb-4" style="justify-content: center;">map / districts</p>
           <h2 class="fade-in text-3xl md:text-4xl font-bold mb-3"
             style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">Explore</h2>
           <p class="fade-in text-sm" style="color: var(--muted-fg);">Where the work lives.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Ventures -->
-          <a href="/ventures"
-            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
-            style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
-              style="background: radial-gradient(circle at top right, rgba(217,123,79,0.10), transparent 70%);"></div>
-            <div class="relative z-10">
-              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
-                style="background: linear-gradient(135deg, rgba(217,123,79,0.18), rgba(217,123,79,0.05)); border: 1px solid rgba(217,123,79,0.25);">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
-                  style="color: var(--cta);">
-                  <path
-                    d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold mb-2"
-                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ventures</h3>
-              <p class="text-sm mb-4" style="color: var(--muted-fg);">Shipped products and startups — AI tools and
-                humanoid robotics.</p>
-              <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--cta);">View all
-                &rarr;</span>
+
+          <a href="/ventures" class="exp-tile card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border); --tile:#D97B4F;">
+            <div class="exp-thumb"><img src="/assets/images/ventures/undoomit.jpeg" alt="Ventures" loading="lazy" /></div>
+            <div class="exp-body">
+              <div class="exp-head"><h3>Ventures</h3><span class="exp-stat">3 live</span></div>
+              <p class="exp-desc">Shipped products and startups: AI tools and humanoid robotics.</p>
+              <span class="exp-enter">Enter <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
             </div>
           </a>
 
-          <!-- Projects -->
-          <a href="/projects"
-            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
-            style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
-              style="background: radial-gradient(circle at top right, rgba(226,92,92,0.10), transparent 70%);"></div>
-            <div class="relative z-10">
-              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
-                style="background: linear-gradient(135deg, rgba(226,92,92,0.18), rgba(226,92,92,0.05)); border: 1px solid rgba(226,92,92,0.25);">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
-                  style="color: var(--accent);">
-                  <path
-                    d="M226.76,69a8,8,0,0,0-12.84-2.88l-40.3,37.19-17.23-3.7-3.7-17.23,37.19-40.3A8,8,0,0,0,187,29.24,72,72,0,0,0,88,96,72.34,72.34,0,0,0,94,124.94L33.79,177c-.15.12-.29.26-.43.39a32,32,0,0,0,45.26,45.26c.13-.13.27-.28.39-.42L131.06,162A72,72,0,0,0,232,96,71.56,71.56,0,0,0,226.76,69ZM160,152a56.14,56.14,0,0,1-27.07-7,8,8,0,0,0-9.92,1.77L67.11,211.51a16,16,0,0,1-22.62-22.62L109.18,133a8,8,0,0,0,1.77-9.93,56,56,0,0,1,58.36-82.31l-31.2,33.81a8,8,0,0,0-1.94,7.1L141.83,108a8,8,0,0,0,6.14,6.14l26.35,5.66a8,8,0,0,0,7.1-1.94l33.81-31.2A56.06,56.06,0,0,1,160,152Z" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold mb-2"
-                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Projects</h3>
-              <p class="text-sm mb-4" style="color: var(--muted-fg);">Robotics, CAD, mechatronics, from simulation to
-                hardware on the bench.</p>
-              <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--accent);">View all
-                &rarr;</span>
+          <a href="/projects" class="exp-tile card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border); --tile:#E25C5C;">
+            <div class="exp-thumb"><img src="/assets/posters/So_Arm_trained.jpg" alt="Projects" loading="lazy" /></div>
+            <div class="exp-body">
+              <div class="exp-head"><h3>Projects</h3><span class="exp-stat">20+ builds</span></div>
+              <p class="exp-desc">Robotics, RL, CAD, and mechatronics, from simulation to hardware on the bench.</p>
+              <span class="exp-enter">Enter <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
             </div>
           </a>
 
-          <!-- Research -->
-          <a href="/research"
-            class="card-hover fade-in group block rounded-xl p-6 md:p-8 no-underline relative overflow-hidden"
-            style="background-color: var(--card-bg); border: 1px solid var(--border);">
-            <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
-              style="background: radial-gradient(circle at top right, rgba(176,164,157,0.12), transparent 70%);"></div>
-            <div class="relative z-10">
-              <div class="mb-4 w-12 h-12 rounded-xl flex items-center justify-center"
-                style="background: linear-gradient(135deg, rgba(176,164,157,0.22), rgba(176,164,157,0.06)); border: 1px solid rgba(176,164,157,0.30);">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor"
-                  style="color: #B0A49D;">
-                  <path
-                    d="M196.12,128c24.65-34.61,37.22-70.38,19.74-87.86S162.61,35.23,128,59.88C93.39,35.23,57.62,22.66,40.14,40.14S35.23,93.39,59.88,128c-24.65,34.61-37.22,70.38-19.74,87.86h0c5.63,5.63,13.15,8.14,21.91,8.14,18.48,0,42.48-11.17,66-27.88C151.47,212.83,175.47,224,194,224c8.76,0,16.29-2.52,21.91-8.14h0C233.34,198.38,220.77,162.61,196.12,128Zm8.43-76.55c7.64,7.64,2.48,32.4-18.52,63.28a300.33,300.33,0,0,0-21.19-23.57A300.33,300.33,0,0,0,141.27,70C172.15,49,196.91,43.8,204.55,51.45ZM176.29,128a289.14,289.14,0,0,1-22.76,25.53A289.14,289.14,0,0,1,128,176.29a289.14,289.14,0,0,1-25.53-22.76A289.14,289.14,0,0,1,79.71,128,298.62,298.62,0,0,1,128,79.71a289.14,289.14,0,0,1,25.53,22.76A289.14,289.14,0,0,1,176.29,128ZM51.45,51.45c2.2-2.21,5.83-3.35,10.62-3.35C73.89,48.1,92.76,55,114.72,70A304,304,0,0,0,91.16,91.16,300.33,300.33,0,0,0,70,114.73C49,83.85,43.81,59.09,51.45,51.45Zm0,153.1C43.81,196.91,49,172.15,70,141.27a300.33,300.33,0,0,0,21.19,23.57A304.18,304.18,0,0,0,114.73,186C83.85,207,59.09,212.2,51.45,204.55Zm153.1,0c-7.64,7.65-32.4,2.48-63.28-18.52a304.18,304.18,0,0,0,23.57-21.19A300.33,300.33,0,0,0,186,141.27C207,172.15,212.19,196.91,204.55,204.55ZM140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold mb-2"
-                style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Research</h3>
-              <p class="text-sm mb-4" style="color: var(--muted-fg);">RL, control systems, and robotics: papers,
-                presentations, and reports.</p>
-              <span class="text-xs font-semibold uppercase tracking-wider" style="color: #B0A49D;">View all
-                &rarr;</span>
+          <a href="/research" class="exp-tile card-hover fade-in rounded-xl" style="background-color: var(--card-bg); border: 1px solid var(--border); --tile:#B0A49D;">
+            <div class="exp-thumb"><img src="/assets/images/research/controls-poster.png" alt="Research" loading="lazy" /></div>
+            <div class="exp-body">
+              <div class="exp-head"><h3>Research</h3><span class="exp-stat">3 areas</span></div>
+              <p class="exp-desc">RL, control systems, and robotics: papers, posters, and reports.</p>
+              <span class="exp-enter">Enter <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
             </div>
           </a>
+
         </div>
       </div>
     </section>
@@ -653,7 +625,6 @@
         style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(226,92,92,0.06), transparent);"></div>
 
       <div class="max-w-3xl mx-auto text-center relative z-10">
-        <p class="fade-in px-eyebrow mb-4" style="justify-content: center;">comms / open channel</p>
         <h2 class="fade-in text-3xl md:text-4xl font-bold mb-4"
           style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
           Let's connect
