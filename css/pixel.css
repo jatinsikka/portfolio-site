@@ -9,13 +9,13 @@
 
 /* ----- Tokens: deep night + lantern warmth ----- */
 :root {
-  --bg:        #0A0E18;
-  --card-bg:   #121826;
-  --muted-bg:  #1A2132;
+  --bg:        #05070D;
+  --card-bg:   #0C111C;
+  --muted-bg:  #121829;
   --muted-fg:  #9B948B;
-  --border:    #27304A;
+  --border:    #202A40;
   --text:      #ECE6DC;
-  --surface:   #121826;
+  --surface:   #0C111C;
 
   --px-amber:  #D97B4F;
   --px-terra:  #E25C5C;
