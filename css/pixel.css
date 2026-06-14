@@ -220,22 +220,18 @@ html.light .px-chip--research { color: #7A6E63; }
   opacity: 0.9;
 }
 
-/* ----- Section divider: three quiet pixels, centered ----- */
+/* ----- Section divider: faint hairline, fades at the ends ----- */
 .px-divider {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
+  display: block;
+  height: 1px;
+  width: calc(100% - 3rem);
+  max-width: 72rem;
+  margin: 12px auto;
+  padding: 0;
+  background: linear-gradient(90deg, transparent, var(--border) 22%, var(--border) 78%, transparent);
   pointer-events: none;
 }
-.px-divider::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--px-terra);
-  box-shadow: 16px 0 0 0 var(--px-amber), 32px 0 0 0 var(--px-moon);
-  transform: translateX(-16px);
-  opacity: 0.5;
-}
+.px-divider::after { content: none; }
 .px-divider--flip { transform: none; }
 
 /* ----- Terminal transcript: pixel chrome, airy layout ----- */
