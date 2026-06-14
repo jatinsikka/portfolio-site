@@ -9,6 +9,37 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/custom.css" />
   <link rel="stylesheet" href="../css/pixel.css" />
+  <style>
+    .r-figure {
+      display: block;
+      margin: 0 0 1.5rem;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      background-color: var(--muted-bg);
+      border: 1px solid var(--border);
+    }
+    .r-figure img {
+      display: block;
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      object-position: center;
+      background-color: var(--muted-bg);
+      transition: transform 0.4s ease;
+    }
+    a.r-figure:hover img { transform: scale(1.015); }
+    .r-figure figcaption {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: var(--muted-fg);
+      padding: 0.55rem 0.8rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    a.r-figure:hover figcaption { color: var(--text); }
+  </style>
 </head>
 <body>
 
@@ -95,6 +126,13 @@
             <p class="text-sm" style="color: var(--muted-fg);">NC State University</p>
           </div>
         </div>
+        <a href="../assets/Sikka_REU.pdf" target="_blank" rel="noopener noreferrer" class="r-figure card-hover">
+          <img src="../assets/images/research/controls-poster.png" alt="Research poster: Safe and Adaptable Vehicle Navigation using Reinforcement Learning and Optimal Control" loading="lazy" />
+          <figcaption>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 256 256" fill="currentColor"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"/></svg>
+            Research poster (REU, NC State) &middot; click to view full
+          </figcaption>
+        </a>
         <div class="space-y-4 text-sm md:text-base leading-relaxed" style="color: var(--muted-fg);">
           <p>
             Research at the intersection of reinforcement learning and optimal control for autonomous systems. Focused on combining learning-based methods with classical control theory to achieve safe, reliable robot behavior.
@@ -114,7 +152,7 @@
           <div class="flex flex-wrap gap-2">
             <a href="../assets/Sikka_REU.pdf" target="_blank" class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-opacity hover:opacity-80" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
-              REU Paper
+              REU Poster
             </a>
             <a href="../assets/Jatin_Sikka_Hopf-Lax_Research_Paper.pdf" target="_blank" class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-opacity hover:opacity-80" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
