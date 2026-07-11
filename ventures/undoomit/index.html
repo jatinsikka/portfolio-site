@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undoomit | Jatin Sikka</title>
+  <meta name="description" content="How Undoomit works: save from any app, AI reads and categorises everything, then synthesizes hundreds of saves into one page. Real screenshots from the live product." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../css/custom.css" />
+  <link rel="stylesheet" href="../../css/pixel.css" />
+  <style>
+    .shot-card { border: 1px solid var(--border); border-radius: 0.9rem; overflow: hidden; background-color: var(--card-bg); }
+    .shot-card img { width: 100%; height: auto; display: block; }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    .shot-bar span { width: 9px; height: 9px; border-radius: 9999px; background-color: var(--border); }
+    .shot-num { font-family: 'Space Grotesk', sans-serif; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.12em; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <nav class="sticky top-0 z-40" style="background-color: rgba(5,7,13,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+    <style>
+      html.light nav.sticky { background-color: rgba(244,237,225,0.88) !important; }
+    </style>
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="/" class="px-logo text-lg font-bold tracking-tight" style="color: var(--text);">
+        JS<span class="px-cursor">_</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/ventures" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--text);">Ventures</a>
+        <a href="/projects" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Projects</a>
+        <a href="/research" class="nav-link text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Research</a>
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="display:none;">
+            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="flex items-center justify-between mb-8">
+      <span class="text-lg font-bold px-logo" style="color: var(--text);">Menu</span>
+      <button id="mobile-menu-close" class="cursor-pointer p-2 rounded-lg hover:opacity-80 transition-opacity" style="color: var(--text);" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href="/ventures" class="text-base font-medium py-2" style="color: var(--text);">Ventures</a>
+      <a href="/projects" class="text-base font-medium py-2" style="color: var(--text);">Projects</a>
+      <a href="/research" class="text-base font-medium py-2" style="color: var(--text);">Research</a>
+      <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-base font-medium py-2" style="color: var(--text);">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section id="main-content" class="pt-24 pb-6 px-6">
+    <div class="max-w-4xl mx-auto">
+      <a href="/ventures" class="fade-in text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">&larr; Ventures</a>
+      <div class="fade-in flex items-center gap-4 mt-6 mb-5">
+        <h1 class="px-heading text-4xl md:text-5xl font-bold tracking-tight" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.04em;">
+          Undoomit
+        </h1>
+        <span class="px-chip px-chip--live">Live</span>
+      </div>
+      <p class="fade-in text-lg md:text-xl max-w-2xl leading-relaxed" style="color: var(--muted-fg);">
+        You save things from every app and never look at them again. Undoomit captures all of it,
+        has AI actually read and watch it, and hands you the gist. Four real screenshots from the
+        live product, no mockups.
+      </p>
+      <a href="https://undoomit.com" target="_blank" rel="noopener noreferrer" class="fade-in inline-flex items-center gap-2 mt-6 text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+        Visit undoomit.com &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SCREENSHOTS ============ -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto flex flex-col gap-16">
+
+      <div class="fade-in">
+        <p class="shot-num mb-2">01 / THE HUB</p>
+        <h2 class="text-2xl font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Every save from every app, in one place</h2>
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl" style="color: var(--muted-fg);">
+          Instagram reels, LinkedIn posts, YouTube videos, screenshots. Everything lands in one hub and
+          gets categorised automatically: Business, Tools, Learn, Health. This account holds 312 saves
+          and zero folders.
+        </p>
+        <div class="shot-card">
+          <div class="shot-bar"><span></span><span></span><span></span></div>
+          <img src="../../assets/images/undoomit/hub.png" alt="The Undoomit hub: a grid of saved items from Instagram, LinkedIn and YouTube, auto-categorised" loading="lazy" width="1999" height="1186" />
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <p class="shot-num mb-2">02 / BACK TAP</p>
+        <h2 class="text-2xl font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Double-tap the back of your phone. Saved.</h2>
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl" style="color: var(--muted-fg);">
+          No share sheet, no app switch. A back tap anywhere on iOS takes a screenshot and uploads it,
+          and the AI reads what is on screen. Here it correctly parsed a Clash Royale overtime match:
+          player level, tower health, even the gesture notification itself.
+        </p>
+        <div class="shot-card">
+          <div class="shot-bar"><span></span><span></span><span></span></div>
+          <img src="../../assets/images/undoomit/backtap-clash.png" alt="Undoomit item view of a Clash Royale screenshot captured via iOS Back Tap, with AI takeaways and summary" loading="lazy" width="1991" height="1334" />
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <p class="shot-num mb-2">03 / ALREADY READ</p>
+        <h2 class="text-2xl font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Every save arrives already understood</h2>
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl" style="color: var(--muted-fg);">
+          A shared LinkedIn post becomes key takeaways, a summary, why it matters, and concrete next
+          steps before you ever come back to it. The pile explains itself.
+        </p>
+        <div class="shot-card">
+          <div class="shot-bar"><span></span><span></span><span></span></div>
+          <img src="../../assets/images/undoomit/reader.png" alt="Undoomit reader view of a saved LinkedIn post about a Stanford robotics course, with AI takeaways and next steps" loading="lazy" width="1953" height="1332" />
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <p class="shot-num mb-2">04 / SYNTHESIZE</p>
+        <h2 class="text-2xl font-semibold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Hundreds of saves, one page</h2>
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl" style="color: var(--muted-fg);">
+          Pick a scope and the AI distills everything into tools to try, ideas worth chasing, and
+          things to actually do, each entry linked back to its source saves. Then mark them all done
+          in one shot.
+        </p>
+        <div class="shot-card">
+          <div class="shot-bar"><span></span><span></span><span></span></div>
+          <img src="../../assets/images/undoomit/synthesize.png" alt="Undoomit synthesize page distilling saved items into tools to try and ideas worth chasing" loading="lazy" width="1988" height="1332" />
+        </div>
+      </div>
+
+      <div class="fade-in text-center pb-4">
+        <a href="https://undoomit.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity" style="color: var(--accent);">
+          Try it at undoomit.com &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-12 px-6" style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="px-footer-tag" style="color: var(--muted-fg);">
+        &copy; 2026 Jatin Sikka
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/jatinsikka/" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">LinkedIn</a>
+        <a href="https://github.com/jatinsikka" target="_blank" rel="noopener noreferrer" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">GitHub</a>
+        <a href="mailto:jsikka@utexas.edu" class="text-sm hover:opacity-80 transition-opacity" style="color: var(--muted-fg);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/command-palette.js"></script>
+</body>
+</html>
