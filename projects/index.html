@@ -254,15 +254,19 @@
           <source src="../assets/So_Arm_trained.mp4" type="video/mp4" />
         </video>
         <div class="p-6 md:p-8 flex flex-col justify-center">
-          <h3 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Manipulation with RL (PPO) in Isaac Lab</h3>
+          <h3 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Manipulation with RL (PPO) in Isaac Lab &rarr; Real Arm</h3>
           <div class="flex flex-wrap gap-2 mb-3">
             <span class="stat-pill pill-green">Random motion &rarr; precise grasping</span>
+            <span class="stat-pill pill-accent">Sim2real: oscillation &rarr; stable reach</span>
           </div>
           <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Trained a So-Arm robotic manipulator with Proximal Policy Optimization in NVIDIA Isaac Lab. The policy learns coordinated, precise grasping entirely from reward signal. The clip on the left is the fully trained agent running live.</p>
+          <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The first reach policy hit targets within 6&nbsp;mm in sim but oscillated on the real SO-101. Six cheap, one-change tests traced it to the simulated actuator: a soft joint the policy steered by letting gravity sag the arm, unlike the stiff geared servo. A step-response test on the real arm let me fit sim stiffness, damping and friction (and raise the servo P gain 16&nbsp;&rarr;&nbsp;32). The retrained policy reaches 1.4&ndash;1.7&nbsp;cm in sim and moves smoothly and holds steady on hardware: no oscillation, no sag.</p>
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="tag">Isaac Lab</span>
             <span class="tag">PPO</span>
             <span class="tag">Manipulation</span>
+            <span class="tag">Sim2Real</span>
+            <span class="tag">System ID</span>
           </div>
           <div class="stage-strip grid grid-cols-2 gap-3 mb-5">
             <div>
