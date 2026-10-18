@@ -289,37 +289,47 @@
         </div>
       </div>
 
-      <!-- Loco-manipulation -->
+      <!-- Loco-manipulation (Sequent) -->
       <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Loco-manipulation with RL &amp; AMO Controller in MuJoCo</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent: Ticket-to-Robot Loco-manipulation on a Unitree G1</h3>
         <div class="flex flex-wrap gap-2 mb-3">
-          <span class="stat-pill pill-green">Walk + pick-and-place, one policy stack</span>
+          <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
+          <span class="stat-pill pill-accent">Every step physics-verified</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">Task-level RL (reach, grasp, lift) layered on a pretrained AMO whole-body controller on a Unitree G1 in MuJoCo. The robot walks to objects and manipulates them, demonstrated with a screwdriver pick-and-place task.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated G1 takes a plain-language incident ticket, retrieves the right SOP from 1,012 (fine-tuned MiniLM bi-encoder, R@1 0.58 vs 0.30 TF-IDF), maps each written step to a skill, and executes the plan in one continuous MuJoCo run. Walking uses the frozen AMO whole-body controller, picking is a DLS-IK controller with a force-gated latch (11/12 held lifts), and button press and lever pull are PPO policies (press 8/8). A verifier checks every step against measured physics, and failures are reported: the lever step fails and the run reads &ldquo;PARTIALLY RESOLVED&rdquo;.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">MuJoCo</span>
-          <span class="tag">RL</span>
+          <span class="tag">PPO</span>
           <span class="tag">Unitree G1</span>
           <span class="tag">AMO</span>
+          <span class="tag">IK</span>
+          <span class="tag">Retrieval</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
           <div>
-            <video class="featured-video" controls preload="none" poster="../assets/posters/loco-manipulation.jpg">
-              <source src="../assets/loco-manipulation-demo.mp4" type="video/mp4" />
-            </video>
-            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Locomotion + manipulation task</p>
+            <img src="../assets/sequent/ticket_demo.gif" alt="Incident ticket to SOP retrieval, walk, RL button press and verified verdict" loading="lazy" class="w-full rounded-lg" />
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Ticket &rarr; SOP &rarr; plan &rarr; verified execution</p>
           </div>
           <div>
-            <video class="featured-video" controls preload="none" poster="../assets/posters/screwdriver.jpg">
-              <source src="../assets/screwdriver-task.mp4" type="video/mp4" />
-            </video>
-            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Screwdriver pick-and-place</p>
+            <img src="../assets/sequent/onetake.gif" alt="One-take chain: walk, pick, carry, place, press" loading="lazy" class="w-full rounded-lg" />
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">One take: walk, pick, carry 2.8 m, place, press (3x)</p>
+          </div>
+          <div>
+            <img src="../assets/sequent/pick.gif" alt="IK pick with force-gated latch" loading="lazy" class="w-full rounded-lg" />
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Pick: DLS IK + force-gated latch (1.5x)</p>
+          </div>
+          <div>
+            <img src="../assets/sequent/press.gif" alt="Curriculum RL policy reaches from rest and presses the button" loading="lazy" class="w-full rounded-lg" />
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Press: curriculum PPO from rest pose</p>
           </div>
         </div>
-        <a class="code-link" href="https://github.com/jatinsikka/g1-loco-manipulation" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-          View code on GitHub
-        </a>
+        <div class="flex flex-wrap gap-4">
+          <a class="code-link" href="https://github.com/jatinsikka/sequent-g1" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            View code on GitHub
+          </a>
+          <a class="code-link" href="https://sequentrobotics.com" target="_blank" rel="noopener noreferrer">Project site &rarr;</a>
+        </div>
       </div>
 
       <!-- Whole Body Control & Bipedal Walking -->
