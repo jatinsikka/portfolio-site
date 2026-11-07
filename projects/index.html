@@ -296,7 +296,7 @@
           <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
           <span class="stat-pill pill-accent">Every step physics-verified</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated G1 takes a plain-language incident ticket, retrieves the right SOP from 1,012 (fine-tuned MiniLM bi-encoder, R@1 0.58 vs 0.30 TF-IDF), maps each written step to a skill, and executes the plan in one continuous MuJoCo run. Walking uses the frozen AMO whole-body controller, picking is a DLS-IK controller with a force-gated latch (11/12 held lifts), and button press and lever pull are PPO policies (press 8/8). A verifier checks every step against measured physics, and failures are reported: the lever step fails and the run reads &ldquo;PARTIALLY RESOLVED&rdquo;.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated G1 takes a plain-language incident ticket, retrieves the right SOP from 1,012 (fine-tuned MiniLM bi-encoder, R@1 0.58 on vague operator tickets vs 0.41 for the same model untuned and 0.36 for BM25), maps each written step to a skill, and executes the plan in one continuous MuJoCo run. Walking uses the frozen AMO whole-body controller, picking is a DLS-IK controller with a force-gated latch (11/12 held lifts), and button press and lever pull are PPO policies (press 8/8). A verifier checks every step against measured physics, and failures are reported: the lever step fails and the run reads &ldquo;PARTIALLY RESOLVED&rdquo;.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">MuJoCo</span>
           <span class="tag">PPO</span>
@@ -312,7 +312,7 @@
           </div>
           <div>
             <img src="../assets/sequent/onetake.gif" alt="One-take chain: walk, pick, carry, place, press" loading="lazy" class="w-full rounded-lg" />
-            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">One take: walk, pick, carry 2.8 m, place, press (3x)</p>
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">One take: walk, pick, carry, place, press (3x)</p>
           </div>
           <div>
             <img src="../assets/sequent/pick.gif" alt="IK pick with force-gated latch" loading="lazy" class="w-full rounded-lg" />
