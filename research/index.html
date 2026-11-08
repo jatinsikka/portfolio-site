@@ -110,6 +110,48 @@
   <section class="py-12 pb-20 px-6">
     <div class="max-w-4xl mx-auto space-y-10">
 
+      <!-- Sequent (UT Austin, HCRL) -->
+      <article class="fade-in rounded-xl p-6 md:p-8" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mt-0.5" style="background-color: rgba(226,92,92,0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="color: var(--accent);"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent: SOP-Driven, Physics-Verified Loco-Manipulation on a Simulated Humanoid</h2>
+            <p class="text-sm" style="color: var(--muted-fg);">Human Centered Robotics Lab, UT Austin &middot; Sep 2025 &ndash; Oct 2026</p>
+          </div>
+        </div>
+        <a href="https://jatinsikka.github.io/sequent-g1/paper.pdf" target="_blank" rel="noopener noreferrer" class="r-figure card-hover">
+          <img src="../assets/images/research/sequent-pipeline.png" alt="Sequent pipeline: ticket, retriever, planner, skills, verifier" loading="lazy" />
+        </a>
+        <div class="space-y-4 text-sm md:text-base leading-relaxed mt-4" style="color: var(--muted-fg);">
+          <p>A simulated Unitree G1 takes a plant-floor ticket, retrieves the matching procedure out of 1,012, maps its steps to skills, and checks each step from simulator state. The fine-tuned retriever reaches R@1 0.58 on held-out tickets (BM25 0.36). Videos and results are on the <a href="../projects/#robotics" style="color: var(--accent);">Projects page</a>.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Retrieval</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Humanoids</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Reinforcement Learning</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">MuJoCo</span>
+        </div>
+        <div class="mt-6 pt-5" style="border-top: 1px solid var(--border);">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--muted-fg);">Paper &amp; Code</p>
+          <div class="flex flex-wrap gap-2">
+            <a href="https://jatinsikka.github.io/sequent-g1/paper.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-opacity hover:opacity-80" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
+              Paper (PDF)
+            </a>
+            <a href="https://jatinsikka.github.io/sequent-g1/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-opacity hover:opacity-80" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
+              Project page
+            </a>
+            <a href="https://github.com/jatinsikka/sequent-g1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-opacity hover:opacity-80" style="background-color: rgba(226,92,92,0.12); color: var(--accent);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
+              Code
+            </a>
+          </div>
+        </div>
+      </article>
+
       <!-- AI/ML + Controls for Robotics -->
       <article class="fade-in rounded-xl p-6 md:p-8" style="background-color: var(--card-bg); border: 1px solid var(--border);">
         <div class="flex items-start gap-4 mb-4">
@@ -209,27 +251,25 @@
         </div>
       </article>
 
-      <!-- Mechatronics Design -->
+      <!-- MAE 534: high-temperature RF strain sensing -->
       <article class="fade-in rounded-xl p-6 md:p-8" style="background-color: var(--card-bg); border: 1px solid var(--border);">
         <div class="flex items-start gap-4 mb-4">
           <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mt-0.5" style="background-color: rgba(245,158,11,0.12);">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor" style="color: var(--status-exploring);"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07L51.79,84.84,22,101.81a8,8,0,0,0-3.89,5.4,107.71,107.71,0,0,0,0,41.57,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,111.92,111.92,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.13-33.62,29.83-17a8,8,0,0,0,3.89-5.4A107.71,107.71,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3l-16.42,28.51a96,96,0,0,1-27.4,15.46l-28.91-16.16a8,8,0,0,0-3.91-1h0a7.85,7.85,0,0,0-3.9,1L81.94,205.3a96.15,96.15,0,0,1-27.44-15.47L38.08,161.37a8,8,0,0,0-3-3L6.5,142.12a95.62,95.62,0,0,1,0-30.24L35.07,95.63a8,8,0,0,0,3-3L54.5,64.17A96,96,0,0,1,81.9,48.71l28.91,16.16a8,8,0,0,0,7.81,0l28.91-16.16a96.15,96.15,0,0,1,27.44,15.47l16.38,28.46a8,8,0,0,0,3,3l28.57,16.25A96.23,96.23,0,0,1,222.93,142.12ZM128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"/></svg>
           </div>
           <div>
-            <h2 class="text-xl md:text-2xl font-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">MAE 534: Mechatronics Design</h2>
-            <p class="text-sm" style="color: var(--muted-fg);">NC State University &middot; Graduate Course Project &middot; Spring 2024</p>
+            <h2 class="text-xl md:text-2xl font-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Remote Strain Sensing for Ultra-High Temperatures</h2>
+            <p class="text-sm" style="color: var(--muted-fg);">NC State University &middot; MAE 534 course project, with Gabriel Chenevert &middot; Spring 2024</p>
           </div>
         </div>
         <div class="space-y-4 text-sm md:text-base leading-relaxed" style="color: var(--muted-fg);">
-          <p>
-            Capstone mechatronics project integrating mechanical design, electronics, embedded systems, and control software into a complete autonomous system. Covered sensor integration, actuator control, real-time embedded programming, and system-level design for robustness.
-          </p>
+          <p>Strain targets (copper traces on Nextel 440 ceramic-fiber mats) read remotely with RF instead of a bonded gauge. Simulated in Ansys HFSS, then measured with a vector network analyzer: under strain the absorption peak moved from 30.25 to 30.5&nbsp;GHz in S11, and heating the target to about 200&nbsp;&deg;C left the response unchanged. The platinum target for higher temperatures was designed but not tested.</p>
         </div>
         <div class="flex flex-wrap gap-2 mt-5">
-          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Mechatronics</span>
-          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Embedded Systems</span>
-          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Sensor Integration</span>
-          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Control Systems</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">RF Sensing</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Ansys HFSS</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Strain Measurement</span>
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">High Temperature</span>
         </div>
         <div class="mt-6 pt-5" style="border-top: 1px solid var(--border);">
           <p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--muted-fg);">Report</p>

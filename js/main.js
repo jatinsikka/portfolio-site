@@ -391,7 +391,7 @@
    7. TYPED ROLE CYCLING
    ========================================================= */
 (function TypedRoleModule() {
-  var roles = ['Researcher.', 'Founder.', 'Engineer.', 'Builder.'];
+  var roles = ['M.S. student.', 'Humanoid research.', 'Manipulation + RL.', 'Building Undoomit.'];
   var el = null;
   var roleIndex = 0;
   var charIndex = 0;
@@ -432,7 +432,7 @@
     el = document.getElementById('typed-role');
     if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = 'Researcher. Founder. Engineer.';
+      el.textContent = 'M.S. student.';
       var cursor = document.querySelector('.typed-cursor');
       if (cursor) cursor.style.display = 'none';
       return;
