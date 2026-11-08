@@ -261,12 +261,15 @@
           </div>
           <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Trained an SO-101 arm with PPO in NVIDIA Isaac Lab to grasp from reward alone. Left: the trained policy.</p>
           <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The first reach policy hit targets within 6&nbsp;mm in sim but oscillated on the real SO-101. Six cheap, one-change tests traced it to the simulated actuator: a soft joint the policy steered by letting gravity sag the arm, unlike the stiff geared servo. A step-response test on the real arm let me fit sim stiffness, damping and friction (and raise the servo P gain 16&nbsp;&rarr;&nbsp;32). The retrained policy reaches 1.4&ndash;1.7&nbsp;cm in sim and moves smoothly and holds steady on hardware: no oscillation, no sag.</p>
+          <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);"><strong style="color: var(--text);">Teleop and haptics.</strong> Leader&ndash;follower teleoperation with LeRobot (59.5&nbsp;Hz) and a wrist camera, for recording demonstrations to train ACT. I added bilateral haptic feedback to the leader: its STS3215 servos are driven toward the follower's position, so when the follower is blocked, for example closing the gripper on an object, the leader resists.</p>
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="tag">Isaac Lab</span>
             <span class="tag">PPO</span>
             <span class="tag">Manipulation</span>
             <span class="tag">Sim2Real</span>
             <span class="tag">System ID</span>
+            <span class="tag">Teleop</span>
+            <span class="tag">Haptics</span>
           </div>
           <div class="stage-strip grid grid-cols-2 gap-3 mb-5">
             <div>
@@ -282,11 +285,58 @@
               <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Stage 2 &middot; mid-training</p>
             </div>
           </div>
+          <div class="flex flex-wrap gap-4">
           <a class="code-link" href="https://github.com/jatinsikka/so101_isaac" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
             View code on GitHub
           </a>
+          <a class="code-link" href="https://github.com/jatinsikka/so101_isaac/tree/sim2real-simple/real_imitation" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            Teleop + haptics code
+          </a>
+          </div>
         </div>
+      </div>
+
+      <!-- Geomagic Touch teleop of the SO-101 -->
+      <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Geomagic Touch Teleoperation of the SO-101</h3>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="stat-pill pill-green">Touch stylus &rarr; SO-101, sim and real</span>
+          <span class="stat-pill pill-accent">1&nbsp;kHz haptic loop (CHAI3D)</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A Geomagic Touch drives a real SO-101 over ROS&nbsp;2 (Jazzy, native Windows). The stylus position is mapped through inverse kinematics to the arm's wrist point, and its tilt and twist to the wrist joints, giving five joint targets. Commands pass only while the stylus button is held (release to clutch), are refused if the target is more than 0.3&nbsp;rad from the arm, are limited to 1&nbsp;rad/s per joint, and stop if the Touch goes quiet for 0.25&nbsp;s. In the window, the blue arm is the commanded pose and the orange arm is the follower's measured pose. Force feedback (virtual walls, reach limits, contact) is computed in the driver but was off in these runs; next is enabling it and adding a Hapkit as the gripper input.</p>
+        <div class="flex flex-wrap gap-1.5 mb-5">
+          <span class="tag">ROS 2</span>
+          <span class="tag">CHAI3D</span>
+          <span class="tag">Geomagic Touch</span>
+          <span class="tag">Teleoperation</span>
+          <span class="tag">Haptics</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+          <div class="md:col-span-2">
+            <video controls muted playsinline preload="none" poster="../assets/geomagic/touch_real.jpg" class="w-full rounded-lg">
+              <source src="../assets/geomagic/touch_real.mp4" type="video/mp4" />
+            </video>
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Real SO-101 following the Touch stylus</p>
+          </div>
+          <div>
+            <video controls muted playsinline preload="none" poster="../assets/geomagic/touch_sim_a.jpg" class="w-full rounded-lg">
+              <source src="../assets/geomagic/touch_sim_a.mp4" type="video/mp4" />
+            </video>
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Teleop window: commanded pose (blue), follower pose (orange)</p>
+          </div>
+          <div>
+            <video controls muted playsinline preload="none" poster="../assets/geomagic/touch_sim_b.jpg" class="w-full rounded-lg">
+              <source src="../assets/geomagic/touch_sim_b.mp4" type="video/mp4" />
+            </video>
+            <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Teleop window, second run</p>
+          </div>
+        </div>
+        <a class="code-link" href="https://github.com/jatinsikka/so101-haptic-teleop" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+          View code on GitHub
+        </a>
       </div>
 
       <!-- Loco-manipulation (Sequent) -->
