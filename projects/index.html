@@ -275,9 +275,9 @@
             <span class="stat-pill pill-green">Random motion &rarr; precise grasping</span>
             <span class="stat-pill pill-accent">Sim2real: oscillation &rarr; stable reach</span>
           </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">Trained an SO-101 arm with PPO in NVIDIA Isaac Lab to grasp from reward alone. Below: the trained policy, with untrained and mid-training runs.</p>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The first reach policy hit targets within 6&nbsp;mm in sim but oscillated on the real SO-101. Six cheap, one-change tests traced it to the simulated actuator: a soft joint the policy steered by letting gravity sag the arm, unlike the stiff geared servo. A step-response test on the real arm let me fit sim stiffness, damping and friction (and raise the servo P gain 16&nbsp;&rarr;&nbsp;32). The retrained policy reaches 1.4&ndash;1.7&nbsp;cm in sim and moves smoothly and holds steady on hardware: no oscillation, no sag.</p>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Teleop and haptics.</strong> Leader&ndash;follower teleoperation with LeRobot (59.5&nbsp;Hz) and a wrist camera, for recording demonstrations to train ACT (in progress). I added bilateral haptic feedback to the leader: its STS3215 servos are driven toward the follower's position, so when the follower is blocked, for example closing the gripper on an object, the leader resists.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">PPO in NVIDIA Isaac Lab trains an SO-101 arm to grasp from reward alone.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The reach policy was accurate in sim (6&nbsp;mm) but oscillated on the real arm because the simulated actuator was much softer than the geared servo. I fit sim stiffness, damping and friction from a step-response test on the real arm and doubled the servo P gain; the retrained policy holds steady on hardware.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Teleop and haptics.</strong> Leader&ndash;follower teleop with LeRobot and a wrist camera, recording demonstrations for ACT (in progress). The leader is driven toward the follower's position, so it resists when the follower is blocked, for example when gripping an object.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="tag">Isaac Lab</span>
             <span class="tag">PPO</span>
@@ -330,7 +330,7 @@
           <span class="stat-pill pill-green">Touch stylus &rarr; SO-101, sim and real</span>
           <span class="stat-pill pill-accent">1&nbsp;kHz haptic loop (CHAI3D)</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A Geomagic Touch drives a real SO-101 over ROS&nbsp;2 (Jazzy, native Windows). The stylus position is mapped through inverse kinematics to the arm's wrist point, and its tilt and twist to the wrist joints, giving five joint targets. Commands pass only while the stylus button is held (release to clutch), are refused if the target is more than 0.3&nbsp;rad from the arm, are limited to 1&nbsp;rad/s per joint, and stop if the Touch goes quiet for 0.25&nbsp;s. In the window, the blue arm is the commanded pose and the orange arm is the follower's measured pose. Force feedback (virtual walls, reach limits, contact) is computed in the driver but was off in these runs; next is enabling it and adding a Hapkit as the gripper input.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A Geomagic Touch drives a real SO-101 over ROS&nbsp;2. Stylus position maps through IK to the arm's wrist point, and stylus orientation to the wrist joints. Motion is clutched by the stylus button, speed-limited per joint, and stopped if the device goes quiet. Blue is the commanded pose, orange the measured one. Next: force feedback and a Hapkit for the gripper.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">ROS 2</span>
           <span class="tag">CHAI3D</span>
@@ -374,7 +374,7 @@
           <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
           <span class="stat-pill pill-accent">Every step checked from sim state</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure (SOP) out of 1,012, and runs its steps in one continuous MuJoCo simulation. The retriever is MiniLM fine-tuned on operator tickets: R@1 is 0.58 on held-out tickets (BM25 0.36, the same model untuned 0.41). Walking uses the AMO controller, picking is IK with a force-gated latch (11 of 12 held lifts), and the button press and lever are PPO policies. Neither is solved: the press learned to farm reward by pressing repeatedly, which is stopped by ending the episode rather than fixed, and the lever succeeds about half the time. A verifier checks every step from simulator state; the run reports &ldquo;partially resolved.&rdquo;</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure out of 1,012, and runs its steps in MuJoCo. The fine-tuned MiniLM retriever gets R@1 0.58 on held-out tickets (BM25 0.36). Walking uses the AMO controller and picking uses IK; the button press and lever are PPO policies and neither is solved (the press re-presses for reward; the lever works about half the time). A verifier checks each step from simulator state.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">MuJoCo</span>
           <span class="tag">PPO</span>
@@ -418,7 +418,7 @@
           <span class="stat-pill pill-green">Forward, backward &amp; lateral gait</span>
           <span class="stat-pill pill-accent">Lyapunov-guaranteed stability</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">End-to-end humanoid locomotion stack: WBC formulated as a QP over joint accelerations and reaction forces for real-time balancing torques, plus a DCM planner that decomposes CoM dynamics into stable/unstable components for footstep generation under ZMP constraints.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">Humanoid walking in simulation: a QP whole-body controller computes balancing torques, and a DCM planner generates footsteps under ZMP constraints.</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">WBC</span>
           <span class="tag">DCM Planner</span>
