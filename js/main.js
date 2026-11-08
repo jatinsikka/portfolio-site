@@ -391,7 +391,7 @@
    7. TYPED ROLE CYCLING
    ========================================================= */
 (function TypedRoleModule() {
-  var roles = ['M.S. student.', 'Humanoid research.', 'Manipulation + RL.', 'Building Undoomit.'];
+  var roles = ['M.S. student.', 'Humanoid research.', 'Manipulation + RL.'];
   var el = null;
   var roleIndex = 0;
   var charIndex = 0;
