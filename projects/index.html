@@ -259,7 +259,7 @@
             <span class="stat-pill pill-green">Random motion &rarr; precise grasping</span>
             <span class="stat-pill pill-accent">Sim2real: oscillation &rarr; stable reach</span>
           </div>
-          <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Trained a So-Arm robotic manipulator with Proximal Policy Optimization in NVIDIA Isaac Lab. The policy learns coordinated, precise grasping entirely from reward signal. The clip on the left is the fully trained agent running live.</p>
+          <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);">Trained an SO-101 arm with PPO in NVIDIA Isaac Lab to grasp from reward alone. Left: the trained policy.</p>
           <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The first reach policy hit targets within 6&nbsp;mm in sim but oscillated on the real SO-101. Six cheap, one-change tests traced it to the simulated actuator: a soft joint the policy steered by letting gravity sag the arm, unlike the stiff geared servo. A step-response test on the real arm let me fit sim stiffness, damping and friction (and raise the servo P gain 16&nbsp;&rarr;&nbsp;32). The retrained policy reaches 1.4&ndash;1.7&nbsp;cm in sim and moves smoothly and holds steady on hardware: no oscillation, no sag.</p>
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="tag">Isaac Lab</span>
@@ -294,9 +294,9 @@
         <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent: Ticket-to-Robot Loco-manipulation on a Unitree G1</h3>
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
-          <span class="stat-pill pill-accent">Every step physics-verified</span>
+          <span class="stat-pill pill-accent">Every step checked from sim state</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated G1 takes a plain-language incident ticket, retrieves the right SOP from 1,012 (fine-tuned MiniLM bi-encoder, R@1 0.58 on vague operator tickets vs 0.41 for the same model untuned and 0.36 for BM25), maps each written step to a skill, and executes the plan in one continuous MuJoCo run. Walking uses the frozen AMO whole-body controller, picking is a DLS-IK controller with a force-gated latch (11/12 held lifts), and button press and lever pull are PPO policies (press 8/8). A verifier checks every step against measured physics, and failures are reported: the lever step fails and the run reads &ldquo;PARTIALLY RESOLVED&rdquo;.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure (SOP) out of 1,012, and runs its steps in one continuous MuJoCo simulation. The retriever is MiniLM fine-tuned on operator tickets: it ranks the right SOP first 58% of the time on vague tickets (BM25: 36%, same model untuned: 41%) and 92% on clear ones. Walking uses the AMO controller, picking is IK with a force-gated latch (11 of 12 held lifts), and the button press is a PPO policy (8 of 8). A verifier checks every step from simulator state; the lever step fails, and the run reports &ldquo;partially resolved.&rdquo;</p>
         <div class="flex flex-wrap gap-1.5 mb-5">
           <span class="tag">MuJoCo</span>
           <span class="tag">PPO</span>
@@ -577,7 +577,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Connector Soldering Station"
-             data-project-desc="Designed and built a custom connector soldering station for precision electronics assembly. The fixture holds connectors securely during soldering, improving consistency and reducing defects in production."
+             data-project-desc="Fixture that holds connectors during soldering for consistent production assembly."
              data-project-img="../assets/images/projects/connector-soldering.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/connector-soldering.png" alt="Connector Soldering Station" class="project-card-img" loading="lazy" />
@@ -590,7 +590,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Bearing Holder"
-             data-project-desc="Designed a precision bearing holder for mechanical assemblies. CAD-modeled and manufactured to tight tolerances for reliable rotational support in production equipment."
+             data-project-desc="Bearing holder for production equipment, CAD-modeled and manufactured to tight tolerances."
              data-project-img="../assets/images/projects/bearing-holder.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/bearing-holder.png" alt="Bearing Holder CAD" class="project-card-img" loading="lazy" />
@@ -603,7 +603,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Mold Curing Station"
-             data-project-desc="Designed a mold curing station for composite and polymer part production. Temperature-controlled environment ensures consistent curing conditions for repeatable part quality."
+             data-project-desc="Curing station for composite and polymer parts."
              data-project-img="../assets/images/projects/mold-curing.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/mold-curing.png" alt="Mold Curing Station" class="project-card-img" loading="lazy" />
@@ -616,7 +616,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Bracket"
-             data-project-desc="Custom-designed structural bracket for mounting and support applications. Optimized for load distribution and manufacturability."
+             data-project-desc="Structural mounting bracket."
              data-project-img="../assets/images/projects/bracket.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/bracket.png" alt="Bracket CAD" class="project-card-img" loading="lazy" />
@@ -629,7 +629,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Safety Enclosure"
-             data-project-desc="Designed a safety enclosure for industrial equipment, providing operator protection while maintaining accessibility for maintenance. Meets safety standards for production environments."
+             data-project-desc="Safety enclosure for industrial equipment that keeps access for maintenance."
              data-project-img="../assets/images/projects/safety-enclosure.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/safety-enclosure.png" alt="Safety Enclosure CAD" class="project-card-img" loading="lazy" />
@@ -642,7 +642,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Specialized Wrench"
-             data-project-desc="Custom-designed wrench for specialized fastener applications where standard tools cannot reach or apply correct torque. Purpose-built for specific assembly operations."
+             data-project-desc="Wrench for fasteners that standard tools cannot reach."
              data-project-img="../assets/images/projects/specialized-wrench.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/specialized-wrench.png" alt="Specialized Wrench" class="project-card-img" loading="lazy" />
@@ -655,7 +655,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Magnetic Latch"
-             data-project-desc="Designed a magnetic latching mechanism for quick-release applications. Uses permanent magnets for tool-less engagement and disengagement while maintaining secure hold during operation."
+             data-project-desc="Tool-less quick-release latch using permanent magnets."
              data-project-img="../assets/images/projects/magnetic-latch.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/magnetic-latch.png" alt="Magnetic Latch" class="project-card-img" loading="lazy" />
@@ -668,7 +668,7 @@
         <div class="project-card card-hover fade-in rounded-xl cursor-pointer" style="background-color: var(--card-bg); border: 1px solid var(--border);"
              data-project tabindex="0" role="button"
              data-project-title="Beater Assembly · Stand Fixture"
-             data-project-desc="Designed a stand fixture for beater assembly operations. The fixture positions the assembly at ergonomic working height and secures it during the build process for consistent, efficient production."
+             data-project-desc="Stand that holds the beater assembly at working height during the build."
              data-project-img="../assets/images/projects/beater-assembly.png">
           <div class="img-wrap">
             <img src="../assets/images/projects/beater-assembly.png" alt="Beater Assembly Stand Fixture" class="project-card-img" loading="lazy" />
