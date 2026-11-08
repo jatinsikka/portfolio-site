@@ -120,6 +120,10 @@
     .media-row figcaption, .media-grid4 figcaption {
       font-size: 0.75rem; margin-top: 0.375rem; color: var(--muted-fg);
     }
+    .card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; }
+    .card-date { text-align: right; white-space: nowrap; }
+    @media (max-width: 639px) { .card-date { text-align: left; } }
+    .tags-links { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem 1.5rem; }
     /* Featured (side-by-side) cards */
     .featured-card {
       display: grid;
@@ -268,17 +272,22 @@
 
       <!-- So-Arm RL in Isaac Lab, sim-to-real, teleop + haptics -->
       <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Manipulation with RL (PPO) in Isaac Lab &rarr; Real Arm</h3>
-        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">RL in Isaac Lab: Nov &ndash; Dec 2025 &middot; Sim-to-real: Sep 2026 &middot; Teleop + haptics: Sep 2026 &ndash; present</p>
+        <div class="card-head mb-3">
+          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Manipulation with RL (PPO) in Isaac Lab &rarr; Real Arm</h3>
+          <div class="card-date">
+            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Nov 2025 &ndash; present</p>
+          </div>
+        </div>
         <div class="flex flex-wrap gap-2 mb-3">
             <span class="stat-pill pill-amber">In progress</span>
             <span class="stat-pill pill-green">Random motion &rarr; precise grasping</span>
             <span class="stat-pill pill-accent">Sim2real: oscillation &rarr; stable reach</span>
           </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">PPO in NVIDIA Isaac Lab trains an SO-101 arm to grasp from reward alone.</p>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real.</strong> The reach policy was accurate in sim (6&nbsp;mm) but oscillated on the real arm because the simulated actuator was much softer than the geared servo. I fit sim stiffness, damping and friction from a step-response test on the real arm and doubled the servo P gain; the retrained policy holds steady on hardware.</p>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Teleop and haptics.</strong> Leader&ndash;follower teleop with LeRobot and a wrist camera, recording demonstrations for ACT (in progress). The leader is driven toward the follower's position, so it resists when the follower is blocked, for example when gripping an object.</p>
-        <div class="flex flex-wrap gap-1.5 mb-5">
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">RL in Isaac Lab (Nov&ndash;Dec 2025).</strong> PPO trains an SO-101 arm to grasp from reward alone.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Sim2real (Sep 2026).</strong> The reach policy was accurate in sim (6&nbsp;mm) but oscillated on the real arm because the simulated actuator was much softer than the geared servo. I fit sim stiffness, damping and friction from a step-response test on the real arm and doubled the servo P gain; the retrained policy holds steady on hardware.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);"><strong style="color: var(--text);">Teleop and haptics (Sep 2026&ndash;present).</strong> Leader&ndash;follower teleop with LeRobot and a wrist camera, recording demonstrations for ACT (in progress). The leader is driven toward the follower's position, so it resists when the follower is blocked, for example when gripping an object.</p>
+        <div class="tags-links mb-5">
+          <div class="flex flex-wrap gap-1.5">
             <span class="tag">Isaac Lab</span>
             <span class="tag">PPO</span>
             <span class="tag">Manipulation</span>
@@ -287,6 +296,17 @@
             <span class="tag">Teleop</span>
             <span class="tag">Haptics</span>
           </div>
+          <div class="flex flex-wrap gap-4">
+            <a class="code-link" href="https://github.com/jatinsikka/so101_isaac" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            View code on GitHub
+          </a>
+            <a class="code-link" href="https://github.com/jatinsikka/so101_isaac/tree/sim2real-simple/real_imitation" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            Teleop + haptics code
+          </a>
+          </div>
+        </div>
         <div class="media-row mb-5">
           <figure class="media-main">
             <video autoplay muted loop playsinline preload="auto" poster="../assets/posters/So_Arm_trained.jpg" aria-label="Trained So-Arm policy grasping">
@@ -309,34 +329,36 @@
             </figure>
           </div>
         </div>
-        <div class="flex flex-wrap gap-4">
-          <a class="code-link" href="https://github.com/jatinsikka/so101_isaac" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-            View code on GitHub
-          </a>
-          <a class="code-link" href="https://github.com/jatinsikka/so101_isaac/tree/sim2real-simple/real_imitation" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-            Teleop + haptics code
-          </a>
-        </div>
       </div>
 
       <!-- Geomagic Touch teleop of the SO-101 -->
       <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Geomagic Touch Teleoperation of the SO-101</h3>
-        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">Oct 2026 &ndash; present</p>
+        <div class="card-head mb-3">
+          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Geomagic Touch Teleoperation of the SO-101</h3>
+          <div class="card-date">
+            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Oct 2026 &ndash; present</p>
+          </div>
+        </div>
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-amber">In progress</span>
           <span class="stat-pill pill-green">Touch stylus &rarr; SO-101, sim and real</span>
           <span class="stat-pill pill-accent">1&nbsp;kHz haptic loop (CHAI3D)</span>
         </div>
         <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A Geomagic Touch drives a real SO-101 over ROS&nbsp;2. Stylus position maps through IK to the arm's wrist point, and stylus orientation to the wrist joints. Motion is clutched by the stylus button, speed-limited per joint, and stopped if the device goes quiet. Blue is the commanded pose, orange the measured one. Next: force feedback and a Hapkit for the gripper.</p>
-        <div class="flex flex-wrap gap-1.5 mb-5">
+        <div class="tags-links mb-5">
+          <div class="flex flex-wrap gap-1.5">
           <span class="tag">ROS 2</span>
           <span class="tag">CHAI3D</span>
           <span class="tag">Geomagic Touch</span>
           <span class="tag">Teleoperation</span>
           <span class="tag">Haptics</span>
+        </div>
+          <div class="flex flex-wrap gap-4">
+            <a class="code-link" href="https://github.com/jatinsikka/so101-haptic-teleop" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+          View code on GitHub
+        </a>
+          </div>
         </div>
         <div class="media-row mb-5">
           <figure class="media-main">
@@ -360,28 +382,38 @@
             </figure>
           </div>
         </div>
-        <a class="code-link" href="https://github.com/jatinsikka/so101-haptic-teleop" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-          View code on GitHub
-        </a>
       </div>
 
       <!-- Loco-manipulation (Sequent) -->
       <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent: Ticket-to-Robot Loco-manipulation on a Unitree G1</h3>
-        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">Sep 2025 &ndash; Oct 2026 &middot; Human Centered Robotics Lab, UT Austin</p>
+        <div class="card-head mb-3">
+          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Sequent: Ticket-to-Robot Loco-manipulation on a Unitree G1</h3>
+          <div class="card-date">
+            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Sep 2025 &ndash; Oct 2026</p>
+            <p class="text-xs mt-0.5" style="color: var(--muted-fg);">Human Centered Robotics Lab, UT Austin</p>
+          </div>
+        </div>
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
           <span class="stat-pill pill-accent">Every step checked from sim state</span>
         </div>
         <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure out of 1,012, and runs its steps in MuJoCo. The fine-tuned MiniLM retriever gets R@1 0.58 on held-out tickets (BM25 0.36). Walking uses the AMO controller and picking uses IK; the button press and lever are PPO policies and neither is solved (the press re-presses for reward; the lever works about half the time). A verifier checks each step from simulator state.</p>
-        <div class="flex flex-wrap gap-1.5 mb-5">
+        <div class="tags-links mb-5">
+          <div class="flex flex-wrap gap-1.5">
           <span class="tag">MuJoCo</span>
           <span class="tag">PPO</span>
           <span class="tag">Unitree G1</span>
           <span class="tag">AMO</span>
           <span class="tag">IK</span>
           <span class="tag">Retrieval</span>
+        </div>
+          <div class="flex flex-wrap gap-4">
+            <a class="code-link" href="https://github.com/jatinsikka/sequent-g1" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            View code on GitHub
+          </a>
+            <a class="code-link" href="https://jatinsikka.github.io/sequent-g1/" target="_blank" rel="noopener noreferrer">Project page &rarr;</a>
+          </div>
         </div>
         <div class="media-grid4 mb-5">
           <figure>
@@ -401,19 +433,17 @@
             <figcaption>Press: curriculum PPO from rest pose</figcaption>
           </figure>
         </div>
-        <div class="flex flex-wrap gap-4">
-          <a class="code-link" href="https://github.com/jatinsikka/sequent-g1" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-            View code on GitHub
-          </a>
-          <a class="code-link" href="https://jatinsikka.github.io/sequent-g1/" target="_blank" rel="noopener noreferrer">Project page &rarr;</a>
-        </div>
       </div>
 
       <!-- Whole Body Control & Bipedal Walking -->
       <div class="fade-in rounded-xl p-6 md:p-8" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <h3 class="text-lg md:text-xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
-        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">Fall 2025 &middot; Atlas, simulated</p>
+        <div class="card-head mb-3">
+          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Whole Body Control &amp; Bipedal Walking</h3>
+          <div class="card-date">
+            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Fall 2025</p>
+            <p class="text-xs mt-0.5" style="color: var(--muted-fg);">Atlas, simulated</p>
+          </div>
+        </div>
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-green">Forward, backward &amp; lateral gait</span>
           <span class="stat-pill pill-accent">Lyapunov-guaranteed stability</span>
