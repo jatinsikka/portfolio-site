@@ -90,12 +90,13 @@
     }
     .flagship-card video.hero-video {
       width: 100%;
-      height: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
       object-fit: cover;
       background: #000;
       display: block;
-      min-height: 260px;
     }
+    .flagship-media { display: flex; flex-direction: column; }
     .stage-strip video {
       width: 100%;
       border-radius: 0.5rem;
@@ -250,9 +251,25 @@
 
       <!-- FLAGSHIP: So-Arm RL Training -->
       <div class="fade-in flagship-card mb-6">
+        <div class="flagship-media">
         <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/posters/So_Arm_trained.jpg" aria-label="Trained So-Arm policy performing precise grasping">
           <source src="../assets/So_Arm_trained.mp4" type="video/mp4" />
         </video>
+          <div class="stage-strip grid grid-cols-2 gap-3 p-4">
+            <div>
+              <video controls preload="none" poster="../assets/posters/So_Arm_init.jpg">
+                <source src="../assets/So_Arm_init.mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Stage 1 &middot; untrained</p>
+            </div>
+            <div>
+              <video controls preload="none" poster="../assets/posters/So_Arm_mid.jpg">
+                <source src="../assets/So_Arm_mid.mp4" type="video/mp4" />
+              </video>
+              <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Stage 2 &middot; mid-training</p>
+            </div>
+          </div>
+        </div>
         <div class="p-6 md:p-8 flex flex-col justify-center">
           <h3 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">So-Arm Manipulation with RL (PPO) in Isaac Lab &rarr; Real Arm</h3>
           <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">RL in Isaac Lab: Nov &ndash; Dec 2025 &middot; Sim-to-real: Sep 2026 &middot; Teleop + haptics: Sep 2026 &ndash; present</p>
@@ -272,20 +289,6 @@
             <span class="tag">System ID</span>
             <span class="tag">Teleop</span>
             <span class="tag">Haptics</span>
-          </div>
-          <div class="stage-strip grid grid-cols-2 gap-3 mb-5">
-            <div>
-              <video controls preload="none" poster="../assets/posters/So_Arm_init.jpg">
-                <source src="../assets/So_Arm_init.mp4" type="video/mp4" />
-              </video>
-              <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Stage 1 &middot; untrained</p>
-            </div>
-            <div>
-              <video controls preload="none" poster="../assets/posters/So_Arm_mid.jpg">
-                <source src="../assets/So_Arm_mid.mp4" type="video/mp4" />
-              </video>
-              <p class="text-xs mt-1.5" style="color: var(--muted-fg);">Stage 2 &middot; mid-training</p>
-            </div>
           </div>
           <div class="flex flex-wrap gap-4">
           <a class="code-link" href="https://github.com/jatinsikka/so101_isaac" target="_blank" rel="noopener noreferrer">
