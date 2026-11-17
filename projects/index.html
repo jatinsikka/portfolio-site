@@ -811,8 +811,7 @@
           </div>
         </div>
         <div class="flex flex-wrap gap-2 mb-3">
-          <span class="stat-pill pill-green">0 / 256 crashes, 100% waypoints (both)</span>
-          <span class="stat-pill pill-accent">1.3~1.4&nbsp;cm hover errorndash;1.4~1.4&nbsp;cm hover errornbsp;cm hover error</span>
+          <span class="stat-pill pill-green">Take-off + 7-waypoint tour, no crashes</span>
         </div>
         <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A Unitree R1 humanoid in Isaac Lab learns with PPO to take off, fly a 7-waypoint tour and hover. <strong style="color: var(--text);">Iron Man:</strong> thrusters fixed in the boots and gloves with no gimbals, so it steers only by pointing its feet and swinging its arms. A plain yaw-rate penalty either let it wiggle or made it stop turning toward the goal; tracking a desired yaw rate fixed both. <strong style="color: var(--text);">Jet pack:</strong> two gimballed boosters on the back. Every early policy spun at about 6&nbsp;rad/s, and no reward change helped: the mount sat above and behind the center of mass, so there was no static hover. Moving the mount and canting it through the center of mass fixed it.</p>
         <div class="tags-links mb-5">
