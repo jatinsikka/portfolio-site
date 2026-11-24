@@ -502,7 +502,7 @@
           </div>
         </div>
         <div class="flex flex-wrap gap-2 mb-3">
-          <span class="stat-pill pill-green">Take-off + 7-waypoint tour, no crashes</span>
+          <span class="stat-pill pill-green">0 crashes in 1,024 take-offs and mid-air starts</span>
         </div>
         <p class="text-sm leading-relaxed mb-3" style="color: var(--muted-fg);">RL policies that fly a Unitree R1 with strapped-on thrusters.</p>
         <div class="tags-links mb-5">
@@ -519,11 +519,29 @@
           </a>
           </div>
         </div>
-        <div class="media-grid2">
-          <figure>
-            <img src="../assets/fun-rl/ironman_final.gif" alt="Unitree R1 flying a waypoint tour with thrusters in its boots and gloves" loading="lazy" />
-            <figcaption>Iron Man: boot and glove thrusters</figcaption>
+        <div class="media-row mb-5">
+          <figure class="media-main">
+            <video autoplay muted loop playsinline preload="metadata" poster="../assets/fun-rl/ironman_trained.jpg" aria-label="36 Unitree R1 robots with boot and glove thrusters taking off and holding at their goals">
+              <source src="../assets/fun-rl/ironman_trained.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Iron Man, trained: boot and glove thrusters</figcaption>
           </figure>
+          <div class="media-side">
+            <figure>
+              <video controls muted playsinline preload="none" poster="../assets/fun-rl/ironman_init.jpg">
+                <source src="../assets/fun-rl/ironman_init.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Untrained</figcaption>
+            </figure>
+            <figure>
+              <video controls muted playsinline preload="none" poster="../assets/fun-rl/ironman_mid.jpg">
+                <source src="../assets/fun-rl/ironman_mid.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Mid-training</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="media-grid2">
           <figure>
             <img src="../assets/fun-rl/jet_booster_demo.gif" alt="Unitree R1 flying with two gimballed jet boosters on its back" loading="lazy" />
             <figcaption>Jet pack: two gimballed boosters</figcaption>
