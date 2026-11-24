@@ -126,6 +126,7 @@
         </a>
         <div class="space-y-4 text-sm md:text-base leading-relaxed mt-4" style="color: var(--muted-fg);">
           <p>A simulated Unitree G1 takes a plant-floor ticket, retrieves the matching procedure out of 1,012, maps its steps to skills, and checks each step from simulator state. The fine-tuned retriever reaches R@1 0.58 on held-out tickets (BM25 0.36). Videos and results are on the <a href="../projects/#robotics" style="color: var(--accent);">Projects page</a>.</p>
+          <p>The part I didn&rsquo;t expect was how much of the work turned into catching reward hacks. The RL press policy hovered just short of the button to farm proximity reward, then learned to pump it (press, release, press again) once depth paid per step. It flailed through a jerk penalty, swung its arm to run out a hold counter, and the lever policy parked in the lever&rsquo;s free play. None of it showed up in the reward curves; I found all six by watching rollouts, and the paper documents each one and what I changed. The pumping is still there, stopped by ending the episode rather than fixed.</p>
         </div>
         <div class="flex flex-wrap gap-2 mt-5">
           <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--muted-bg); color: var(--muted-fg);">Retrieval</span>

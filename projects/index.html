@@ -117,6 +117,7 @@
     .media-grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (min-width: 768px) { .media-grid4 { grid-template-columns: repeat(4, 1fr); } }
     .media-grid4 img { aspect-ratio: 4/3; object-fit: cover; }
+    .fun-card { max-width: 50.4rem; } /* ~70% of the 72rem content width */
     .media-grid2 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
     @media (min-width: 640px) { .media-grid2 { grid-template-columns: 1fr 1fr; } }
     .media-grid2 img { width: 100%; display: block; border-radius: 0.5rem; background: #000; aspect-ratio: 16/9; object-fit: cover; }
@@ -415,8 +416,10 @@
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-green">Walk &rarr; pick &rarr; carry &rarr; place &rarr; press, one take</span>
           <span class="stat-pill pill-accent">Every step checked from sim state</span>
+          <span class="stat-pill pill-accent">6 reward hacks caught on video</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure out of 1,012, and runs its steps in MuJoCo. The fine-tuned MiniLM retriever gets R@1 0.58 on held-out tickets (BM25 0.36). Walking uses the AMO controller and picking uses IK; the button press and lever are PPO policies and neither is solved (the press re-presses for reward; the lever works about half the time). A verifier checks each step from simulator state.</p>
+        <p class="text-sm leading-relaxed mb-3 max-w-4xl" style="color: var(--muted-fg);">A simulated Unitree G1 reads a plant-floor ticket, retrieves the matching procedure out of 1,012, and runs its steps in MuJoCo. The fine-tuned MiniLM retriever gets R@1 0.58 on held-out tickets (BM25 0.36). Walking uses the AMO controller, picking uses IK, and a verifier checks each step from simulator state instead of trusting the policy.</p>
+        <p class="text-sm leading-relaxed mb-4 max-w-4xl" style="color: var(--muted-fg);">The RL skills (button press and lever pull) taught me the most, mostly by cheating. Every reward I wrote got gamed in a way the training curve never showed. The press policy first parked 5 cm short of the button and collected proximity reward forever. Once I narrowed that, it learned to press, let go, and press again, because per-step depth paid more than holding; I never fixed that one, and the demo just ends the episode after the first held press. A jerk penalty made it flail hard enough that bumping the button still came out ahead, so I moved smoothing into a filter on the arm command instead. During the hold it swung its arm while the counter ran. The lever policy sat in the lever&rsquo;s 0.17 rad of free play and called it progress, and RL grasping launched the box out of the gripper and logged that as a lift, which is why picking ended up as a controller. I caught all six by watching rendered rollouts, not metrics. The lever still works about half the time, and it&rsquo;s a big part of why I&rsquo;d start manipulation from demonstrations now.</p>
         <div class="tags-links mb-5">
           <div class="flex flex-wrap gap-1.5">
           <span class="tag">MuJoCo</span>
@@ -481,6 +484,64 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ============ JUST FOR FUN ============ -->
+  <section id="fun" class="py-12 px-6" style="scroll-margin-top: 5rem;">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
+        <span class="category-line" style="background-color: var(--accent);"></span>Just for Fun: RL Side Quests
+      </h2>
+
+      <div class="fade-in fun-card rounded-xl p-5 md:p-6 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+        <div class="card-head mb-3">
+          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Teaching a Humanoid to Fly</h3>
+          <div class="card-date">
+            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Nov 2026 &middot; weekend project</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="stat-pill pill-green">Take-off + 7-waypoint tour, no crashes</span>
+        </div>
+        <div class="tags-links mb-5">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Isaac Lab</span>
+            <span class="tag">PPO</span>
+            <span class="tag">Unitree R1</span>
+            <span class="tag">Reward Shaping</span>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a class="code-link" href="https://github.com/jatinsikka/humanoid-fly" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+            View code on GitHub
+          </a>
+          </div>
+        </div>
+        <div class="media-grid2">
+          <figure>
+            <img src="../assets/fun-rl/ironman_final.gif" alt="Unitree R1 flying a waypoint tour with thrusters in its boots and gloves" loading="lazy" />
+            <figcaption>Iron Man: boot and glove thrusters</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/fun-rl/jet_booster_demo.gif" alt="Unitree R1 flying with two gimballed jet boosters on its back" loading="lazy" />
+            <figcaption>Jet pack: two gimballed boosters</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="fade-in fun-card rounded-xl p-4 md:p-5 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
+        <div class="flex flex-wrap gap-4 items-center">
+          <video src="../assets/fun-rl/aal-sim-ask.mp4" poster="../assets/fun-rl/aal-sim-ask.jpg" width="240" height="180" autoplay muted loop playsinline preload="metadata"
+                 aria-label="Simulated arm loads a part into a CNC fixture, asks for help, and an operator takes over"
+                 style="width: 240px; max-width: 100%; height: auto; border-radius: 0.5rem; background: #000;"></video>
+          <div style="flex: 1 1 220px;">
+            <h3 class="text-base md:text-lg font-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ask, Assist, Learn: a MuJoCo toy cell</h3>
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">Nov 2026 &middot; weekend sketch</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted-fg);">A sim of my thesis loop: an arm tends a CNC machine, asks for help when its policy ensemble disagrees, and retrains on the operator&rsquo;s corrections. Operator time went from 60 to about 11 min per robot-hour.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -805,51 +866,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ JUST FOR FUN ============ -->
-  <section id="fun" class="py-12 px-6" style="scroll-margin-top: 5rem;">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        <span class="category-line" style="background-color: var(--accent);"></span>Just for Fun: RL Side Quests
-      </h2>
-
-      <div class="fade-in rounded-xl p-6 md:p-8 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
-        <div class="card-head mb-3">
-          <h3 class="text-lg md:text-xl font-bold" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Teaching a Humanoid to Fly</h3>
-          <div class="card-date">
-            <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--muted-fg);">Nov 2026 &middot; weekend project</p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-3">
-          <span class="stat-pill pill-green">Take-off + 7-waypoint tour, no crashes</span>
-        </div>
-        <div class="tags-links mb-5">
-          <div class="flex flex-wrap gap-1.5">
-            <span class="tag">Isaac Lab</span>
-            <span class="tag">PPO</span>
-            <span class="tag">Unitree R1</span>
-            <span class="tag">Reward Shaping</span>
-          </div>
-          <div class="flex flex-wrap gap-4">
-            <a class="code-link" href="https://github.com/jatinsikka/humanoid-fly" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
-            View code on GitHub
-          </a>
-          </div>
-        </div>
-        <div class="media-grid2">
-          <figure>
-            <img src="../assets/fun-rl/ironman_final.gif" alt="Unitree R1 flying a waypoint tour with thrusters in its boots and gloves" loading="lazy" />
-            <figcaption>Iron Man: boot and glove thrusters</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/fun-rl/jet_booster_demo.gif" alt="Unitree R1 flying with two gimballed jet boosters on its back" loading="lazy" />
-            <figcaption>Jet pack: two gimballed boosters</figcaption>
-          </figure>
-        </div>
       </div>
     </div>
   </section>
