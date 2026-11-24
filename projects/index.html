@@ -491,7 +491,7 @@
   <section id="fun" class="py-12 px-6" style="scroll-margin-top: 5rem;">
     <div class="max-w-6xl mx-auto">
       <h2 class="fade-in text-2xl md:text-3xl font-bold mb-8" style="font-family: 'Space Grotesk', sans-serif; color: var(--text); letter-spacing: -0.02em;">
-        <span class="category-line" style="background-color: var(--accent);"></span>Just for Fun: RL Side Quests
+        <span class="category-line" style="background-color: var(--accent);"></span>Just for Fun
       </h2>
 
       <div class="fade-in fun-card rounded-xl p-5 md:p-6 mb-6" style="background-color: var(--card-bg); border: 1px solid var(--border);">
@@ -504,6 +504,7 @@
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="stat-pill pill-green">Take-off + 7-waypoint tour, no crashes</span>
         </div>
+        <p class="text-sm leading-relaxed mb-3" style="color: var(--muted-fg);">RL policies that fly a Unitree R1 with strapped-on thrusters.</p>
         <div class="tags-links mb-5">
           <div class="flex flex-wrap gap-1.5">
             <span class="tag">Isaac Lab</span>
@@ -538,7 +539,12 @@
           <div style="flex: 1 1 220px;">
             <h3 class="text-base md:text-lg font-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; color: var(--text);">Ask, Assist, Learn: a MuJoCo toy cell</h3>
             <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted-fg);">Nov 2026 &middot; weekend sketch</p>
-            <p class="text-sm leading-relaxed" style="color: var(--muted-fg);">A sim of my thesis loop: an arm tends a CNC machine, asks for help when its policy ensemble disagrees, and retrains on the operator&rsquo;s corrections. Operator time went from 60 to about 11 min per robot-hour.</p>
+            <p class="text-sm leading-relaxed mb-3" style="color: var(--muted-fg);">A toy version of my thesis loop: the arm asks for help when unsure, then learns from the fix.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tag">MuJoCo</span>
+              <span class="tag">Imitation Learning</span>
+              <span class="tag">Human-in-the-Loop</span>
+            </div>
           </div>
         </div>
       </div>
