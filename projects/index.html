@@ -521,10 +521,10 @@
         </div>
         <div class="media-row mb-5">
           <figure class="media-main">
-            <video autoplay muted loop playsinline preload="metadata" poster="../assets/fun-rl/ironman_trained.jpg" aria-label="36 Unitree R1 robots with boot and glove thrusters taking off and holding at their goals">
-              <source src="../assets/fun-rl/ironman_trained.mp4" type="video/mp4" />
+            <video autoplay muted loop playsinline preload="metadata" poster="../assets/fun-rl/ironman_stable.jpg" aria-label="36 Unitree R1 robots with boot and glove thrusters taking off and holding still at their goals">
+              <source src="../assets/fun-rl/ironman_stable.mp4" type="video/mp4" />
             </video>
-            <figcaption>Iron Man, trained: boot and glove thrusters</figcaption>
+            <figcaption>Iron Man, trained and stabilized: holds still at each goal (limbs 15&times; stiller)</figcaption>
           </figure>
           <div class="media-side">
             <figure>
@@ -538,6 +538,12 @@
                 <source src="../assets/fun-rl/ironman_mid.mp4" type="video/mp4" />
               </video>
               <figcaption>Mid-training</figcaption>
+            </figure>
+            <figure>
+              <video controls muted playsinline preload="none" poster="../assets/fun-rl/ironman_trained.jpg">
+                <source src="../assets/fun-rl/ironman_trained.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Trained, before stabilization (limbs keep moving)</figcaption>
             </figure>
           </div>
         </div>
